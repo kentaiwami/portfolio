@@ -7,8 +7,11 @@ class Identifier(models.Model):
     :param name: Name of a identifier
     :type name: str
     """
-
     name = models.CharField(max_length=20)
+
+
+    def __str__(self):
+        return self.name
 
 
 class Product(models.Model):
@@ -21,10 +24,13 @@ class Product(models.Model):
     :type votes: int
     :type identifier: int
     """
-
     product_name = models.CharField(max_length=50)
     votes = models.IntegerField(default=0)
     identifier = models.ForeignKey(Identifier, on_delete=models.CASCADE)
+
+
+    def __str__(self):
+        return self.product_name
 
 
 class Comment(models.Model):
@@ -37,7 +43,10 @@ class Comment(models.Model):
     :type pub_date: date
     :type product: int
     """
-
     comment_text = models.CharField(max_length=300)
     pub_date = models.DateTimeField('date published')
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
+
+
+    def __str__(self):
+        return self.comment_text
