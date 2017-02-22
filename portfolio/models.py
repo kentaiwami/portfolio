@@ -1,4 +1,7 @@
+import os
 from django.db import models
+from django.conf import settings
+from django.utils.safestring import mark_safe
 
 
 class Identifier(models.Model):
@@ -50,3 +53,20 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.comment_text
+
+class ImageFile(models.Model):
+    # title = models.CharField(max_length=255)
+    image = models.ImageField(upload_to='images' ,blank=True)
+    # externalURL = models.URLField(blank=True)
+
+    # def url(self):
+    #     if self.externalURL:
+    #         return self.externalURL
+    #     else:
+    #         return os.path.join('/',settings.MEDIA_URL, os.path.basename(str(self.image)))
+    #
+    # def image_tag(self):
+    #     return mark_safe('<img src="{}" width="150" height="150" />'.format(self.url()))
+    #
+    # def __str__(self):
+    #     return self.title
