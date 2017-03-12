@@ -1,7 +1,4 @@
-import os
 from django.db import models
-from django.conf import settings
-from django.utils.safestring import mark_safe
 
 
 class Identifier(models.Model):
@@ -11,7 +8,6 @@ class Identifier(models.Model):
     :type name: str
     """
     name = models.CharField(max_length=20)
-
 
     def __str__(self):
         return self.name
@@ -25,12 +21,11 @@ class Product(models.Model):
     :param identifier: Identifier ForeignKey
     :type product_name: str
     :type votes: int
-    :type identifier: int
+    :type identifier: Int
     """
     product_name = models.CharField(max_length=50)
     votes = models.IntegerField(default=0)
     identifier = models.ForeignKey(Identifier, on_delete=models.CASCADE)
-
 
     def __str__(self):
         return self.product_name
@@ -50,15 +45,16 @@ class Comment(models.Model):
     pub_date = models.DateTimeField('date published')
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
 
-
     def __str__(self):
         return self.comment_text
 
+
 class ImageFile(models.Model):
-    # title = models.CharField(max_length=255)
-    image = models.ImageField(upload_to='images' ,blank=True)
+    title = models.CharField(max_length=255, default='')
+    image = models.ImageField(upload_to='images', blank=True)
     # externalURL = models.URLField(blank=True)
 
+    # def __str__(self):
     # def url(self):
     #     if self.externalURL:
     #         return self.externalURL

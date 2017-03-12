@@ -19,8 +19,7 @@ class CommentAdmin(admin.ModelAdmin):
 
 
 class ImageFileAdmin(admin.ModelAdmin):
-    fields = ('image',)
-    # readonly_fields = ('image_tag',)
+    fields = ('title', 'image')
 
 admin.site.register(Identifier, IdentifierAdmin)
 admin.site.register(Product, ProductAdmin)
