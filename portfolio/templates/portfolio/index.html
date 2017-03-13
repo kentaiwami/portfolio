@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'portfolio/reset.css' %}" />
   <link rel="stylesheet" type="text/css" href="{% static 'portfolio/css/bootstrap.min.css' %}" />
   <link rel="stylesheet" type="text/css" href="{% static 'portfolio/cover.css' %}" />
   <link rel="stylesheet" type="text/css" href="{% static 'portfolio/style.css' %}" />
@@ -12,21 +13,24 @@
 </head>
 
 <body>
-  <div class="site-wrapper">
-    <div class="site-wrapper-inner">
-      <div class="cover-container">
-
-        <div class="inner cover">
-          <div class="container">a</div>
-        </div>
-
-      </div>
+  <div class="top">
+    <div class="title">
+      <div class="top_title">Kenta Iwami</div>
+      <div class="top_sub_title">Portfolio</div>
     </div>
   </div>
+  <!--<div class="site-wrapper">-->
+    <!--<div class="site-wrapper-inner">-->
+      <!--<div class="cover-container">-->
+        <!--<div class="inner cover">-->
+          <!---->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
 
   <script type="text/javascript" src="{% static 'portfolio/js/jquery-3.1.1.slim.min.js' %}"></script>
   <script type="text/javascript" src="{% static 'portfolio/js/tether.min.js' %}"></script>
   <script type="text/javascript" src="{% static 'portfolio/js/bootstrap.min.js' %}"></script>
-
 </body>
 </html>
