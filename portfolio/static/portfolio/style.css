@@ -30,36 +30,20 @@
   border-width: 0.5vmin;
 }
 
-.title {
+.title, .sub_title {
   font-family: "DotFont";
   font-size: 15vmin;
 }
 
-.title:before {
-  content: ">> ";
-}
-
-.title:after {
+.title:after, .sub_title:after {
   content: "_";
   -webkit-animation:blink 0.5s ease-in-out infinite alternate;
   -moz-animation:blink 0.5s ease-in-out infinite alternate;
   animation:blink 0.5s ease-in-out infinite alternate;
 }
 
-.sub_title:before {
+.sub_title:before, .title:before {
   content: ">> ";
-}
-
-.sub_title:after {
-  content: "_";
-  -webkit-animation:blink 0.5s ease-in-out infinite alternate;
-  -moz-animation:blink 0.5s ease-in-out infinite alternate;
-  animation:blink 0.5s ease-in-out infinite alternate;
-}
-
-.sub_title {
-  font-family: "DotFont";
-  font-size: 13vmin;
 }
 
 @-webkit-keyframes blink{
@@ -147,8 +131,6 @@ a span:nth-of-type(3) {
 }
 
 
-
-
 /*************** section2 ***************/
 .starter-template {
     padding: 3rem 1.5rem;
@@ -158,19 +140,19 @@ a span:nth-of-type(3) {
 
 /*************** @media ***************/
 @media screen and (max-width: 1200px) {
-  .hoge {
+  .arrow {
     font-size: 8vmin;
   }
 }
 
 @media screen and (max-width: 700px) {
-  .hoge {
+  .arrow {
     font-size: 10vmin;
   }
 }
 
 @media screen and (max-width: 330px) {
-  .hoge {
+  .arrow {
     font-size: 12vmin;
   }
 }
