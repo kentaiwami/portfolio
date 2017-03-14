@@ -7,6 +7,10 @@ a,
 a:focus,
 a:hover {
   color: #fff;
+  text-decoration: none;
+}
+a:hover {
+  opacity: 0.5;
 }
 
 /* Custom default button */
