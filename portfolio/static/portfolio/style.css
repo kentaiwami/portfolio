@@ -36,7 +36,7 @@
 }
 
 .title:before {
-  content: "> ";
+  content: ">> ";
 }
 
 .title:after {
@@ -47,7 +47,7 @@
 }
 
 .sub_title:before {
-  content: "> ";
+  content: ">> ";
 }
 
 .sub_title:after {
