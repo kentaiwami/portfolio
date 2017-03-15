@@ -50,77 +50,19 @@
     <div class="container">
       <div class="row">
 
-        <div class="col-md-6">
-            <a href="https://www.google.co.jp">
-              <figure>
-                <img src="{% static 'portfolio/img/e_works/masamon/top.png' %}" class="img-fluid" alt="">
-                <figcaption>
-                  <h3>Masamon</h3>
-                    <p>表形式のシフトにおさらば</p>
-                </figcaption>
-              </figure>
-            </a>
-        </div>
-
+        {% for product in old_product_list %}
         <div class="col-md-6">
           <a href="https://www.google.co.jp">
-            <figure>
-              <img src="{% static 'portfolio/img/e_works/sample/sample.png' %}" class="img-fluid" alt="">
-              <figcaption>
-                <h3>FiNote</h3>
-                <p>オノマトペに着目した映画管理</p>
-              </figcaption>
-            </figure>
+          <figure>
+            <img src="/media/{{ product.top_image }}" class="img-fluid" alt="">
+            <figcaption>
+              <h3>{{ product.product_name }}</h3>
+              <p>{{ product.product_short_concept }}</p>
+            </figcaption>
+          </figure>
           </a>
         </div>
-
-        <div class="col-md-6">
-          <a href="https://www.google.co.jp">
-            <figure>
-              <img src="{% static 'portfolio/img/e_works/sample/sample.png' %}" class="img-fluid" alt="">
-              <figcaption>
-                <h3>App name hoge</h3>
-                <p>説明ほげほげする</p>
-              </figcaption>
-            </figure>
-          </a>
-        </div>
-
-        <div class="col-md-6">
-          <a href="https://www.google.co.jp">
-            <figure>
-              <img src="{% static 'portfolio/img/e_works/sample/sample.png' %}" class="img-fluid" alt="">
-              <figcaption>
-                <h3>App name hoge</h3>
-                <p>説明ほげほげする</p>
-              </figcaption>
-            </figure>
-          </a>
-        </div>
-
-        <div class="col-md-6">
-          <a href="https://www.google.co.jp">
-            <figure>
-              <img src="{% static 'portfolio/img/e_works/sample/sample.png' %}" class="img-fluid" alt="">
-              <figcaption>
-                <h3>App name hoge</h3>
-                <p>説明ほげほげする</p>
-              </figcaption>
-            </figure>
-          </a>
-        </div>
-
-        <div class="col-md-6">
-          <a href="https://www.google.co.jp">
-            <figure>
-              <img src="{% static 'portfolio/img/e_works/sample/sample.png' %}" class="img-fluid" alt="">
-              <figcaption>
-                <h3>App name hoge</h3>
-                <p>説明ほげほげする</p>
-              </figcaption>
-            </figure>
-          </a>
-        </div>
+        {% endfor %}
 
       </div>
     </div>

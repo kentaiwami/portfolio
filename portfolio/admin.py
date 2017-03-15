@@ -6,12 +6,13 @@ from .models import Identifier, Product, Comment, ImageFile
 # admin.site.register(Product)
 # admin.site.register(Comment)
 
+
 class IdentifierAdmin(admin.ModelAdmin):
     list_display = ('pk', 'name')
 
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('product_name', 'votes', 'identifier')
+    list_display = ('product_name', 'product_short_concept', 'top_image', 'votes', 'identifier')
 
 
 class CommentAdmin(admin.ModelAdmin):

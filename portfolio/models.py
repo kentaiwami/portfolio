@@ -1,6 +1,5 @@
 from django.db import models
 
-
 class Identifier(models.Model):
     """
     Model of engineer or photographer identifiers
@@ -17,13 +16,19 @@ class Product(models.Model):
     """
     Model of engineer and photographer works
     :param product_name: Name of a product
+    :param product_short_concept: One sentence concept of a product
+    :param top_image: Show index.html works image file
     :param votes: Good counts to a product
     :param identifier: Identifier ForeignKey
     :type product_name: str
+    :type product_short_concept: str
+    :type top_image: file
     :type votes: int
     :type identifier: Int
     """
-    product_name = models.CharField(max_length=50)
+    product_name = models.CharField(max_length=20, default='')
+    product_short_concept = models.CharField(max_length=20, default='')
+    top_image = models.ImageField(upload_to='images', blank=True)
     votes = models.IntegerField(default=0)
     identifier = models.ForeignKey(Identifier, on_delete=models.CASCADE)
 

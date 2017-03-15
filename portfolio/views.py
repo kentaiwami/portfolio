@@ -1,9 +1,9 @@
 from django.shortcuts import render
-
+from .models import Product
 # Create your views here.
 
 
 def index(request):
-    # latest_question_list = Question.objects.order_by('-pub_date')[:5]
-    # context = {'latest_question_list': latest_question_list}
-    return render(request, 'portfolio/index.html')
+    old_product_list = Product.objects.filter(identifier=1)[:6]
+    context = {'old_product_list': old_product_list}
+    return render(request, 'portfolio/index.html', context)
