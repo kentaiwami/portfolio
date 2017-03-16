@@ -52,6 +52,7 @@
 
         {% for product in old_product_list %}
         <div class="col-md-6">
+        <!--<div class="col-6">-->
           <a href="{% url 'portfolio:engineer_work_detail' product.pk %}">
           <figure>
             <img src="/media/{{ product.top_image }}" class="img-fluid" alt="">
@@ -82,6 +83,69 @@
 
   <section class="container" id="3">  <!--Photographer Works-->
     <div class="section_title">Photographer Works</div>
+    <div class="container">
+
+      <div class="row">
+        <div class="col-md-3">
+          <img class="img-fluid" src="{% static 'portfolio/img/photo.png' %}">
+        </div>
+        <div class="col-md-3">
+          <img class="img-fluid" src="{% static 'portfolio/img/photo.png' %}">
+        </div>
+        <div class="col-md-3">
+          <img class="img-fluid" src="{% static 'portfolio/img/photo.png' %}">
+        </div>
+        <div class="col-md-3">
+          <img class="img-fluid" src="{% static 'portfolio/img/photo.png' %}">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-3">
+          <img class="img-fluid" src="{% static 'portfolio/img/photo.png' %}">
+        </div>
+        <div class="col-md-3">
+          <img class="img-fluid" src="{% static 'portfolio/img/photo.png' %}">
+        </div>
+        <div class="col-md-3">
+          <img class="img-fluid" src="{% static 'portfolio/img/photo.png' %}">
+        </div>
+        <div class="col-md-3">
+          <img class="img-fluid" src="{% static 'portfolio/img/photo.png' %}">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-3">
+          <img class="img-fluid" src="{% static 'portfolio/img/photo.png' %}">
+        </div>
+        <div class="col-md-3">
+          <img class="img-fluid" src="{% static 'portfolio/img/photo.png' %}">
+        </div>
+        <div class="col-md-3">
+          <img class="img-fluid" src="{% static 'portfolio/img/photo.png' %}">
+        </div>
+        <div class="col-md-3">
+          <img class="img-fluid" src="{% static 'portfolio/img/photo.png' %}">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-3">
+          <img class="img-fluid" src="{% static 'portfolio/img/photo.png' %}">
+        </div>
+        <div class="col-md-3">
+          <img class="img-fluid" src="{% static 'portfolio/img/photo.png' %}">
+        </div>
+        <div class="col-md-3">
+          <img class="img-fluid" src="{% static 'portfolio/img/photo.png' %}">
+        </div>
+        <div class="col-md-3">
+          <img class="img-fluid" src="{% static 'portfolio/img/photo.png' %}">
+        </div>
+      </div>
+
+    </div>
   </section>
 
 
