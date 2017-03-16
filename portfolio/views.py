@@ -20,3 +20,7 @@ def engineer_work_detail(request, product_id):
         return render(request, 'portfolio/engineer_work_detail.html', {'product': product})
     else:
         raise Http404("Product does not exist")
+
+
+def engineer_works_all(request):
+    return render(request, 'portfolio/engineer_works_all.html')
