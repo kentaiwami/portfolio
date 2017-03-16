@@ -45,14 +45,14 @@
     </div>
   </section>
 
-  <section class="container" id="2">
-    <div class="section_title">Engineer Worsk</div>
+  <section class="container" id="2">  <!--Engineer Works-->
+    <div class="section_title">Engineer Works</div>
     <div class="container">
       <div class="row">
 
         {% for product in old_product_list %}
         <div class="col-md-6">
-          <a href="https://www.google.co.jp">
+          <a href="{% url 'portfolio:engineer_work_detail' product.pk %}">
           <figure>
             <img src="/media/{{ product.top_image }}" class="img-fluid" alt="">
             <figcaption>
@@ -66,14 +66,6 @@
 
       </div>
     </div>
-
-
-    <!--<div class="container">-->
-      <!--<div class="starter-template">-->
-        <!--<h1>fff starter template</h1>-->
-        <!--<p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>-->
-      <!--</div>-->
-    <!--</div>-->
   </section>
 
 

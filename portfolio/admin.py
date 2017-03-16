@@ -12,7 +12,7 @@ class IdentifierAdmin(admin.ModelAdmin):
 
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('product_name', 'product_short_concept', 'top_image', 'votes', 'identifier')
+    list_display = ('pk', 'product_name', 'product_short_concept', 'top_image', 'votes', 'identifier')
 
 
 class CommentAdmin(admin.ModelAdmin):
