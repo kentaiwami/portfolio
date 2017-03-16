@@ -201,10 +201,8 @@ figcaption {
   background: rgba(0,0,0,.6);
   -webkit-transition: .3s;
   transition: .3s;
-
   opacity: 1;
   margin: 0 auto;
-
   padding-top: 10vmin;
   font-size: 3vmin;
 }
@@ -283,6 +281,10 @@ figure:hover figcaption {
   width: 1px;
   height: 1px;
 }
+
+
+/*************** section3(Photographer Works) ***************/
+
 
 
 /*************** @media ***************/
