@@ -65,11 +65,11 @@ a:hover {
   font-size: 13vmin;
 }
 
-.title:after, .sub_title:after, .section_title:after {
+.title:after, .sub_title:after, .section_title:after, .engineer_works_more_after:after {
   content: "_";
-  -webkit-animation:blink 0.5s ease-in-out infinite alternate;
-  -moz-animation:blink 0.5s ease-in-out infinite alternate;
-  animation:blink 0.5s ease-in-out infinite alternate;
+  -webkit-animation:blink 0.3s ease-in-out infinite alternate;
+  -moz-animation:blink 0.3s ease-in-out infinite alternate;
+  animation:blink 0.3s ease-in-out infinite alternate;
 }
 
 .sub_title:before, .title:before , .section_title::before {
@@ -161,7 +161,7 @@ a span:nth-of-type(3) {
 }
 
 
-/*************** section2(Engineer Worsk) ***************/
+/*************** section2(Engineer Works) ***************/
 /* section1にて擬似要素の追加 */
 .section_title {
   width: 100%;
@@ -216,6 +216,72 @@ figcaption p {
 figure:hover figcaption {
   top: 0;
   left: 0;
+}
+
+/* more用 */
+/* section1にてafter擬似要素を追加 */
+.engineer_works_more:hover {
+  opacity: 1.0;
+}
+.box {
+  font-family: "DotFont";
+  font-size: 5vmin;
+  padding: 0rem 2rem;
+  margin-top: 2.5rem;
+  text-align: center; 
+  position: relative;
+  display: inline-block;
+}
+.bd div {
+  position: absolute;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  border: dotted 1px;
+}
+.bd div.bdT {
+  width: 100%;
+  height: 1px;
+  top: 0;
+  left: 0;
+}
+.bd div.bdB{
+  width: 100%;
+  height: 1px;
+  bottom: 0;
+  right: 0;
+}
+.bd div.bdR {
+  height: 100%;
+  width: 1px;
+  right: 0;
+  top: 0;
+}
+.bd div.bdL {
+  height: 100%;
+  width: 1px;
+  left: 0;
+  bottom: 0;
+}
+
+.bd10 div {
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+.box:hover .bd10 div.bdT {
+  width: 1px;
+  height: 1px;
+}
+.box:hover .bd10 div.bdB {
+  width: 1px;
+  height: 1px;
+}
+.box:hover .bd10 div.bdR {
+  width: 1px;
+  height: 1px;
+}
+.box:hover .bd10 div.bdL {
+  width: 1px;
+  height: 1px;
 }
 
 
