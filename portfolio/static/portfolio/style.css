@@ -289,6 +289,13 @@ figure:hover figcaption {
 }
 
 
+/*************** section4(Profile) ***************/
+.hoge {
+  display: block;
+  margin: 0 auto;
+}
+
+
 /*************** @media ***************/
 @media screen and (max-width: 1200px) {
   /* coverのスクロール促し */
