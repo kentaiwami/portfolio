@@ -202,7 +202,7 @@ figure:hover figcaption {
   position: absolute;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  border: dotted 1px;
+  border: solid 1px;
 }
 .bd div.bdT {
   width: 100%;
@@ -258,11 +258,6 @@ figure:hover figcaption {
 
 
 /*************** section4(Profile) ***************/
-.loading {
-/*  margin-left: 5px;
-  margin-bottom: 3px;*/
-}
-
 .profile_console {
   background-color: #111;
   width: 100%;
@@ -280,8 +275,8 @@ figure:hover figcaption {
   width: 100%;
   height: auto;
   padding-left: 10px;
+  text-align: center;
 }
-
 
 .console, .console_name {
   padding: 10px;
