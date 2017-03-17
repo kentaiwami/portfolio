@@ -36,6 +36,7 @@
     });
   });
   </script>
+
   <!-- 画面内に要素が来た際のアニメーション実施を記述 -->
   <script>
   var speed_define = 30;
@@ -54,34 +55,26 @@
   for (var i = 0; i < 3; i++) {
     flag.push(false);
   }
+
   $(window).scroll(function () {
     if (flag[0] == false) {
       if (isScrolledIntoView($('#engineer_title')) == true) {
         flag[0] = true;
-        $('#engineer_title').typist({
-          speed: speed_define,
-          text: 'Engineer Works',
-        });
+        $('#engineer_title').typist({speed: speed_define,text: 'Engineer Works',});
       }
     }
 
     if (flag[1] == false) {
       if (isScrolledIntoView($('#photographer_title')) == true) {
         flag[1] = true;
-        $('#photographer_title').typist({
-          speed: speed_define,
-          text: 'Photographer Works',
-        });
+        $('#photographer_title').typist({speed: speed_define,text: 'Photographer Works',});
       }
     }
 
     if (flag[2] == false) {
       if (isScrolledIntoView($('#profile_title')) == true) {
         flag[2] = true;
-        $('#profile_title').typist({
-          speed: speed_define,
-          text: 'Profile',
-        });
+        $('#profile_title').typist({speed: speed_define,text: 'Profile',});
       }
     }
   });
