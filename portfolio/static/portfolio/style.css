@@ -301,6 +301,7 @@ figure:hover figcaption {
 
 /* section1にてbefore擬似要素を追加 */
 .profile_name {
+  padding-top: 5vmin;
   font-size: 8vmin;
 }
 
