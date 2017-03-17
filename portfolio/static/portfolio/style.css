@@ -57,7 +57,7 @@ a:hover {
   font-size: 10vmin;
 }
 
-.sub_title:before, .title:before , .section_title:before, .console_top:before {
+.sub_title:before, .title:before , .section_title:before, .console_top:before, .profile_text:before {
   content: "$ ";
 }
 
@@ -285,19 +285,12 @@ figure:hover figcaption {
   padding: 10px;
 }
 
-.console div:before {
-  content: "$ ";
-}
-
 .profile_image {
   width: 40%;
-  position: relative;
+  /*position: absolute;*/
+  display: block;
+  /*top: 0;*/
   margin-bottom: 5vmin;
-}
-
-.profile_text {
-  width: 100%;
-  font-size: 3vmin;
 }
 
 .profile_text a {
