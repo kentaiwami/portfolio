@@ -41,10 +41,10 @@ a:hover {
 
 .title_area {
   margin: auto;
-  max-width: 100%;
+  width: 85%;
   height: auto;
   text-align: left;
-  display: inline-block;
+  display: block;
   padding: 5vmin;
   position: absolute;
   top: 50%;
@@ -53,27 +53,12 @@ a:hover {
   transform: translate(-50%, -50%);
   border-style: dotted;
   border-width: 0.5vmin;
-}
-
-.title {
-  font-family: "DotFont";
-  font-size: 15vmin;
-}
-
-.sub_title {
   font-family: "DotFont";
   font-size: 13vmin;
 }
 
-.title:after, .sub_title:after, .section_title:after, .engineer_works_more_after:after {
-  content: "_";
-  -webkit-animation:blink 0.3s ease-in-out infinite alternate;
-  -moz-animation:blink 0.3s ease-in-out infinite alternate;
-  animation:blink 0.3s ease-in-out infinite alternate;
-}
-
 .sub_title:before, .title:before , .section_title::before {
-  content: ">> ";
+  content: "$ ";
 }
 
 @-webkit-keyframes blink{
@@ -290,10 +275,20 @@ figure:hover figcaption {
 
 
 /*************** section4(Profile) ***************/
-.hoge {
-  display: block;
-  margin: 0 auto;
+@keyframes typing { from { width: 0; } }
+@keyframes blink-car { 50% { border-color: transparent; } }
+.test2 {
+  border-right: 5px solid;
+  width: 15em;
+   /* fallback */
+  margin: 2%;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: typing 2s steps(32, end),
+  blink-car 0.5s infinite ease;
 }
+
+
 
 
 /*************** @media ***************/

@@ -11,33 +11,87 @@
   <title>Kenta Portfolio</title>
 
   <script type="text/javascript" src="{% static 'portfolio/js/jquery-3.1.1.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'portfolio/js/jquery.typist.js' %}"></script>
+  <script type="text/javascript" src="{% static 'portfolio/js/index.js' %}"></script>
+
+
 
   <!-- スムーズスクロール部分の記述 -->
-    <script>
-    $(function(){
+  <script>
+  $(function(){
     // #で始まるアンカーをクリックした場合に処理
-      $('a[href^="#"]').click(function() {
-        // スクロールの速度
-        var speed = 400; // ミリ秒
-        // アンカーの値取得
-        var href= $(this).attr("href");
-        // 移動先を取得
-        var target = $(href == "#" || href == "" ? 'html' : href);
-        // 移動先を数値で取得
-        var position = target.offset().top;
-        // スムーススクロール
-        $('body,html').animate({scrollTop:position}, speed, 'swing');
-        return false;
-      });
+    $('a[href^="#"]').click(function() {
+      // スクロールの速度
+      var speed = 400; // ミリ秒
+      // アンカーの値取得
+      var href= $(this).attr("href");
+      // 移動先を取得
+      var target = $(href == "#" || href == "" ? 'html' : href);
+      // 移動先を数値で取得
+      var position = target.offset().top;
+      // スムーススクロール
+      $('body,html').animate({scrollTop:position}, speed, 'swing');
+      return false;
     });
-    </script>
+  });
+  </script>
+  <!-- 画面内に要素が来た際のアニメーション実施を記述 -->
+  <script>
+  jQuery(function($) {
+    $('#title').typist({
+      speed: 12,
+      text: 'Kenta Iwami',
+      cursor: false
+    });
+    $('#sub_title').typist({
+      speed: 12,
+      text: 'Portfolio',
+    });
+  });
+
+  var flag = [];
+  for (var i = 0; i < 3; i++) {
+    flag.push(false);
+  }
+  $(window).scroll(function () {
+    if (flag[0] == false) {
+      if (isScrolledIntoView($('#engineer_title')) == true) {
+        flag[0] = true;
+        $('#engineer_title').typist({
+          speed: 12,
+          text: 'Engineer Works',
+        });
+      }
+    }
+
+    if (flag[1] == false) {
+      if (isScrolledIntoView($('#photographer_title')) == true) {
+        flag[1] = true;
+        $('#photographer_title').typist({
+          speed: 12,
+          text: 'Photographer Works',
+        });
+      }
+    }
+
+    if (flag[2] == false) {
+      if (isScrolledIntoView($('#profile_title')) == true) {
+        flag[2] = true;
+        $('#profile_title').typist({
+          speed: 12,
+          text: 'Profile',
+        });
+      }
+    }
+  });
+  </script>
 </head>
 
 <body>
   <section class="cover" id="1">  <!--カバーページ-->
     <div class="title_area">
-      <div class="title">Kenta Iwami</div>
-      <div class="sub_title">Portfolio</div>
+      <div class="title" id="title"></div>
+      <div class="sub_title" id="sub_title"></div>
     </div>
 
     <div class="arrow">
@@ -46,7 +100,7 @@
   </section>
 
   <section class="container" id="2">  <!--Engineer Works-->
-    <div class="section_title">Engineer Works</div>
+    <div class="section_title" id="engineer_title"></div>
     <div class="container">
       <div class="row">
 
@@ -82,7 +136,7 @@
   </section>
 
   <section class="container" id="3">  <!--Photographer Works-->
-    <div class="section_title">Photographer Works</div>
+    <div class="section_title" id="photographer_title"></div>
     <div class="container">
 
       <div class="row">
@@ -149,11 +203,17 @@
   </section>
 
   <section class="container" id="4">  <!--Profile-->
-    <div class="section_title">Profile</div>
+    <div class="section_title" id="profile_title"></div>
   </section>
+
+  <!--<div class="textboard">-->
+    <!--<p class="test2" >タイプライター風ウィンドウです</p>-->
+  <!--</div>-->
+
 
 
   <script type="text/javascript" src="{% static 'portfolio/js/tether.min.js' %}"></script>
   <script type="text/javascript" src="{% static 'portfolio/js/bootstrap.min.js' %}"></script>
+
 </body>
 </html>
