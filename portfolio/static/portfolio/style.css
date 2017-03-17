@@ -297,6 +297,10 @@ figure:hover figcaption {
   font-size: 3vmin;
 }
 
+.profile_text a {
+  text-decoration: underline;
+  margin-right: 10px;
+}
 
 /*************** @media ***************/
 @media screen and (max-width: 1200px) {
