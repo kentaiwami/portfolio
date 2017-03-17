@@ -6,6 +6,7 @@
   {% load static %}
   <link rel="stylesheet" type="text/css" href="{% static 'portfolio/reset.css' %}" />
   <link rel="stylesheet" type="text/css" href="{% static 'portfolio/css/bootstrap.min.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'portfolio/css/spinners.css' %}" />
   <link rel="stylesheet" type="text/css" href="{% static 'portfolio/style.css' %}" />
 
   <title>Kenta Portfolio</title>
@@ -37,15 +38,15 @@
   </script>
   <!-- 画面内に要素が来た際のアニメーション実施を記述 -->
   <script>
+  var speed_define = 30;
   jQuery(function($) {
     $('#title').typist({
-      speed: 12,
+      speed: speed_define - 10,
       text: 'Kenta Iwami',
-      cursor: false
     });
     $('#sub_title').typist({
-      speed: 12,
-      text: 'Portfolio',
+      speed: speed_define - 10,
+      text: 'Portfolio'
     });
   });
 
@@ -58,7 +59,7 @@
       if (isScrolledIntoView($('#engineer_title')) == true) {
         flag[0] = true;
         $('#engineer_title').typist({
-          speed: 12,
+          speed: speed_define,
           text: 'Engineer Works',
         });
       }
@@ -68,7 +69,7 @@
       if (isScrolledIntoView($('#photographer_title')) == true) {
         flag[1] = true;
         $('#photographer_title').typist({
-          speed: 12,
+          speed: speed_define,
           text: 'Photographer Works',
         });
       }
@@ -78,7 +79,7 @@
       if (isScrolledIntoView($('#profile_title')) == true) {
         flag[2] = true;
         $('#profile_title').typist({
-          speed: 12,
+          speed: speed_define,
           text: 'Profile',
         });
       }
@@ -198,13 +199,22 @@
 
   <section class="container" id="4">  <!--Profile-->
     <div class="section_title" id="profile_title"></div>
+
+    <div class="profile_console">
+      <div class="console_top">profile<span class="loading dots"></span></div>
+
+      <div class="console">
+        <div>岩見建汰</div>
+        <div class="profile_image"><img class="img-fluid" src="{% static 'portfolio/img/photo.png' %}"></div>
+        <div class="profile_text">青森県八戸市出身。現在は函館で大学院生をしております。</div>
+        <div class="profile_text">プログラミングには高校生の頃から触れてきました。</div>
+        <div class="profile_text">PBL(Project Based Learning)の振り返りに関する研究をしています。</div>
+        <div class="profile_text">言語：C, Swift, Java, JavaScript, HTML, CSS, python</div>
+        <div class="profile_text">趣味：写真撮影, 映画鑑賞, コーディング</div>
+        <div class="profile_text">連絡先：b1013068@fun.ac.jp または iwami@pblsummit.jp</div>
+      </div>
+    </div>
   </section>
-
-  <!--<div class="textboard">-->
-    <!--<p class="test2" >タイプライター風ウィンドウです</p>-->
-  <!--</div>-->
-
-
 
   <script type="text/javascript" src="{% static 'portfolio/js/tether.min.js' %}"></script>
   <script type="text/javascript" src="{% static 'portfolio/js/bootstrap.min.js' %}"></script>
