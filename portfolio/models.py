@@ -1,5 +1,7 @@
 from django.db import models
 import os.path
+from django.db.models.signals import pre_delete
+from django.dispatch.dispatcher import receiver
 
 class Identifier(models.Model):
     """
@@ -103,9 +105,15 @@ class ImageFile(models.Model):
         joined_filename = ''.join([instance.title, '_', str(instance.product), ext])
         return '/'.join(['images', joined_filename])
 
+
     title = models.CharField(max_length=2, choices=TITLE_CHOICES, default=S1)
     image = models.ImageField(upload_to=content_file_name, blank=True)
     product = models.ForeignKey(Product, on_delete=models.CASCADE, default='')
 
     def __str__(self):
         return self.title
+
+
+@receiver(pre_delete, sender=ImageFile)
+def imagefile_delete(sender, instance, **kwargs):
+    instance.image.delete(False)
