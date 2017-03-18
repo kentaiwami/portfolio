@@ -1,5 +1,5 @@
 from django.db import models
-
+import os.path
 
 class Identifier(models.Model):
     """
@@ -93,13 +93,18 @@ class ImageFile(models.Model):
     S2 = 'S2'
     S3 = 'S3'
     TITLE_CHOICES = (
-        (S1, '画像1'),
-        (S2, '画像2'),
-        (S3, '画像3'),
+        (S1, 'img1'),
+        (S2, 'img2'),
+        (S3, 'img3'),
     )
 
+    def content_file_name(instance, filename):
+        path, ext = os.path.splitext(filename)
+        joined_filename = ''.join([instance.title, '_', str(instance.product), ext])
+        return '/'.join(['images', joined_filename])
+
     title = models.CharField(max_length=2, choices=TITLE_CHOICES, default=S1)
-    image = models.ImageField(upload_to='images', blank=True)
+    image = models.ImageField(upload_to=content_file_name, blank=True)
     product = models.ForeignKey(Product, on_delete=models.CASCADE, default='')
 
     def __str__(self):
