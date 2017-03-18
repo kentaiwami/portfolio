@@ -25,7 +25,7 @@ class Product(models.Model):
     :type product_short_concept: str
     :type top_image: file
     :type votes: int
-    :type identifier: Int
+    :type identifier: int
     """
     product_name = models.CharField(max_length=20, default='')
     product_short_concept = models.CharField(max_length=20, default='')
@@ -49,7 +49,7 @@ class ProductDetail(models.Model):
     :type product_feature_detail: str
     :type product_background_concept: str
     :type product_background_detail: str
-    :type product: Int
+    :type product: int
     """
     product_feature_concept = models.TextField(max_length=100)
     product_feature_detail = models.TextField(max_length=300)
@@ -80,6 +80,15 @@ class Comment(models.Model):
 
 
 class ImageFile(models.Model):
+    """
+    Model of Image Files
+    :param title: Image title name
+    :param image: Image file
+    :param product: Product ForeignKey
+    :type title: str
+    :type image: file
+    :type product: int
+    """
     S1 = 'S1'
     S2 = 'S2'
     S3 = 'S3'
