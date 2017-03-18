@@ -20,7 +20,7 @@ class CommentAdmin(admin.ModelAdmin):
 
 
 class ImageFileAdmin(admin.ModelAdmin):
-    fields = ('title', 'image', 'product')
+    list_display = ('title', 'image', 'product')
 
 admin.site.register(Identifier, IdentifierAdmin)
 admin.site.register(Product, ProductAdmin)
