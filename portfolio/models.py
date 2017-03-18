@@ -80,19 +80,18 @@ class Comment(models.Model):
 
 
 class ImageFile(models.Model):
-    title = models.CharField(max_length=255, default='')
-    image = models.ImageField(upload_to='images', blank=True)
-    # externalURL = models.URLField(blank=True)
+    S1 = 'S1'
+    S2 = 'S2'
+    S3 = 'S3'
+    TITLE_CHOICES = (
+        (S1, '画像1'),
+        (S2, '画像2'),
+        (S3, '画像3'),
+    )
 
-    # def __str__(self):
-    # def url(self):
-    #     if self.externalURL:
-    #         return self.externalURL
-    #     else:
-    #         return os.path.join('/',settings.MEDIA_URL, os.path.basename(str(self.image)))
-    #
-    # def image_tag(self):
-    #     return mark_safe('<img src="{}" width="150" height="150" />'.format(self.url()))
-    #
-    # def __str__(self):
-    #     return self.title
+    title = models.CharField(max_length=2, choices=TITLE_CHOICES, default=S1)
+    image = models.ImageField(upload_to='images', blank=True)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, default='')
+
+    def __str__(self):
+        return self.title
