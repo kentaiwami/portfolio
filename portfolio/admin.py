@@ -1,10 +1,6 @@
 from django.contrib import admin
-from .models import Identifier, Product, Comment, ImageFile
-
+from .models import Identifier, Product, ProductDetail, Comment, ImageFile
 # Register your models here.
-# admin.site.register(Identifier)
-# admin.site.register(Product)
-# admin.site.register(Comment)
 
 
 class IdentifierAdmin(admin.ModelAdmin):
@@ -13,6 +9,10 @@ class IdentifierAdmin(admin.ModelAdmin):
 
 class ProductAdmin(admin.ModelAdmin):
     list_display = ('pk', 'product_name', 'product_short_concept', 'top_image', 'votes', 'identifier')
+
+
+class ProductDetailAdmin(admin.ModelAdmin):
+    list_display = ('pk', 'product_feature_concept', 'product_feature_detail', 'product_background_concept', 'product_background_detail', 'product')
 
 
 class CommentAdmin(admin.ModelAdmin):
@@ -24,5 +24,6 @@ class ImageFileAdmin(admin.ModelAdmin):
 
 admin.site.register(Identifier, IdentifierAdmin)
 admin.site.register(Product, ProductAdmin)
+admin.site.register(ProductDetail, ProductDetailAdmin)
 admin.site.register(Comment, CommentAdmin)
 admin.site.register(ImageFile, ImageFileAdmin)

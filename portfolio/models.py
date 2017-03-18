@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Identifier(models.Model):
     """
     Model of engineer or photographer identifiers
@@ -36,6 +37,30 @@ class Product(models.Model):
         return self.product_name
 
 
+class ProductDetail(models.Model):
+    """
+    Model of Product Detail
+    :param product_feature_concept: Product feature concept(short one sentence)
+    :param product_feature_detail: Product feature detail sentences
+    :param product_background_concept: Product background concept(short one sentence)
+    :param product_background_detail: Product background detail sentences
+    :param product: Product ForeignKey
+    :type product_feature_concept: str
+    :type product_feature_detail: str
+    :type product_background_concept: str
+    :type product_background_detail: str
+    :type product: Int
+    """
+    product_feature_concept = models.TextField(max_length=100)
+    product_feature_detail = models.TextField(max_length=300)
+    product_background_concept = models.TextField(max_length=300)
+    product_background_detail = models.TextField(max_length=300)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.product_function_concept
+
+
 class Comment(models.Model):
     """
     Model of Comments to products
@@ -46,7 +71,7 @@ class Comment(models.Model):
     :type pub_date: date
     :type product: int
     """
-    comment_text = models.CharField(max_length=300)
+    comment_text = models.TextField(max_length=300)
     pub_date = models.DateTimeField('date published')
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
 

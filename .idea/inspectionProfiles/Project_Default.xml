@@ -12,6 +12,7 @@
           <option value="pub_date" />
           <option value="product" />
           <option value="name" />
+          <option value="product_short_concept" />
         </list>
       </option>
     </inspection_tool>
