@@ -13,6 +13,14 @@
           <option value="product" />
           <option value="name" />
           <option value="product_short_concept" />
+          <option value="product_alphabet_name" />
+          <option value="top_image" />
+          <option value="product_feature_concept" />
+          <option value="product_feature_detail" />
+          <option value="product_background_concept" />
+          <option value="product_background_detail" />
+          <option value="title" />
+          <option value="image" />
         </list>
       </option>
     </inspection_tool>
