@@ -117,3 +117,7 @@ class ImageFile(models.Model):
 @receiver(pre_delete, sender=ImageFile)
 def imagefile_delete(sender, instance, **kwargs):
     instance.image.delete(False)
+
+@receiver(pre_delete, sender=Product)
+def product_delete(sender, instance, **kwargs):
+    instance.top_image.delete(False)
