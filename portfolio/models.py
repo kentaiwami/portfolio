@@ -46,6 +46,7 @@ class Product(models.Model):
     product_alphabet_name = models.CharField(max_length=40, default='')
     product_short_concept = models.CharField(max_length=20, default='')
     top_image = models.ImageField(upload_to=content_file_name, blank=True)
+    link = models.URLField(max_length=200, blank=True, default='')
     votes = models.IntegerField(default=0)
     identifier = models.ForeignKey(Identifier, on_delete=models.CASCADE)
 

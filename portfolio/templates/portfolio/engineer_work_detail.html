@@ -12,8 +12,73 @@
   <title>{{ product.product_name }}</title>
 
   <script type="text/javascript" src="{% static 'portfolio/js/jquery-3.1.1.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'portfolio/js/jquery.typist.js' %}"></script>
+  <script>
+  var speed_define = 25;
+  jQuery(function($) {
+    $('#e_work_title').typist({
+      speed: speed_define - 10,
+      text: 'Engineer Works'
+    });
+  });
+  </script>
 </head>
 <body>
-{{ product.product_name }}
+  <section class="container" id="4">  <!--Profile-->
+    <div class="section_title" id="e_work_title"></div>
+
+    <div class="console_area">
+      <div class="console_top">Show {{ product.product_alphabet_name }} process <span class="loading dots2"></span></div>
+
+      <div class="console">
+        <div class="console_name">{{ product.product_name }}</div>
+        <div class="console_name">{{ product.product_short_concept }}</div>
+
+        <div class="row">
+          {% for image_file in image_file_list_not_contain_S3 %}
+          <div class="col">
+            <div class="console_image"><img class="img-fluid-no-border" src="/media/{{ image_file.image }}"></div>
+          </div>
+          {% endfor %}
+        </div>
+
+
+        <div class="container">
+          <div class="console_image"><img class="img-fluid-no-border" src="/media/{{ image_file_S3.image }}"></div>
+        </div>
+
+        <div class="console_name">Feature Concept Here</div>
+        <div class="console_text">PBL(Project Based Learning)の振り返りに関して研究をしています。</div>
+        <div class="console_text">PBL(Project Based Learning)の振り返りに関して研究をしています。</div>
+        <div class="console_text">PBL(Project Based Learning)の振り返りに関して研究をしています。</div>
+        <div class="console_text">PBL(Project Based Learning)の振り返りに関して研究をしています。</div>
+        <div class="console_text">PBL(Project Based Learning)の振り返りに関して研究をしています。</div>
+        <div class="console_text">PBL(Project Based Learning)の振り返りに関して研究をしています。</div>
+
+        <div class="console_name">Background Concept Here</div>
+        <div class="console_text">PBL(Project Based Learning)の振り返りに関して研究をしています。</div>
+        <div class="console_text">PBL(Project Based Learning)の振り返りに関して研究をしています。</div>
+        <div class="console_text">PBL(Project Based Learning)の振り返りに関して研究をしています。</div>
+        <div class="console_text">PBL(Project Based Learning)の振り返りに関して研究をしています。</div>
+        <div class="console_text">PBL(Project Based Learning)の振り返りに関して研究をしています。</div>
+        <div class="console_text">PBL(Project Based Learning)の振り返りに関して研究をしています。</div>
+
+        <div class="console_text">
+          <a class="link" href="{{ product.link }}">
+            <div class="box">
+              <div>Repository</div>
+              <div class="bd10 bd">
+                <div class="bdT"></div>
+                <div class="bdB"></div>
+                <div class="bdR"></div>
+                <div class="bdL"></div>
+              </div>
+             </div>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
 </body>
 </html>

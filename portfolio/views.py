@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Product
+from .models import Product, ImageFile
 from django.http import Http404
 # Create your views here.
 
@@ -17,7 +17,13 @@ def engineer_work_detail(request, product_id):
         raise Http404("Product does not exist")
 
     if product.identifier.name == 'engineer':
-        return render(request, 'portfolio/engineer_work_detail.html', {'product': product})
+        image_file_list_not_contain_S3 = ImageFile.objects.filter(product=product.pk)\
+                                            .exclude(title='S3').order_by('title')
+        image_file_S3 = ImageFile.objects.get(product=product.pk, title='S3')
+        return render(request, 'portfolio/engineer_work_detail.html',
+                      {'product': product,
+                       'image_file_list_not_contain_S3': image_file_list_not_contain_S3,
+                       'image_file_S3': image_file_S3})
     else:
         raise Http404("Product does not exist")
 

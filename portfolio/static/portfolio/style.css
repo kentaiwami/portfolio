@@ -137,7 +137,7 @@ a span:nth-of-type(3) {
   width: 100%;
   font-family: "MyFont";
   font-size: 10vmin;
-  margin-top: 2.5rem;
+  margin: 2.5rem 0rem;
 }
 
 .col-md-6 {
@@ -147,6 +147,14 @@ a span:nth-of-type(3) {
   width: 100%;
   height: 100%;
   border: 2px solid;
+  padding: .5rem;
+  object-fit: contain;
+}
+
+/*他セクションで使用*/
+.img-fluid-no-border {
+  width: 100%;
+  height: 100%;
   padding: .5rem;
   object-fit: contain;
 }
@@ -280,12 +288,13 @@ figure:hover figcaption {
   text-align: center;
 }
 
-.console, .console_name {
+.console {
   padding: 10px;
 }
 
 .console_image {
   width: 100%;
+  height: auto;
   display: block;
   margin-bottom: 5vmin;
   margin-top: 5vmin;
@@ -300,7 +309,7 @@ figure:hover figcaption {
 /* section1にてbefore擬似要素を追加 */
 .console_name {
   padding-top: 5vmin;
-  font-size: 8vmin;
+  font-size: 5vmin;
 }
 
 
