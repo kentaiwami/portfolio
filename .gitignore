@@ -4,4 +4,4 @@ db.sqlite3
 *png
 *jpg
 *jpeg
-settings_local.py
+settings.py
