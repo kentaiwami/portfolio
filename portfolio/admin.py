@@ -8,11 +8,13 @@ class IdentifierAdmin(admin.ModelAdmin):
 
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('pk', 'product_name', 'product_alphabet_name', 'product_short_concept', 'top_image', 'votes', 'identifier')
+    list_display = ('pk', 'product_name', 'product_alphabet_name', 'product_short_concept',
+                    'top_image', 'votes', 'identifier')
 
 
 class ProductDetailAdmin(admin.ModelAdmin):
-    list_display = ('pk', 'product_feature_concept', 'product_feature_detail', 'product_background_concept', 'product_background_detail', 'product')
+    list_display = ('pk', 'product_feature_concept', 'product_feature_detail',
+                    'product_background_concept', 'product_background_detail', 'product')
 
 
 class CommentAdmin(admin.ModelAdmin):
@@ -20,7 +22,7 @@ class CommentAdmin(admin.ModelAdmin):
 
 
 class ImageFileAdmin(admin.ModelAdmin):
-    list_display = ('title', 'image', 'product')
+    list_display = ('title', 'product', 'image')
 
 admin.site.register(Identifier, IdentifierAdmin)
 admin.site.register(Product, ProductAdmin)
