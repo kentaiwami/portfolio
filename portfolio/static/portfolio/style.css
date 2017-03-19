@@ -310,16 +310,16 @@ figure:hover figcaption {
 
 
 
-.link_cover:hover {
+.link_cover_error:hover {
   opacity: 1.0;
   color: #0F0;
 }
 
-.link_cover {
+.link_cover_error {
   color: #0F0;
 }
 
-.link_box {
+.link_error {
   position: absolute;
   left: 0;
   right: 0;
@@ -337,8 +337,8 @@ figure:hover figcaption {
 }
 
 /*section1にて擬似要素追加*/
-.sub_title_error, .title_error {
-  font-size: 9vmin;
+.sub_title_error {
+  font-size: 6.5vmin;
 }
 
 
