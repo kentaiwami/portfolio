@@ -1,6 +1,6 @@
 {% extends "error_base.html" %}
 
-{% block title %}403エラー{% endblock title %}
+{% block title %}Error 403 Forbidden{% endblock title %}
 
 {% block script %}
     <script>
@@ -8,11 +8,15 @@
     jQuery(function($) {
       $('#title').typist({
         speed: speed_define,
-        text: '403エラー',
+        text: 'Error 403'
       });
-      $('#sub_title').typist({
+      $('#sub_title_error1').typist({
         speed: speed_define,
-        text: 'Forbidden'
+        text: 'ページへのアクセスは'
+      });
+      $('#sub_title_error2').typist({
+        speed: speed_define,
+        text: '許可されていません'
       });
     });
     </script>

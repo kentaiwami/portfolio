@@ -1,6 +1,6 @@
 {% extends "error_base.html" %}
 
-{% block title %}404エラー{% endblock title %}
+{% block title %}Error 404 not found{% endblock title %}
 
 {% block script %}
     <script>
@@ -8,13 +8,13 @@
     jQuery(function($) {
       $('#title').typist({
         speed: speed_define,
-        text: '404エラー',
+        text: 'Error 404'
       });
-      $('#sub_title1').typist({
+      $('#sub_title_error1').typist({
         speed: speed_define,
         text: 'アクセスしたページは'
       });
-      $('#sub_title2').typist({
+      $('#sub_title_error2').typist({
         speed: speed_define,
         text: '見つかりませんでした'
       });

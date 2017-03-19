@@ -1,6 +1,6 @@
 {% extends "error_base.html" %}
 
-{% block title %}400エラー{% endblock title %}
+{% block title %}Error 400 Bad Request{% endblock title %}
 
 {% block script %}
     <script>
@@ -8,11 +8,15 @@
     jQuery(function($) {
       $('#title').typist({
         speed: speed_define,
-        text: '400エラー',
+        text: 'Error 400'
       });
-      $('#sub_title').typist({
+      $('#sub_title_error1').typist({
         speed: speed_define,
-        text: 'Bad Request'
+        text: '要求の形式が'
+      });
+      $('#sub_title_error2').typist({
+        speed: speed_define,
+        text: '正しくありません'
       });
     });
     </script>

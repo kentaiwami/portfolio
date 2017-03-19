@@ -1,6 +1,6 @@
 {% extends "error_base.html" %}
 
-{% block title %}500エラー{% endblock title %}
+{% block title %}Error 500 Internal Server Error{% endblock title %}
 
 {% block script %}
     <script>
@@ -8,11 +8,15 @@
     jQuery(function($) {
       $('#title').typist({
         speed: speed_define,
-        text: '500エラー',
+        text: 'Error 500'
       });
-      $('#sub_title').typist({
+      $('#sub_title_error1').typist({
         speed: speed_define,
-        text: 'Internal Server Error'
+        text: 'サーバ内で'
+      });
+      $('#sub_title_error2').typist({
+        speed: speed_define,
+        text: 'エラーが発生しました'
       });
     });
     </script>
