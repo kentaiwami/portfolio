@@ -57,7 +57,9 @@ a:hover {
   font-size: 10vmin;
 }
 
-.sub_title:before, .sub_title_error:before, .title:before , .title_error:before, .section_title:before, .console_top:before, .console_text:before , .console_name:before {
+.sub_title:before, .sub_title_error:before, .title:before , .title_error:before,
+.section_title:before, .console_top:before, .console_text:before,
+.console_name:before, .link_name:before {
   content: "$ ";
 }
 
@@ -300,11 +302,6 @@ figure:hover figcaption {
   margin-top: 5vmin;
 }
 
-/* section1にてbefore擬似要素を追加 */
-.console_text a {
-  text-decoration: underline;
-  margin-right: 10px;
-}
 
 /* section1にてbefore擬似要素を追加 */
 .console_name {
@@ -312,12 +309,9 @@ figure:hover figcaption {
   font-size: 5vmin;
 }
 
-
-/************************************************************
-                  view.engineer_work_detail
-************************************************************/
-
-
+.console_text_link {
+  text-align: center;
+}
 
 
 /************************************************************
