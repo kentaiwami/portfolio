@@ -5,7 +5,7 @@ from django.http import Http404
 
 
 def index(request):
-    old_product_list = Product.objects.filter(identifier=1)[:6]
+    old_product_list = Product.objects.filter(identifier=1)[:4]
     context = {'old_product_list': old_product_list}
     return render(request, 'portfolio/index.html', context)
 
