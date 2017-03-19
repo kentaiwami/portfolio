@@ -1,0 +1,19 @@
+{% extends "error_base.html" %}
+
+{% block title %}400エラー{% endblock title %}
+
+{% block script %}
+    <script>
+    var speed_define = 25;
+    jQuery(function($) {
+      $('#title').typist({
+        speed: speed_define,
+        text: '400エラー',
+      });
+      $('#sub_title').typist({
+        speed: speed_define,
+        text: 'Bad Request'
+      });
+    });
+    </script>
+{% endblock script %}

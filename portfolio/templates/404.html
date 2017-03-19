@@ -1,0 +1,19 @@
+{% extends "error_base.html" %}
+
+{% block title %}404エラー{% endblock title %}
+
+{% block script %}
+    <script>
+    var speed_define = 25;
+    jQuery(function($) {
+      $('#title').typist({
+        speed: speed_define,
+        text: '404エラー',
+      });
+      $('#sub_title').typist({
+        speed: speed_define,
+        text: 'Page not found'
+      });
+    });
+    </script>
+{% endblock script %}

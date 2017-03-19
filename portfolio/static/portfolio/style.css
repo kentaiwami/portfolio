@@ -6,7 +6,7 @@ body {
 }
 
 body {
-  color: #fff;
+  color: #FFF;
   text-align: center;
   text-shadow: 0 .05rem .1rem rgba(0,0,0,.5);
 }
@@ -57,7 +57,7 @@ a:hover {
   font-size: 10vmin;
 }
 
-.sub_title:before, .title:before , .section_title:before, .console_top:before, .profile_text:before , .profile_name:before {
+.sub_title:before, .sub_title_error:before, .title:before , .title_error:before, .section_title:before, .console_top:before, .profile_text:before , .profile_name:before {
   content: "$ ";
 }
 
@@ -188,8 +188,7 @@ figure:hover figcaption {
 }
 
 /* more用 */
-/* section1にてafter擬似要素を追加 */
-.engineer_works_more:hover {
+.link:hover {
   opacity: 1.0;
 }
 .box {
@@ -308,6 +307,39 @@ figure:hover figcaption {
 /************************************************************
                   view.engineer_work_detail
 ************************************************************/
+
+
+
+.link_cover:hover {
+  opacity: 1.0;
+  color: #0F0;
+}
+
+.link_cover {
+  color: #0F0;
+}
+
+.link_box {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 80%;
+  color: #0F0;
+}
+
+.cover_error {
+  width: 100vw;
+  height: 100vh;
+  margin: auto;
+  display: block;
+  color: #0F0;
+  display: inline-block;
+}
+
+/*section1にて擬似要素追加*/
+.sub_title_error, .title_error {
+  font-size: 9vmin;
+}
 
 
 

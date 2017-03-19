@@ -24,3 +24,19 @@ def engineer_work_detail(request, product_id):
 
 def engineer_works_all(request):
     return render(request, 'portfolio/engineer_works_all.html')
+
+
+def handler404(request):
+    return render(request, 'portfolio/404.html')
+
+
+def handler500(request):
+    return render(request, 'portfolio/500.html')
+
+
+def handler403(request):
+    return render(request, 'portfolio/403.html')
+
+
+def handler400(request):
+    return render(request, 'portfolio/400.html')
