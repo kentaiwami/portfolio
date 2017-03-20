@@ -301,6 +301,18 @@ figure:hover figcaption {
   margin-top: 5vmin;
 }
 
+div.console_text{
+  padding-left:1em;
+  position:relative;
+}
+
+div.console_text:before{
+  content:"$ ";
+  position:absolute;
+  left:0;
+  top:0;
+}
+
 
 /* section1にてbefore擬似要素を追加 */
 .console_name {
@@ -324,16 +336,9 @@ figure:hover figcaption {
   text-decoration: underline;
 }
 
-div.console_text{
-  padding-left:1em;
-  position:relative;
-}
-
-div.console_text:before{
-  content:"$ ";
-  position:absolute;
-  left:0;
-  top:0;
+.console_text_no_before {
+  margin: 3vmin 0vmin;
+  display: inline-block;
 }
 
 
