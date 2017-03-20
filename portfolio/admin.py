@@ -14,7 +14,22 @@ class ProductAdmin(admin.ModelAdmin):
 
 class ProductDetailAdmin(admin.ModelAdmin):
     list_display = ('pk', 'product_feature_concept', 'product_feature_detail',
-                    'product_background_concept', 'product_background_detail', 'product')
+                    'product_background_concept', 'product_background_detail',
+                    'product_development_environment', 'product_development_language', 'product')
+    fieldsets = (
+        ('Feature', {
+            'fields': ('product_feature_concept', 'product_feature_detail')
+        }),
+        ('Background', {
+            'fields': ('product_background_concept', 'product_background_detail')
+        }),
+        ('Environment & Language', {
+            'fields': ('product_development_environment', 'product_development_language')
+        }),
+        ('another', {
+            'fields': ('product',)
+        })
+    )
 
 
 class CommentAdmin(admin.ModelAdmin):

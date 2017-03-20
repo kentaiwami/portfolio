@@ -21,6 +21,8 @@
           <option value="product_background_detail" />
           <option value="title" />
           <option value="image" />
+          <option value="product_development_language" />
+          <option value="product_development_environment" />
         </list>
       </option>
     </inspection_tool>

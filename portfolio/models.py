@@ -62,22 +62,28 @@ class ProductDetail(models.Model):
     :param product_feature_detail: Product feature detail sentences
     :param product_background_concept: Product background concept(short one sentence)
     :param product_background_detail: Product background detail sentences
+    :param product_development_environment: ex.) used tools, frameworks
+    :param product_development_language: used language
     :param product: Product ForeignKey
 
     :type product_feature_concept: str
     :type product_feature_detail: str
     :type product_background_concept: str
     :type product_background_detail: str
+    :type product_development_environment: str
+    :type product_development_language: str
     :type product: int
     """
-    product_feature_concept = models.TextField(max_length=100)
-    product_feature_detail = models.TextField(max_length=300)
-    product_background_concept = models.TextField(max_length=300)
-    product_background_detail = models.TextField(max_length=300)
+    product_feature_concept = models.TextField(max_length=100, default='')
+    product_feature_detail = models.TextField(max_length=300, default='')
+    product_background_concept = models.TextField(max_length=100, default='')
+    product_background_detail = models.TextField(max_length=300, default='')
+    product_development_environment = models.TextField(max_length=300, default='')
+    product_development_language = models.TextField(max_length=300, default='')
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.product_function_concept
+        return self.product_feature_concept
 
 
 class Comment(models.Model):
