@@ -44,7 +44,7 @@ class Product(models.Model):
 
     product_name = models.CharField(max_length=20, default='')
     product_alphabet_name = models.CharField(max_length=40, default='')
-    product_short_concept = models.CharField(max_length=20, default='')
+    product_short_concept = models.CharField(max_length=30, default='')
     top_image = models.ImageField(upload_to=content_file_name, blank=True)
     link = models.URLField(max_length=200, blank=True, default='')
     votes = models.IntegerField(default=0)
@@ -64,6 +64,7 @@ class ProductDetail(models.Model):
     :param product_background_detail: Product background detail sentences
     :param product_development_environment: ex.) used tools, frameworks
     :param product_development_language: used language
+    :param product_creation_time: creation time
     :param product: Product ForeignKey
 
     :type product_feature_concept: str
@@ -72,14 +73,16 @@ class ProductDetail(models.Model):
     :type product_background_detail: str
     :type product_development_environment: str
     :type product_development_language: str
+    :type product_creation_time: str
     :type product: int
     """
-    product_feature_concept = models.TextField(max_length=100, default='')
+    product_feature_concept = models.TextField(max_length=30, default='')
     product_feature_detail = models.TextField(max_length=300, default='')
-    product_background_concept = models.TextField(max_length=100, default='')
+    product_background_concept = models.TextField(max_length=30, default='')
     product_background_detail = models.TextField(max_length=300, default='')
     product_development_environment = models.TextField(max_length=300, default='')
     product_development_language = models.TextField(max_length=300, default='')
+    product_creation_time = models.TextField(max_length=50, default='')
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
 
     def __str__(self):
