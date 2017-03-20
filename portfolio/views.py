@@ -6,7 +6,8 @@ from django.http import Http404
 
 def index(request):
     old_product_list = Product.objects.filter(identifier=1)[:4]
-    context = {'old_product_list': old_product_list}
+    TEST_COUNT = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+    context = {'old_product_list': old_product_list, 'TEST_COUNT': TEST_COUNT}
     return render(request, 'portfolio/index.html', context)
 
 
@@ -22,10 +23,10 @@ def engineer_work_detail(request, product_id):
         image_file_S3 = ImageFile.objects.get(product=product.pk, title='S3')
         product_detail = ProductDetail.objects.get(product=product.pk)
 
-        return render(request, 'portfolio/engineer_work_detail.html',
-                      {'product': product, 'product_detail': product_detail,
-                       'image_file_list_not_contain_S3': image_file_list_not_contain_S3,
-                       'image_file_S3': image_file_S3})
+        context = {'product': product, 'product_detail': product_detail,
+                   'image_file_list_not_contain_S3': image_file_list_not_contain_S3,
+                   'image_file_S3': image_file_S3}
+        return render(request, 'portfolio/engineer_work_detail.html', context)
     else:
         raise Http404("Product does not exist")
 

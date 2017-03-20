@@ -125,64 +125,25 @@
     <div class="section_title" id="photographer_title"></div>
 
     <div class="row">
+    {% for i in TEST_COUNT %}
+    {% if forloop.last %}
+      <div class="col-md-3">
+        <img class="img_slow" src="{% static 'portfolio/img/photo.png' %}">
+      </div>
+    {% elif forloop.counter|divisibleby:4 %}
       <div class="col-md-3">
         <img class="img_slow" src="{% static 'portfolio/img/photo.png' %}">
       </div>
 
-      <div class="col-md-3">
-        <img class="img_slow" src="{% static 'portfolio/img/photo.png' %}">
-      </div>
-      <div class="col-md-3">
-        <img class="img_slow" src="{% static 'portfolio/img/photo.png' %}">
-      </div>
-      <div class="col-md-3">
-        <img class="img_slow" src="{% static 'portfolio/img/photo.png' %}">
-      </div>
     </div>
 
     <div class="row">
+    {% else %}
       <div class="col-md-3">
         <img class="img_slow" src="{% static 'portfolio/img/photo.png' %}">
       </div>
-      <div class="col-md-3">
-        <img class="img_slow" src="{% static 'portfolio/img/photo.png' %}">
-      </div>
-      <div class="col-md-3">
-        <img class="img_slow" src="{% static 'portfolio/img/photo.png' %}">
-      </div>
-      <div class="col-md-3">
-        <img class="img_slow" src="{% static 'portfolio/img/photo.png' %}">
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-3">
-        <img class="img_slow" src="{% static 'portfolio/img/photo.png' %}">
-      </div>
-      <div class="col-md-3">
-        <img class="img_slow" src="{% static 'portfolio/img/photo.png' %}">
-      </div>
-      <div class="col-md-3">
-        <img class="img_slow" src="{% static 'portfolio/img/photo.png' %}">
-      </div>
-      <div class="col-md-3">
-        <img class="img_slow" src="{% static 'portfolio/img/photo.png' %}">
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-3">
-        <img class="img_slow" src="{% static 'portfolio/img/photo.png' %}">
-      </div>
-      <div class="col-md-3">
-        <img class="img_slow" src="{% static 'portfolio/img/photo.png' %}">
-      </div>
-      <div class="col-md-3">
-        <img class="img_slow" src="{% static 'portfolio/img/photo.png' %}">
-      </div>
-      <div class="col-md-3">
-        <img class="img_slow" src="{% static 'portfolio/img/photo.png' %}">
-      </div>
+    {% endif %}
+    {% endfor %}
     </div>
   </section>
 
