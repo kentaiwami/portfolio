@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Product, ImageFile
+from .models import Product, ProductDetail, ImageFile
 from django.http import Http404
 # Create your views here.
 
@@ -20,8 +20,10 @@ def engineer_work_detail(request, product_id):
         image_file_list_not_contain_S3 = ImageFile.objects.filter(product=product.pk)\
                                             .exclude(title='S3').order_by('title')
         image_file_S3 = ImageFile.objects.get(product=product.pk, title='S3')
+        product_detail = ProductDetail.objects.get(product=product.pk)
+
         return render(request, 'portfolio/engineer_work_detail.html',
-                      {'product': product,
+                      {'product': product, 'product_detail': product_detail,
                        'image_file_list_not_contain_S3': image_file_list_not_contain_S3,
                        'image_file_S3': image_file_S3})
     else:

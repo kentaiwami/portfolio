@@ -46,26 +46,16 @@
           <div class="console_image"><img class="img-fluid-no-border" src="/media/{{ image_file_S3.image }}"></div>
         </div>
 
-        <div class="console_name">Feature Concept Here</div>
-        <div class="console_text">PBL(Project Based Learning)の振り返りに関して研究をしています。</div>
-        <div class="console_text">PBL(Project Based Learning)の振り返りに関して研究をしています。</div>
-        <div class="console_text">PBL(Project Based Learning)の振り返りに関して研究をしています。</div>
-        <div class="console_text">PBL(Project Based Learning)の振り返りに関して研究をしています。</div>
-        <div class="console_text">PBL(Project Based Learning)の振り返りに関して研究をしています。</div>
-        <div class="console_text">PBL(Project Based Learning)の振り返りに関して研究をしています。</div>
+        <div class="console_name">{{ product_detail.product_feature_concept }}</div>
+        <div class="console_text">{{ product_detail.product_feature_detail }}</div>
 
-        <div class="console_name">Background Concept Here</div>
-        <div class="console_text">PBL(Project Based Learning)の振り返りに関して研究をしています。</div>
-        <div class="console_text">PBL(Project Based Learning)の振り返りに関して研究をしています。</div>
-        <div class="console_text">PBL(Project Based Learning)の振り返りに関して研究をしています。</div>
-        <div class="console_text">PBL(Project Based Learning)の振り返りに関して研究をしています。</div>
-        <div class="console_text">PBL(Project Based Learning)の振り返りに関して研究をしています。</div>
-        <div class="console_text">PBL(Project Based Learning)の振り返りに関して研究をしています。</div>
+        <div class="console_name">{{ product_detail.product_background_concept }}</div>
+        <div class="console_text">{{ product_detail.product_background_detail }}</div>
 
         <div class="console_name"></div>
-        <div class="console_text">開発環境：Xcode8.2.1</div>
-        <div class="console_text">使用言語：Swift2.3</div>
-        <div class="console_text">製作期間：yyyy/mm/dd 〜 yyyy/mm/dd</div>
+        <div class="console_text">開発環境：{{ product_detail.product_development_environment }}</div>
+        <div class="console_text">使用言語：{{ product_detail.product_development_language }}</div>
+        <div class="console_text">製作期間：{{ product_detail.product_creation_time }}</div>
         <div class="console_text">URL：<a class="default_link" href="{{ product.link }}">{{ product.link }}</a></div>
 
         <div class="console_text_link">
