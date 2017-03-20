@@ -244,10 +244,10 @@ figure:hover figcaption {
 
 /*************** section4(Profile) ***************/
 .console_area {
-  background-color: #111;
+  display: inline-block;
   width: 100%;
   border: 1px solid #FFF;
-  display: inline-block;
+  background-color: #111;
   font-family: "MyFont";
   font-size: 3vmin;
   text-align: left;
@@ -255,11 +255,11 @@ figure:hover figcaption {
 
 /* section1にてbefore擬似要素を追加 */
 .console_top {
-  border-bottom: 1px solid #FFF;
   display: inline-block;
   width: 100%;
   height: auto;
   padding-left: 10px;
+  border-bottom: 1px solid #FFF;
   text-align: center;
 }
 
@@ -268,25 +268,23 @@ figure:hover figcaption {
 }
 
 .console_image {
+  display: block;
   width: 100%;
   height: auto;
-  display: block;
-  margin-bottom: 5vmin;
-  margin-top: 5vmin;
+  margin: 5vmin 0vmin;
 }
 
 div.console_text{
-  padding-left:1em;
   position:relative;
+  padding-left:1em;
 }
 
 div.console_text:before{
-  content:"$ ";
   position:absolute;
-  left:0;
   top:0;
+  left:0;
+  content:"$ ";
 }
-
 
 /* section1にてbefore擬似要素を追加 */
 .console_name {
