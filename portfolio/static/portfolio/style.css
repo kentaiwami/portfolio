@@ -209,6 +209,17 @@ figure:hover figcaption {
   left: 0;
 }
 
+.img_slow {
+  width: 100%;
+  padding: .5rem;
+  border: 2px solid;
+  transition: .5s;
+}
+
+.img_slow:hover {
+  opacity: .5;
+}
+
 /************************************************************
                             link
 ************************************************************/
