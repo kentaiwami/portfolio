@@ -31,29 +31,27 @@ a:hover {
 ************************************************************/
 /*************** section1(cover) ***************/
 .cover {
+  display: block;
   width: 100vw;
   height: 100vh;
   margin: auto;
-  display: block;
   background-color: #000;
 }
 
 .title_area {
-  margin: auto;
-  width: 85%;
-  height: auto;
-  text-align: left;
   display: block;
-  padding: 5vmin;
   position: absolute;
   top: 50%;
   left: 50%;
-  margin-right: -50%;
-  transform: translate(-50%, -50%);
-  border-style: solid;
+  width: 85%;
+  height: auto;
+  padding: 5vmin;
   border-width: 0.5vmin;
+  border-style: solid;
   font-family: "MyFont";
   font-size: 10vmin;
+  text-align: left;
+  transform: translate(-50%, -50%);
 }
 
 .sub_title:before, .sub_title_error:before, .title:before , .title_error:before,
@@ -63,19 +61,16 @@ a:hover {
 
 /* Scrollの文字と矢印 */
 .arrow {
-  position: absolute;
-  z-index: 2;
   display: inline-block;
-  -webkit-transform: translate(0, -50%);
-  transform: translate(0, -50%);
+  position: absolute;
+  top: 90%;
+  right: 0;
+  left: 0;
+  margin: 0 auto;
   padding-top: 80px;
   font-family: "MyFont";
   font-size: 8vmin;
-
-  top: 90%;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
+  transform: translate(0, -50%); 
 }
 .arrow span {
   position: absolute;
@@ -84,39 +79,23 @@ a:hover {
   width: 24px;
   height: 24px;
   margin-left: -12px;
-  border-left: 2px dotted #fff;
-  border-bottom: 2px dotted #fff;
-  -webkit-transform: rotate(-45deg);
+  border-bottom: 2px dotted #FFF;
+  border-left: 2px dotted #FFF;
+  box-sizing: border-box;
   transform: rotate(-45deg);
-  -webkit-animation: sdb 2s infinite;
   animation: sdb 2s infinite;
   opacity: 0;
-  box-sizing: border-box;
 }
 a span:nth-of-type(1) {
-  -webkit-animation-delay: 0s;
   animation-delay: 0s;
 }
 a span:nth-of-type(2) {
   top: 16px;
-  -webkit-animation-delay: .15s;
   animation-delay: .15s;
 }
 a span:nth-of-type(3) {
   top: 32px;
-  -webkit-animation-delay: .3s;
   animation-delay: .3s;
-}
-@-webkit-keyframes sdb {
-  0% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
 }
 @keyframes sdb {
   0% {
