@@ -58,8 +58,7 @@ a:hover {
 }
 
 .sub_title:before, .sub_title_error:before, .title:before , .title_error:before,
-.section_title:before, .console_top:before, .console_text:before,
-.console_name:before, .link_name:before {
+.section_title:before, .console_top:before, .console_name:before, .link_name:before {
   content: "$ ";
 }
 
@@ -323,6 +322,18 @@ figure:hover figcaption {
 
 .default_link:hover {
   text-decoration: underline;
+}
+
+div.console_text{
+  padding-left:1em;
+  position:relative;
+}
+
+div.console_text:before{
+  content:"$ ";
+  position:absolute;
+  left:0;
+  top:0;
 }
 
 
