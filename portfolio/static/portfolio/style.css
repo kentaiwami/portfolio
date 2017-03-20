@@ -313,6 +313,14 @@ figure:hover figcaption {
   text-align: center;
 }
 
+.default_link {
+  text-decoration: underline;
+}
+
+.default_link:hover {
+  text-decoration: underline;
+}
+
 
 /************************************************************
                       各種エラーページ
