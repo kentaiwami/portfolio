@@ -15,10 +15,8 @@
   <script src="{% static 'portfolio/js/jquery.typist.js' %}"></script>
   <script src="{% static 'portfolio/js/index.js' %}"></script>
 
-
-
-  <!-- スムーズスクロール部分の記述 -->
   <script>
+  // スムーズスクロール部分の記述
   $(function(){
     // #で始まるアンカーをクリックした場合に処理
     $('a[href^="#"]').click(function() {
@@ -35,10 +33,8 @@
       return false;
     });
   });
-  </script>
 
-  <!-- 画面内に要素が来た際のアニメーション実施を記述 -->
-  <script>
+  // 画面内に要素が来た際のアニメーション実施を記述
   var speed_define = 25;
   jQuery(function($) {
     $('#title').typist({
@@ -57,22 +53,22 @@
   }
 
   $(window).scroll(function () {
-    if (flag[0] == false) {
-      if (isScrolledIntoView($('#engineer_title')) == true) {
+    if (flag[0] === false) {
+      if (isScrolledIntoView($('#engineer_title')) === true) {
         flag[0] = true;
         $('#engineer_title').typist({speed: speed_define,text: 'Engineer Works',});
       }
     }
 
-    if (flag[1] == false) {
-      if (isScrolledIntoView($('#photographer_title')) == true) {
+    if (flag[1] === false) {
+      if (isScrolledIntoView($('#photographer_title')) === true) {
         flag[1] = true;
         $('#photographer_title').typist({speed: speed_define,text: 'Photographer Works',});
       }
     }
 
-    if (flag[2] == false) {
-      if (isScrolledIntoView($('#profile_title')) == true) {
+    if (flag[2] === false) {
+      if (isScrolledIntoView($('#profile_title')) === true) {
         flag[2] = true;
         $('#profile_title').typist({speed: speed_define,text: 'Profile',});
       }
