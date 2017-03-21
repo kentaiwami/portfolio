@@ -15,7 +15,7 @@
   <script src="{% static 'portfolio/js/jquery-3.1.1.min.js' %}"></script>
   <script src="{% static 'portfolio/js/jquery.typist.js' %}"></script>
   <script src="{% static 'portfolio/js/index.js' %}"></script>
-  <script src="{% static 'portfolio/js/jquery.swipebox.min.js' %}"></script>
+  <script src="{% static 'portfolio/js/jquery.swipebox.js' %}"></script>
 
   <script>
   // スムーズスクロール部分の記述
@@ -130,11 +130,15 @@
     {% for i in TEST_COUNT %}
     {% if forloop.last %}
       <div class="col-md-3">
-        <img class="img_slow" src="{% static 'portfolio/img/photo.png' %}">
+        <a href="{% static 'portfolio/img/photo.png' %}" class="swipebox" title="My Caption">
+          <img class="img_slow" src="{% static 'portfolio/img/photo.png' %}">
+        </a>
       </div>
     {% elif forloop.counter|divisibleby:4 %}
       <div class="col-md-3">
-        <img class="img_slow" src="{% static 'portfolio/img/photo.png' %}">
+        <a href="{% static 'portfolio/img/photo.png' %}" class="swipebox" title="My Caption">
+          <img class="img_slow" src="{% static 'portfolio/img/photo.png' %}">
+        </a>
       </div>
 
     </div>
@@ -142,7 +146,9 @@
     <div class="row">
     {% else %}
       <div class="col-md-3">
-        <img class="img_slow" src="{% static 'portfolio/img/photo.png' %}">
+        <a href="{% static 'portfolio/img/photo.png' %}" class="swipebox" title="My Caption">
+          <img class="img_slow" src="{% static 'portfolio/img/photo.png' %}">
+        </a>
       </div>
     {% endif %}
     {% endfor %}
@@ -202,6 +208,6 @@
 
   <script type="text/javascript" src="{% static 'portfolio/js/tether.min.js' %}"></script>
   <script type="text/javascript" src="{% static 'portfolio/js/bootstrap.min.js' %}"></script>
-
+  <script>$(document).swipebox({ selector: '.swipebox'});</script>
 </body>
 </html>

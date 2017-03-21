@@ -18,9 +18,6 @@ a, a:focus, a:hover {
   color: #FFF;
   text-decoration: none;
 }
-a:hover {
-  opacity: .5;
-}
 
 @font-face {
   font-family: "MyFont";
@@ -224,7 +221,7 @@ figure:hover figcaption {
                             link
 ************************************************************/
 .link:hover {
-  opacity: 1;
+  opacity: .5;
 }
 .box {
   display: inline-block;
@@ -286,7 +283,7 @@ figure:hover figcaption {
 
 .link_cover_error:hover {
   color: #0F0;
-  opacity: 1.0;
+  opacity: .5;
 }
 
 .link_cover_error {
@@ -303,6 +300,9 @@ figure:hover figcaption {
 
 .default_link, .default_link:hover {
   text-decoration: underline;
+}
+.default_link:hover {
+  opacity: .5;
 }
 
 .link_name:before {
