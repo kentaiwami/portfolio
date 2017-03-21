@@ -79,13 +79,13 @@ class ProductDetail(models.Model):
     :type product_creation_time: str
     :type product: int
     """
-    product_feature_concept = models.TextField(max_length=30, default='')
-    product_feature_detail = models.TextField(max_length=300, default='')
-    product_background_concept = models.TextField(max_length=30, default='')
-    product_background_detail = models.TextField(max_length=300, default='')
-    product_development_environment = models.TextField(max_length=300, default='')
-    product_development_language = models.TextField(max_length=300, default='')
-    product_creation_time = models.TextField(max_length=50, default='')
+    product_feature_concept = models.TextField(max_length=30, default='', blank=True)
+    product_feature_detail = models.TextField(max_length=300, default='', blank=True)
+    product_background_concept = models.TextField(max_length=30, default='', blank=True)
+    product_background_detail = models.TextField(max_length=300, default='', blank=True)
+    product_development_environment = models.TextField(max_length=300, default='', blank=True)
+    product_development_language = models.TextField(max_length=300, default='', blank=True)
+    product_creation_time = models.TextField(max_length=50, default='', blank=True)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
 
     def __str__(self):

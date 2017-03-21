@@ -50,17 +50,39 @@
         </div>
         {% endif %}
 
+        {% if product_detail.product_feature_concept != '' %}
         <div class="console_name">{{ product_detail.product_feature_concept }}</div>
-        <div class="console_text">{{ product_detail.product_feature_detail }}</div>
+        {% endif %}
 
+        {% if product_detail.product_feature_detail != '' %}
+        <div class="console_text">{{ product_detail.product_feature_detail }}</div>
+        {% endif %}
+
+        {% if product_detail.product_background_concept != '' %}
         <div class="console_name">{{ product_detail.product_background_concept }}</div>
+        {% endif %}
+
+        {% if product_detail.product_background_detail != '' %}
         <div class="console_text">{{ product_detail.product_background_detail }}</div>
+        {% endif %}
 
         <div class="console_text_no_before"></div>
+
+        {% if product_detail.product_development_environment != '' %}
         <div class="console_text">開発環境：{{ product_detail.product_development_environment }}</div>
+        {% endif %}
+
+        {% if product_detail.product_development_language != '' %}
         <div class="console_text">使用言語：{{ product_detail.product_development_language }}</div>
+        {% endif %}
+
+        {% if product_detail.product_creation_time != '' %}
         <div class="console_text">製作期間：{{ product_detail.product_creation_time }}</div>
+        {% endif %}
+
+        {% if product.link != '' %}
         <div class="console_text">URL：<a class="default_link" href="{{ product.link }}">{{ product.link }}</a></div>
+        {% endif %}
 
         <div class="console_text_link">
           <a class="link" href="{% url 'portfolio:index' %}#2">
