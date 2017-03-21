@@ -8,8 +8,8 @@ class IdentifierAdmin(admin.ModelAdmin):
 
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('sort_id', 'product_name', 'product_alphabet_name', 'product_short_concept',
-                    'top_image', 'link', 'votes', 'identifier')
+    list_display = ('sort_id', 'identifier', 'product_name', 'product_alphabet_name', 'product_short_concept',
+                    'top_image', 'link', 'votes')
 
 
 class ProductDetailAdmin(admin.ModelAdmin):
