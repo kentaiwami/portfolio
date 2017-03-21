@@ -18,21 +18,10 @@ def engineer_work_detail(request, product_id):
         raise Http404("Product does not exist")
 
     if product.identifier.name == 'engineer':
-        try:
-            image_file_list_not_contain_S3 = ImageFile.objects.filter(product=product.pk)\
-                                            .exclude(title='S3').order_by('title')
-            image_file_S3 = ImageFile.objects.get(product=product.pk, title='S3')
-            product_detail = ProductDetail.objects.get(product=product.pk)
-
-        except ImageFile.DoesNotExist:
-            image_file_list_not_contain_S3 = None
-
-        except ImageFile.DoesNotExist:
-            image_file_S3 = None
-
-        except ProductDetail.DoesNotExist:
-            product_detail = None
-
+        image_file_list_not_contain_S3 = ImageFile.objects.filter(product=product.pk)\
+                                        .exclude(title='S3').order_by('title')
+        image_file_S3 = ImageFile.objects.filter(product=product.pk, title='S3').first()
+        product_detail = ProductDetail.objects.filter(product=product.pk).first()
 
         context = {'product': product, 'product_detail': product_detail,
                    'image_file_list_not_contain_S3': image_file_list_not_contain_S3,
