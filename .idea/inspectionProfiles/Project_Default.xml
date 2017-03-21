@@ -31,6 +31,7 @@
           <option value="product_development_language" />
           <option value="product_development_environment" />
           <option value="product_creation_time" />
+          <option value="sort_id" />
         </list>
       </option>
     </inspection_tool>

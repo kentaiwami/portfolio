@@ -27,6 +27,7 @@ class Product(models.Model):
     :param product_short_concept: One sentence concept
     :param top_image: Show index.html works image file
     :param votes: Good counts to a product
+    :param sort_id: use sort
     :param identifier: Identifier ForeignKey
 
     :type product_name: str
@@ -34,6 +35,7 @@ class Product(models.Model):
     :type product_short_concept: str
     :type top_image: file
     :type votes: int
+    :type sort_id: int
     :type identifier: int
     """
 
@@ -48,6 +50,7 @@ class Product(models.Model):
     top_image = models.ImageField(upload_to=content_file_name, blank=True)
     link = models.URLField(max_length=200, blank=True, default='')
     votes = models.IntegerField(default=0)
+    sort_id = models.IntegerField(default=0)
     identifier = models.ForeignKey(Identifier, on_delete=models.CASCADE)
 
     def __str__(self):

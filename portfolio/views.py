@@ -5,9 +5,9 @@ from django.http import Http404
 
 
 def index(request):
-    old_product_list = Product.objects.filter(identifier=1)[:4]
+    product_list = Product.objects.filter(identifier=1).order_by('sort_id')[:4]
     TEST_COUNT = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
-    context = {'old_product_list': old_product_list, 'TEST_COUNT': TEST_COUNT}
+    context = {'product_list': product_list, 'TEST_COUNT': TEST_COUNT}
     return render(request, 'portfolio/index.html', context)
 
 
