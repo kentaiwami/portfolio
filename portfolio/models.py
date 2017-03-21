@@ -89,7 +89,7 @@ class ProductDetail(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.product_feature_concept
+        return self.product.__str__() + ' Detail'
 
 
 class Comment(models.Model):
