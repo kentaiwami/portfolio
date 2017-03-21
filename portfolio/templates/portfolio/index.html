@@ -130,13 +130,13 @@
     {% for i in TEST_COUNT %}
     {% if forloop.last %}
       <div class="col-md-3">
-        <a href="{% static 'portfolio/img/photo.png' %}" class="swipebox" title="My Caption">
+        <a href="{% static 'portfolio/img/photo.png' %}" class="swipebox" title="{{ forloop.counter }}">
           <img class="img_slow" src="{% static 'portfolio/img/photo.png' %}">
         </a>
       </div>
     {% elif forloop.counter|divisibleby:4 %}
       <div class="col-md-3">
-        <a href="{% static 'portfolio/img/photo.png' %}" class="swipebox" title="My Caption">
+        <a href="{% static 'portfolio/img/photo.png' %}" class="swipebox" title="{{ forloop.counter }}">
           <img class="img_slow" src="{% static 'portfolio/img/photo.png' %}">
         </a>
       </div>
@@ -146,7 +146,7 @@
     <div class="row">
     {% else %}
       <div class="col-md-3">
-        <a href="{% static 'portfolio/img/photo.png' %}" class="swipebox" title="My Caption">
+        <a href="{% static 'portfolio/img/photo.png' %}" class="swipebox" title="{{ forloop.counter }}">
           <img class="img_slow" src="{% static 'portfolio/img/photo.png' %}">
         </a>
       </div>
