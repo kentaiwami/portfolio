@@ -34,6 +34,7 @@
         <div class="console_name">{{ product.product_name }}</div>
         <div class="console_name">{{ product.product_short_concept }}</div>
 
+        {% if image_file_list_not_contain_S3 %}
         <div class="row">
           {% for image_file in image_file_list_not_contain_S3 %}
           <div class="col">
@@ -41,10 +42,13 @@
           </div>
           {% endfor %}
         </div>
+        {% endif %}
 
+        {% if image_file_S3 %}
         <div class="container">
           <div class="console_image"><img class="img-fluid-no-border" src="/media/{{ image_file_S3.image }}"></div>
         </div>
+        {% endif %}
 
         <div class="console_name">{{ product_detail.product_feature_concept }}</div>
         <div class="console_text">{{ product_detail.product_feature_detail }}</div>
