@@ -13,10 +13,10 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 class ProductDetailAdmin(admin.ModelAdmin):
-    list_display = ('pk', 'product_feature_concept', 'product_feature_detail',
-                    'product_background_concept', 'product_background_detail',
-                    'product_development_environment', 'product_development_language',
-                    'product_creation_time', 'product')
+    list_display = ('product', 'product_feature_concept',
+                    'product_feature_detail', 'product_background_concept',
+                    'product_background_detail', 'product_development_environment',
+                    'product_development_language', 'product_creation_time')
     fieldsets = (
         ('Feature', {
             'fields': ('product_feature_concept', 'product_feature_detail')
