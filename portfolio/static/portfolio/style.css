@@ -26,7 +26,7 @@ a, a:focus, a:hover {
 
 
 /************************************************************
-                        カバーページ
+                      	Cover Page
 ************************************************************/
 .cover {
   display: block;
@@ -45,7 +45,7 @@ a, a:focus, a:hover {
 
 
 /************************************************************
-                        タイトル
+                        Title
 ************************************************************/
 .title_area {
   display: block;
@@ -82,7 +82,7 @@ a, a:focus, a:hover {
 
 
 /************************************************************
-                            Scroll
+                         Scroll
 ************************************************************/
 .arrow {
   display: inline-block;
@@ -209,13 +209,13 @@ figure:hover figcaption {
 .img_slow {
   width: 100%;
   padding: .5rem;
-  border: 2px solid;
   transition: .5s;
 }
 
 .img_slow:hover {
   opacity: .5;
 }
+
 
 /************************************************************
                             link
@@ -303,10 +303,6 @@ figure:hover figcaption {
 }
 .default_link:hover {
   opacity: .5;
-}
-
-.link_name:before {
-  content: "$ ";
 }
 
 

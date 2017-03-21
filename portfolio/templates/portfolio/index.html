@@ -110,6 +110,7 @@
       {% endfor %}
     </div>
 
+    <!--More link of engineer_works_all-->
     <!--<a class="link" href="{# {% url 'portfolio:engineer_works_all' %} #}">-->
       <!--<div class="box">-->
         <!--<div>more</div>-->
@@ -126,32 +127,46 @@
   <section class="container" id="3">  <!--Photographer Works-->
     <div class="section_title" id="photographer_title"></div>
 
-    <div class="row">
-    {% for i in TEST_COUNT %}
-    {% if forloop.last %}
-      <div class="col-md-3">
-        <a href="{% static 'portfolio/img/photo.png' %}" class="swipebox" title="{{ forloop.counter }}">
-          <img class="img_slow" src="{% static 'portfolio/img/photo.png' %}">
-        </a>
-      </div>
-    {% elif forloop.counter|divisibleby:4 %}
-      <div class="col-md-3">
-        <a href="{% static 'portfolio/img/photo.png' %}" class="swipebox" title="{{ forloop.counter }}">
-          <img class="img_slow" src="{% static 'portfolio/img/photo.png' %}">
-        </a>
-      </div>
+    <div class="console_area">
+      <div class="console_top">Show 19 photographer works process <span class="loading dots2"></span></div>
 
-    </div>
+      <div class="console">
+        <div class="console_text">使用カメラはNikon5300。</div>
+        <div class="console_text">風景を撮るのが好きです。</div>
+        <div class="console_text">基本的には趣味ですが、イベントのカメラマンをすることもあります。</div>
+        <div class="console_text">PBL Summit 2017は実行委員会として企画、運営、カメラマンをしました。</div>
+        <div class="console_text">撮影をしたイベントは全部で3つです。</div>
+        <div class="console_text">1. <a class="default_link" href="http://hakodate-marathon.jp">函館マラソン</a></div>
+        <div class="console_text">2. <a class="default_link" href="https://careerselect.jp/funhacks/">FUNHACKS 2016</a></div>
+        <div class="console_text">3. <a class="default_link" href="https://2017.pblsummit.jp">PBL Summit 2017</a></div>
 
-    <div class="row">
-    {% else %}
-      <div class="col-md-3">
-        <a href="{% static 'portfolio/img/photo.png' %}" class="swipebox" title="{{ forloop.counter }}">
-          <img class="img_slow" src="{% static 'portfolio/img/photo.png' %}">
-        </a>
+        <div class="row">
+          {% for i in TEST_COUNT %}
+          {% if forloop.last %}
+          <div class="col-md-3">
+            <a href="{% static 'portfolio/img/photo.png' %}" class="swipebox" title="{{ forloop.counter }}">
+              <img class="img_slow" src="{% static 'portfolio/img/photo.png' %}">
+            </a>
+          </div>
+          {% elif forloop.counter|divisibleby:4 %}
+          <div class="col-md-3">
+            <a href="{% static 'portfolio/img/photo.png' %}" class="swipebox" title="{{ forloop.counter }}">
+              <img class="img_slow" src="{% static 'portfolio/img/photo.png' %}">
+            </a>
+          </div>
+        </div>
+
+        <div class="row">
+        {% else %}
+        <div class="col-md-3">
+          <a href="{% static 'portfolio/img/photo.png' %}" class="swipebox" title="{{ forloop.counter }}">
+            <img class="img_slow" src="{% static 'portfolio/img/photo.png' %}">
+          </a>
+        </div>
+        {% endif %}
+        {% endfor %}
+        </div>
       </div>
-    {% endif %}
-    {% endfor %}
     </div>
   </section>
 
