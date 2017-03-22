@@ -1,8 +1,9 @@
 from django.db import models
 import os.path
-from django.db.models.signals import pre_delete
+from django.db.models.signals import pre_delete, pre_save
 from django.dispatch.dispatcher import receiver
-
+from model_utils import FieldTracker
+from django.conf import settings
 
 class Identifier(models.Model):
     """
@@ -52,6 +53,7 @@ class Product(models.Model):
     votes = models.IntegerField(default=0)
     sort_id = models.IntegerField(default=0, unique=True)
     identifier = models.ForeignKey(Identifier, on_delete=models.CASCADE)
+    tracker = FieldTracker()
 
     def __str__(self):
         return self.product_alphabet_name
@@ -141,16 +143,53 @@ class ImageFile(models.Model):
     title = models.CharField(max_length=2, choices=TITLE_CHOICES, default=S1)
     image = models.ImageField(upload_to=content_file_name, blank=True)
     product = models.ForeignKey(Product, on_delete=models.CASCADE, default='')
+    tracker = FieldTracker()
 
     def __str__(self):
         return self.title
 
 
 @receiver(pre_delete, sender=ImageFile)
-def imagefile_delete(sender, instance, **kwargs):
+def imagefile_image_delete(sender, instance, **kwargs):
+    """
+    When delete ImageFile record, delete an image that relation self instance
+
+    :param sender:
+    :param instance: ImageFile record
+    :param kwargs:
+    """
     instance.image.delete(False)
 
 
 @receiver(pre_delete, sender=Product)
-def product_delete(sender, instance, **kwargs):
+def product_top_image_delete(sender, instance, **kwargs):
+    """
+    When delete Product record, delete an image that relation self instance
+
+    :param sender:
+    :param instance: Product record
+    :param kwargs:
+    """
     instance.top_image.delete(False)
+
+@receiver(pre_save, sender=Product)
+def product_clear_image_field_delete_file(sender, instance, **kwargs):
+    """
+    When image field's clear and save, delete an image that relation self instance
+    :param sender:
+    :param instance: Product record
+    :param kwargs:
+    """
+    if instance.top_image == '':
+        os.remove(settings.MEDIA_ROOT + '/' + str(instance.tracker.previous('top_image')))
+
+@receiver(pre_save, sender=ImageFile)
+def imagefile_clear_image_field_delete_file(sender, instance, **kwargs):
+    """
+    When image field's clear and save, delete an image that relation self instance
+    :param sender:
+    :param instance: ImageFile
+    :param kwargs:
+    """
+    if instance.image == '':
+        os.remove(settings.MEDIA_ROOT + '/' + str(instance.tracker.previous('image')))
