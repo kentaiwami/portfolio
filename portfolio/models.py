@@ -44,13 +44,13 @@ class Product(models.Model):
         joined_filename = ''.join([self.product_alphabet_name, '_top', ext])
         return '/'.join(['images/e_work_tops', joined_filename])
 
-    product_name = models.CharField(max_length=20, default='')
-    product_alphabet_name = models.CharField(max_length=40, default='')
+    product_name = models.CharField(max_length=20, default='', unique=True)
+    product_alphabet_name = models.CharField(max_length=40, default='', unique=True)
     product_short_concept = models.CharField(max_length=30, default='')
     top_image = models.ImageField(upload_to=content_file_name, blank=True)
     link = models.URLField(max_length=200, blank=True, default='')
     votes = models.IntegerField(default=0)
-    sort_id = models.IntegerField(default=0)
+    sort_id = models.IntegerField(default=0, unique=True)
     identifier = models.ForeignKey(Identifier, on_delete=models.CASCADE)
 
     def __str__(self):
