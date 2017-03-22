@@ -35,6 +35,9 @@ class Product(models.Model):
     :param product_name: Product name
     :param product_alphabet_name: Product name(alphabet version)
     :param product_short_concept: One sentence concept
+    :param product_location: photographer works only
+    :param product_shooting_date_year: photographer works only
+    :param product_shooting_date_month: photographer works only
     :param top_image: Show index.html works image file
     :param votes: Good counts to a product
     :param sort_id: use sort
@@ -43,6 +46,9 @@ class Product(models.Model):
     :type product_name: str
     :type product_alphabet_name: str
     :type product_short_concept: str
+    :type product_location: str
+    :type product_shooting_date_year: str
+    :type product_shooting_date_month: str
     :type top_image: file
     :type votes: int
     :type sort_id: int
@@ -57,10 +63,13 @@ class Product(models.Model):
     product_name = models.CharField(max_length=20, default='', unique=True)
     product_alphabet_name = models.CharField(max_length=40, default='', unique=True)
     product_short_concept = models.CharField(max_length=30, default='')
+    product_location = models.CharField(max_length=30, default='', blank=True)
+    product_shooting_date_year = models.CharField(max_length=4, default='', blank=True)
+    product_shooting_date_month = models.CharField(max_length=2, default='', blank=True)
     top_image = models.ImageField(upload_to=content_file_name, blank=True)
     link = models.URLField(max_length=200, blank=True, default='')
     votes = models.IntegerField(default=0)
-    sort_id = models.IntegerField(default=0, unique=True)
+    sort_id = models.IntegerField(default=0)
     identifier = models.ForeignKey(Identifier, on_delete=models.CASCADE)
     tracker = FieldTracker()
 

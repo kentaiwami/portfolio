@@ -9,8 +9,20 @@ class IdentifierAdmin(admin.ModelAdmin):
 
 class ProductAdmin(admin.ModelAdmin):
     list_display = ('sort_id', 'identifier', 'product_name', 'product_alphabet_name', 'product_short_concept',
-                    'top_image', 'link', 'votes')
+                    'top_image', 'link', 'product_location', 'product_shooting_date_year',
+                    'product_shooting_date_month', 'votes')
 
+    fieldsets = (
+        ('Product_main', {
+            'fields': ('product_name', 'product_alphabet_name', 'product_short_concept')
+        }),
+        ('Photographer only', {
+            'fields': ('product_location', 'product_shooting_date_year', 'product_shooting_date_month')
+        }),
+        ('Another', {
+            'fields': ('top_image', 'link', 'votes', 'sort_id', 'identifier')
+        })
+    )
 
 class ProductDetailAdmin(admin.ModelAdmin):
     list_display = ('product', 'product_feature_concept',

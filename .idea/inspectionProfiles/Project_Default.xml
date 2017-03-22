@@ -32,6 +32,9 @@
           <option value="product_development_environment" />
           <option value="product_creation_time" />
           <option value="sort_id" />
+          <option value="product_shooting_date_month" />
+          <option value="product_shooting_date_year" />
+          <option value="product_location" />
         </list>
       </option>
     </inspection_tool>
