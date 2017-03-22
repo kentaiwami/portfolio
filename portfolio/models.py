@@ -5,6 +5,15 @@ from django.dispatch.dispatcher import receiver
 from model_utils import FieldTracker
 from django.conf import settings
 
+
+def get_e_work_tops_str():
+    return 'e_work_tops'
+
+
+def get_e_work_detail_str():
+    return 'e_work_detail'
+
+
 class Identifier(models.Model):
     """
     Model of engineer or photographer identifiers
@@ -43,7 +52,7 @@ class Product(models.Model):
     def content_file_name(self, filename):
         path, ext = os.path.splitext(filename)
         joined_filename = ''.join([self.product_alphabet_name, '_top', ext])
-        return '/'.join(['images/e_work_tops', joined_filename])
+        return '/'.join(['images', get_e_work_tops_str(), joined_filename])
 
     product_name = models.CharField(max_length=20, default='', unique=True)
     product_alphabet_name = models.CharField(max_length=40, default='', unique=True)
@@ -138,7 +147,7 @@ class ImageFile(models.Model):
     def content_file_name(self, filename):
         path, ext = os.path.splitext(filename)
         joined_filename = ''.join([self.title, '_', str(self.product), ext])
-        return '/'.join(['images/e_work_detail', str(self.product), joined_filename])
+        return '/'.join(['images', get_e_work_detail_str(), str(self.product), joined_filename])
 
     title = models.CharField(max_length=2, choices=TITLE_CHOICES, default=S1)
     image = models.ImageField(upload_to=content_file_name, blank=True)
