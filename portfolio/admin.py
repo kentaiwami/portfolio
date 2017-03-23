@@ -1,59 +1,76 @@
 from django.contrib import admin
-from .models import Identifier, Product, ProductDetail, Comment, ImageFile
+from .models import EngineerProduct, EngineerProductDetail, PhotographerProduct, Comment
 # Register your models here.
 
 
-class IdentifierAdmin(admin.ModelAdmin):
-    list_display = ('pk', 'name')
-
-
-class ProductAdmin(admin.ModelAdmin):
-    list_display = ('sort_id', 'identifier', 'product_name', 'product_alphabet_name', 'product_short_concept',
-                    'top_image', 'link', 'product_location', 'product_shooting_date_year',
-                    'product_shooting_date_month', 'votes')
+class EngineerProductAdmin(admin.ModelAdmin):
+    list_display = ('sort_id', 'engineer_product_name', 'engineer_product_alphabet_name',
+                    'engineer_product_short_concept', 'top_image', 'col1_image',
+                    'col2_image', 'col3_image', 'link', 'votes')
 
     fieldsets = (
         ('Product_main', {
-            'fields': ('product_name', 'product_alphabet_name', 'product_short_concept')
+            'fields': ('engineer_product_name', 'engineer_product_alphabet_name', 'engineer_product_short_concept')
         }),
-        ('Photographer only', {
-            'fields': ('product_location', 'product_shooting_date_year', 'product_shooting_date_month')
+        ('Image', {
+            'fields': ('top_image', 'col1_image', 'col2_image', 'col3_image')
         }),
         ('Another', {
-            'fields': ('top_image', 'link', 'votes', 'sort_id', 'identifier')
+            'fields': ('link', 'votes', 'sort_id')
         })
     )
 
-class ProductDetailAdmin(admin.ModelAdmin):
-    list_display = ('product', 'product_feature_concept',
-                    'product_feature_detail', 'product_background_concept',
-                    'product_background_detail', 'product_development_environment',
-                    'product_development_language', 'product_creation_time')
+
+class EngineerProductDetailAdmin(admin.ModelAdmin):
+    list_display = ('engineer_product', 'engineer_product_feature_concept',
+                    'engineer_product_feature_detail', 'engineer_product_background_concept',
+                    'engineer_product_background_detail', 'engineer_product_development_environment',
+                    'engineer_product_development_language', 'engineer_product_creation_time')
     fieldsets = (
         ('Feature', {
-            'fields': ('product_feature_concept', 'product_feature_detail')
+            'fields': ('engineer_product_feature_concept', 'engineer_product_feature_detail')
         }),
         ('Background', {
-            'fields': ('product_background_concept', 'product_background_detail')
+            'fields': ('engineer_product_background_concept', 'engineer_product_background_detail')
         }),
         ('Another', {
-            'fields': ('product_development_environment', 'product_development_language', 'product_creation_time')
+            'fields': ('engineer_product_development_environment', 'engineer_product_development_language',
+                       'engineer_product_creation_time')
         }),
         ('Relation', {
-            'fields': ('product',)
+            'fields': ('engineer_product',)
+        })
+    )
+
+
+class PhotographerProductAdmin(admin.ModelAdmin):
+    list_display = ('sort_id', 'photographer_product_name', 'photographer_product_alphabet_name',
+                    'photographer_main_image', 'photographer_thumbnail_image',
+                    'photographer_product_location', 'photographer_product_shooting_year',
+                    'photographer_product_shooting_month', 'photographer_product_shooting_day',
+                    'photographer_product_shooting_hour', 'photographer_product_shooting_minute')
+
+    fieldsets = (
+        ('Product_main', {
+            'fields': ('photographer_product_name', 'photographer_product_alphabet_name',
+                       'sort_id', 'photographer_product_location')
+        }),
+        ('Image', {
+            'fields': ('photographer_main_image', 'photographer_thumbnail_image')
+        }),
+        ('Daytime', {
+            'fields': ('photographer_product_shooting_year', 'photographer_product_shooting_month',
+                       'photographer_product_shooting_day', 'photographer_product_shooting_hour',
+                       'photographer_product_shooting_minute')
         })
     )
 
 
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ('comment_text', 'pub_date', 'product')
+    list_display = ('comment_text', 'pub_date', 'engineer_product')
 
 
-class ImageFileAdmin(admin.ModelAdmin):
-    list_display = ('title', 'product', 'image')
-
-admin.site.register(Identifier, IdentifierAdmin)
-admin.site.register(Product, ProductAdmin)
-admin.site.register(ProductDetail, ProductDetailAdmin)
+admin.site.register(EngineerProduct, EngineerProductAdmin)
+admin.site.register(EngineerProductDetail, EngineerProductDetailAdmin)
+admin.site.register(PhotographerProduct, PhotographerProductAdmin)
 admin.site.register(Comment, CommentAdmin)
-admin.site.register(ImageFile, ImageFileAdmin)
