@@ -225,6 +225,12 @@
 
   <script type="text/javascript" src="{% static 'portfolio/js/tether.min.js' %}"></script>
   <script type="text/javascript" src="{% static 'portfolio/js/bootstrap.min.js' %}"></script>
-  <script>$(document).swipebox({ selector: '.swipebox'});</script>
+  <script>
+  $(document).swipebox({
+    selector: '.swipebox',
+    removeBarsOnMobile: false,
+    hideBarsDelay: 5000
+  });
+  </script>
 </body>
 </html>
