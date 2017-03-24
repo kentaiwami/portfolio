@@ -367,6 +367,7 @@ div.console_text:before{
 div.console_text_comment {
   position: relative;
   padding-left: 1em;
+  border-bottom: 1px solid #333;
 }
 
 div.console_text_comment:before {
