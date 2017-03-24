@@ -241,7 +241,7 @@ class Comment(models.Model):
     engineer_product = models.ForeignKey(EngineerProduct, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.comment_text
+        return 'Comment' + str(self.pk)
 
 
 @receiver(pre_delete, sender=EngineerProduct)

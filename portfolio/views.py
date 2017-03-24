@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import EngineerProduct, EngineerProductDetail, PhotographerProduct
+from .models import EngineerProduct, EngineerProductDetail, PhotographerProduct, Comment
 from django.http import Http404
 # Create your views here.
 
@@ -18,8 +18,11 @@ def engineer_work_detail(request, product_id):
         raise Http404("Product does not exist")
 
     engineer_product_detail = EngineerProductDetail.objects.filter(engineer_product=engineer_product.pk).first()
+    comment_list = Comment.objects.filter(engineer_product=engineer_product.pk)
 
-    context = {'engineer_product': engineer_product, 'engineer_product_detail': engineer_product_detail}
+    context = {'engineer_product': engineer_product,
+               'engineer_product_detail': engineer_product_detail,
+               'comment_list': comment_list}
     return render(request, 'portfolio/engineer_work_detail.html', context)
 
 

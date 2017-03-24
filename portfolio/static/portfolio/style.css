@@ -353,15 +353,27 @@ figure:hover figcaption {
 }
 
 div.console_text{
-  position:relative;
-  padding-left:1em;
+  position: relative;
+  padding-left: 1em;
 }
 
 div.console_text:before{
   position:absolute;
-  top:0;
-  left:0;
-  content:"$ ";
+  top: 0;
+  left: 0;
+  content: "$ ";
+}
+
+div.console_text_comment {
+  position: relative;
+  padding-left: 1em;
+}
+
+div.console_text_comment:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "$ ";
 }
 
 .console_text_link {

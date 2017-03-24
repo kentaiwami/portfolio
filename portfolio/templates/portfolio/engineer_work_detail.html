@@ -116,9 +116,11 @@
     <div class="section_title" id="reaction_title"></div>
     <div class="console_area">
       <div class="console_top">Reaction to {{ engineer_product.engineer_product_alphabet_name }} process <span class="loading dots2"></span></div>
-
-      <div class="console">
-      </div>
+        <div class="console">
+          {% for comment in comment_list %}
+          <div class="console_text_comment">{{ comment }}</div>
+          {% endfor %}
+        </div>
     </div>
   </section>
 </body>
