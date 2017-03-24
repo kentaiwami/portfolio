@@ -9,7 +9,7 @@
   <link rel="stylesheet" type="text/css" href="{% static 'portfolio/css/spinners.min.css' %}" />
   <link rel="stylesheet" type="text/css" href="{% static 'portfolio/style.css' %}" />
 
-  <title>{{ product.product_name }}</title>
+  <title>{{ engineer_product.engineer_product_name }}</title>
 
   <script type="text/javascript" src="{% static 'portfolio/js/jquery-3.1.1.min.js' %}"></script>
   <script type="text/javascript" src="{% static 'portfolio/js/jquery.typist.min.js' %}"></script>
@@ -28,60 +28,62 @@
     <div class="section_title" id="e_work_title"></div>
 
     <div class="console_area">
-      <div class="console_top">Show {{ product.product_alphabet_name }} process <span class="loading dots2"></span></div>
+      <div class="console_top">Show {{ engineer_product.engineer_product_alphabet_name }} process <span class="loading dots2"></span></div>
 
       <div class="console">
-        <div class="console_name">{{ product.product_name }}</div>
-        <div class="console_name">{{ product.product_short_concept }}</div>
+        <div class="console_name">{{ engineer_product.engineer_product_name }}</div>
+        <div class="console_name">{{ engineer_product.engineer_product_short_concept }}</div>
 
-        {% if image_file_list_not_contain_S3.count != 0 %}
+        {% if engineer_product.col1_image != '' and engineer_product.col2_image != '' %}
         <div class="row">
-          {% for image_file in image_file_list_not_contain_S3 %}
           <div class="col">
-            <div class="console_image"><img class="img-fluid-no-border" src="/media/{{ image_file.image }}"></div>
+            <div class="console_image"><img class="img-fluid-no-border" src="/media/{{ engineer_product.col1_image }}"></div>
           </div>
-          {% endfor %}
+
+          <div class="col">
+            <div class="console_image"><img class="img-fluid-no-border" src="/media/{{ engineer_product.col2_image }}"></div>
+          </div>
         </div>
         {% endif %}
 
-        {% if image_file_S3 is not None %}
+        {% if engineer_product.col3_image != '' %}
         <div class="container">
-          <div class="console_image"><img class="img-fluid-no-border" src="/media/{{ image_file_S3.image }}"></div>
+          <div class="console_image"><img class="img-fluid-no-border" src="/media/{{ engineer_product.col3_image }}"></div>
         </div>
         {% endif %}
 
-        {% if product_detail.product_feature_concept != '' %}
-        <div class="console_name">{{ product_detail.product_feature_concept }}</div>
+        {% if engineer_product_detail.engineer_product_feature_concept != '' %}
+        <div class="console_name">{{ engineer_product_detail.engineer_product_feature_concept }}</div>
         {% endif %}
 
-        {% if product_detail.product_feature_detail != '' %}
-        <div class="console_text">{{ product_detail.product_feature_detail }}</div>
+        {% if engineer_product_detail.engineer_product_feature_detail != '' %}
+        <div class="console_text">{{ engineer_product_detail.engineer_product_feature_detail }}</div>
         {% endif %}
 
-        {% if product_detail.product_background_concept != '' %}
-        <div class="console_name">{{ product_detail.product_background_concept }}</div>
+        {% if engineer_product_detail.engineer_product_background_concept != '' %}
+        <div class="console_name">{{ engineer_product_detail.engineer_product_background_concept }}</div>
         {% endif %}
 
-        {% if product_detail.product_background_detail != '' %}
-        <div class="console_text">{{ product_detail.product_background_detail }}</div>
+        {% if engineer_product_detail.engineer_product_background_detail != '' %}
+        <div class="console_text">{{ engineer_product_detail.engineer_product_background_detail }}</div>
         {% endif %}
 
         <div class="console_text_no_before"></div>
 
-        {% if product_detail.product_development_environment != '' %}
-        <div class="console_text">開発環境：{{ product_detail.product_development_environment }}</div>
+        {% if engineer_product_detail.engineer_product_development_environment != '' %}
+        <div class="console_text">開発環境：{{ engineer_product_detail.engineer_product_development_environment }}</div>
         {% endif %}
 
-        {% if product_detail.product_development_language != '' %}
-        <div class="console_text">使用言語：{{ product_detail.product_development_language }}</div>
+        {% if engineer_product_detail.engineer_product_development_language != '' %}
+        <div class="console_text">使用言語：{{ engineer_product_detail.engineer_product_development_language }}</div>
         {% endif %}
 
-        {% if product_detail.product_creation_time != '' %}
-        <div class="console_text">製作期間：{{ product_detail.product_creation_time }}</div>
+        {% if engineer_product_detail.engineer_product_creation_time != '' %}
+        <div class="console_text">製作期間：{{ engineer_product_detail.engineer_product_creation_time }}</div>
         {% endif %}
 
-        {% if product.link != '' %}
-        <div class="console_text">URL：<a class="default_link" href="{{ product.link }}">{{ product.link }}</a></div>
+        {% if engineer_product.link != '' %}
+        <div class="console_text">URL：<a class="default_link" href="{{ engineer_product.link }}">{{ engineer_product.link }}</a></div>
         {% endif %}
 
         <div class="console_text_link">

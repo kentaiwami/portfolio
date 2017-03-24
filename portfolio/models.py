@@ -108,7 +108,7 @@ class EngineerProduct(models.Model):
 
     link = models.URLField(max_length=200, blank=True, default='')
     votes = models.IntegerField(default=0)
-    sort_id = models.IntegerField(default=0)
+    sort_id = models.IntegerField(default=0, unique=True)
 
     tracker = FieldTracker()
 
@@ -211,12 +211,12 @@ class PhotographerProduct(models.Model):
     photographer_thumbnail_image = models.ImageField(upload_to=get_thumbnail_image_file_name, blank=True)
 
     photographer_product_location = models.CharField(max_length=30, default='', blank=True)
-    photographer_product_shooting_year = models.CharField(max_length=4, default='', blank=True)
-    photographer_product_shooting_month = models.CharField(max_length=2, default='', blank=True)
-    photographer_product_shooting_day = models.CharField(max_length=2, default='', blank=True)
-    photographer_product_shooting_hour = models.CharField(max_length=2, default='', blank=True)
-    photographer_product_shooting_minute = models.CharField(max_length=2, default='', blank=True)
-    sort_id = models.IntegerField(default=0)
+    photographer_product_shooting_year = models.IntegerField(blank=True, default=2000)
+    photographer_product_shooting_month = models.IntegerField(blank=True, default=12)
+    photographer_product_shooting_day = models.IntegerField(blank=True, default=31)
+    photographer_product_shooting_hour = models.IntegerField(blank=True, default=12)
+    photographer_product_shooting_minute = models.IntegerField(blank=True, default=59)
+    sort_id = models.IntegerField(default=0, unique=True)
 
     tracker = FieldTracker()
 

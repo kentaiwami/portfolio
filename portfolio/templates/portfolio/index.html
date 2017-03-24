@@ -95,14 +95,14 @@
     <div class="section_title" id="engineer_title"></div>
 
     <div class="row">
-      {% for product in product_list %}
+      {% for e_product in engineer_product_list %}
       <div class="col-md-6">
-        <a href="{% url 'portfolio:engineer_work_detail' product.pk %}">
+        <a href="{% url 'portfolio:engineer_work_detail' e_product.pk %}">
         <figure>
-          <img src="/media/{{ product.top_image }}" class="img-fluid" alt="">
+          <img src="/media/{{ e_product.top_image }}" class="img-fluid" alt="">
           <figcaption>
-            <h3>{{ product.product_name }}</h3>
-            <p>{{ product.product_short_concept }}</p>
+            <h3>{{ e_product.engineer_product_name }}</h3>
+            <p>{{ e_product.engineer_product_short_concept }}</p>
           </figcaption>
         </figure>
         </a>
@@ -140,18 +140,19 @@
         <div class="console_text">2. <a class="default_link" href="https://careerselect.jp/funhacks/">FUNHACKS 2016</a></div>
         <div class="console_text">3. <a class="default_link" href="https://2017.pblsummit.jp">PBL Summit 2017</a></div>
 
+        {% if photographer_product_list.count != 0 %}
         <div class="row">
-          {% for i in TEST_COUNT %}
+          {% for photo in photographer_product_list %}
           {% if forloop.last %}
           <div class="col-md-3">
-            <a href="{% static 'portfolio/img/photo.png' %}" class="swipebox" title="{{ forloop.counter }}">
-              <img class="img_slow" src="{% static 'portfolio/img/photo.png' %}">
+            <a href="/media/{{ photo.photographer_main_image }}" class="swipebox" title="{{ photo.photographer_product_location }} {{ photo.photographer_product_shooting_year }}/{{ photo.photographer_product_shooting_month }}/{{ photo.photographer_product_shooting_day }} {{ photo.photographer_product_shooting_hour }}:{{ photo.photographer_product_shooting_minute }}">
+              <img class="img_slow" src="/media/{{ photo.photographer_thumbnail_image }}">
             </a>
           </div>
           {% elif forloop.counter|divisibleby:4 %}
           <div class="col-md-3">
-            <a href="{% static 'portfolio/img/photo.png' %}" class="swipebox" title="{{ forloop.counter }}">
-              <img class="img_slow" src="{% static 'portfolio/img/photo.png' %}">
+            <a href="/media/{{ photo.photographer_main_image }}" class="swipebox" title="{{ photo.photographer_product_location }} {{ photo.photographer_product_shooting_year }}/{{ photo.photographer_product_shooting_month }}/{{ photo.photographer_product_shooting_day }} {{ photo.photographer_product_shooting_hour }}:{{ photo.photographer_product_shooting_minute }}">
+              <img class="img_slow" src="/media/{{ photo.photographer_thumbnail_image }}">
             </a>
           </div>
         </div>
@@ -159,13 +160,14 @@
         <div class="row">
         {% else %}
         <div class="col-md-3">
-          <a href="{% static 'portfolio/img/photo.png' %}" class="swipebox" title="{{ forloop.counter }}">
-            <img class="img_slow" src="{% static 'portfolio/img/photo.png' %}">
+          <a href="/media/{{ photo.photographer_main_image }}" class="swipebox" title="{{ photo.photographer_product_location }} {{ photo.photographer_product_shooting_year }}/{{ photo.photographer_product_shooting_month }}/{{ photo.photographer_product_shooting_day }} {{ photo.photographer_product_shooting_hour }}:{{ photo.photographer_product_shooting_minute }}">
+            <img class="img_slow" src="/media/{{ photo.photographer_thumbnail_image }}">
           </a>
-        </div>
+          </div>
         {% endif %}
         {% endfor %}
         </div>
+        {% endif %}
       </div>
     </div>
   </section>
