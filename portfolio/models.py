@@ -54,7 +54,7 @@ class EngineerProduct(models.Model):
         Get top image file path
 
         :param filename: Upload filename
-        :return: images/e_work/PRODUCT_NAME/PRODUCT_NAME_top.*
+        :return: media/images/e_work/PRODUCT_NAME/PRODUCT_NAME_top.*
         """
 
         path, ext = os.path.splitext(filename)
@@ -66,7 +66,7 @@ class EngineerProduct(models.Model):
         Get col1 image file path
 
         :param filename: Upload filename
-        :return: images/e_work/PRODUCT_NAME/PRODUCT_NAME_col1.*
+        :return: media/images/e_work/PRODUCT_NAME/PRODUCT_NAME_col1.*
         """
 
         path, ext = os.path.splitext(filename)
@@ -78,7 +78,7 @@ class EngineerProduct(models.Model):
         Get col2 image file path
 
         :param filename: Upload filename
-        :return: images/e_work/PRODUCT_NAME/PRODUCT_NAME_col2.*
+        :return: media/images/e_work/PRODUCT_NAME/PRODUCT_NAME_col2.*
         """
 
         path, ext = os.path.splitext(filename)
@@ -90,7 +90,7 @@ class EngineerProduct(models.Model):
         Get col3 image file path
 
         :param filename: Upload filename
-        :return: images/e_work/PRODUCT_NAME/PRODUCT_NAME_col3.*
+        :return: media/images/e_work/PRODUCT_NAME/PRODUCT_NAME_col3.*
         """
 
         path, ext = os.path.splitext(filename)
@@ -155,15 +155,52 @@ class EngineerProductDetail(models.Model):
 
 class PhotographerProduct(models.Model):
     """
+    Model of photographer product
 
+    :param photographer_product_name: Product name
+    :param photographer_product_alphabet_name: Product alphabet name
+    :param photographer_main_image: Product origin image
+    :param photographer_thumbnail_image: Product thumbnail image
+    :param photographer_product_location: Product location
+    :param photographer_product_shooting_year: Product shooting year
+    :param photographer_product_shooting_month: Product shooting month
+    :param photographer_product_shooting_day: Product shooting day
+    :param photographer_product_shooting_hour: Product shooting hour
+    :param photographer_product_shooting_minute: Product shooting minute
+    :param sort_id: Use sort
+
+    :type photographer_product_name: str
+    :type photographer_product_alphabet_name: str
+    :type photographer_main_image: file
+    :type photographer_thumbnail_image: file
+    :type photographer_product_location: str
+    :type photographer_product_shooting_year: str
+    :type photographer_product_shooting_month: str
+    :type photographer_product_shooting_day: str
+    :type photographer_product_shooting_hour: str
+    :type photographer_product_shooting_minute: str
+    :type sort_id: int
     """
 
     def get_main_image_file_name(self, filename):
+        """
+        Get main image file path
+
+        :param filename: Upload filename
+        :return: media/images/p_work/main/PRODUCT_NAME_main.*
+        """
+
         path, ext = os.path.splitext(filename)
         joined_filename = ''.join([self.photographer_product_alphabet_name, '_main', ext])
         return '/'.join(['images', get_p_work_str(), get_p_work_main_str(), joined_filename])
 
     def get_thumbnail_image_file_name(self, filename):
+        """
+        Get thumbnail image file path
+
+        :param filename: Upload filename
+        :return: media/images/p_work/thumbnail/PRODUCT_NAME_thumbnail.*
+        """
         path, ext = os.path.splitext(filename)
         joined_filename = ''.join([self.photographer_product_alphabet_name, '_thumbnail', ext])
         return '/'.join(['images', get_p_work_str(), get_p_work_thumbnail_str(), joined_filename])

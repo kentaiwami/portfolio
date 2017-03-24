@@ -50,6 +50,16 @@
           <option value="engineer_product_development_language" />
           <option value="engineer_product_creation_time" />
           <option value="engineer_product" />
+          <option value="photographer_product_name" />
+          <option value="photographer_product_shooting_minute" />
+          <option value="photographer_product_shooting_hour" />
+          <option value="photographer_product_shooting_day" />
+          <option value="photographer_product_shooting_month" />
+          <option value="photographer_product_shooting_year" />
+          <option value="photographer_product_location" />
+          <option value="photographer_thumbnail_image" />
+          <option value="photographer_main_image" />
+          <option value="photographer_product_alphabet_name" />
         </list>
       </option>
     </inspection_tool>
