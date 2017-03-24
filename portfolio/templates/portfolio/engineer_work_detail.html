@@ -13,17 +13,26 @@
 
   <script type="text/javascript" src="{% static 'portfolio/js/jquery-3.1.1.min.js' %}"></script>
   <script type="text/javascript" src="{% static 'portfolio/js/jquery.typist.min.js' %}"></script>
+  <script src="{% static 'portfolio/js/index.js' %}"></script>
   <script>
   var speed_define = 25;
   jQuery(function($) {
     $('#e_work_title').typist({
-      speed: speed_define - 10,
+      speed: speed_define,
       text: 'Engineer Works'
     });
-    $('#reaction_title').typist({
-      speed: speed_define - 10,
-      text: 'Reaction'
-    });
+  });
+
+  // 画面内に要素が来た際のアニメーション実施を記述
+  var flag = false;
+
+  $(window).scroll(function () {
+    if (flag === false) {
+      if (isScrolledIntoView($('#reaction_title')) === true) {
+        flag = true;
+        $('#reaction_title').typist({speed: speed_define,text: 'Reactions',});
+      }
+    }
   });
   </script>
 </head>
