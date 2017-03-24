@@ -24,47 +24,75 @@ def get_p_work_thumbnail_str():
 
 class EngineerProduct(models.Model):
     """
-    Model of engineer and photographer works
+    Model of engineer works
 
-    :param product_name: Product name
-    :param product_alphabet_name: Product name(alphabet version)
-    :param product_short_concept: One sentence concept
-    :param product_location: photographer works only
-    :param product_shooting_date_year: photographer works only
-    :param product_shooting_date_month: photographer works only
-    :param top_image: Show index.html works image file
+    :param engineer_product_name: Product name
+    :param engineer_product_alphabet_name: Product name(alphabet version)
+    :param engineer_product_short_concept: One sentence concept
+    :param top_image: Top image file of index.html
+    :param col1_image: Row1 col1 image file of engineer_work_detail.html
+    :param col2_image: Row1 col2 image file of engineer_work_detail.html
+    :param col3_image: Row2 col image file of engineer_work_detail.html
+    :param link: Product link
     :param votes: Good counts to a product
     :param sort_id: use sort
-    :param identifier: Identifier ForeignKey
 
-    :type product_name: str
-    :type product_alphabet_name: str
-    :type product_short_concept: str
-    :type product_location: str
-    :type product_shooting_date_year: str
-    :type product_shooting_date_month: str
+    :type engineer_product_name: str
+    :type engineer_product_alphabet_name: str
+    :type engineer_product_short_concept: str
     :type top_image: file
+    :type col1_image: file
+    :type col2_image: file
+    :type col3_image: file
+    :type link: str
     :type votes: int
     :type sort_id: int
-    :type identifier: int
     """
 
     def get_top_file_name(self, filename):
+        """
+        Get top image file path
+
+        :param filename: Upload filename
+        :return: images/e_work/PRODUCT_NAME/PRODUCT_NAME_top.*
+        """
+
         path, ext = os.path.splitext(filename)
         joined_filename = ''.join([self.engineer_product_alphabet_name, '_top', ext])
         return '/'.join(['images', get_e_work_str(), self.engineer_product_alphabet_name, joined_filename])
 
     def get_col1_file_name(self, filename):
+        """
+        Get col1 image file path
+
+        :param filename: Upload filename
+        :return: images/e_work/PRODUCT_NAME/PRODUCT_NAME_col1.*
+        """
+
         path, ext = os.path.splitext(filename)
         joined_filename = ''.join([self.engineer_product_alphabet_name, '_col1', ext])
         return '/'.join(['images', get_e_work_str(), self.engineer_product_alphabet_name, joined_filename])
 
     def get_col2_file_name(self, filename):
+        """
+        Get col2 image file path
+
+        :param filename: Upload filename
+        :return: images/e_work/PRODUCT_NAME/PRODUCT_NAME_col2.*
+        """
+
         path, ext = os.path.splitext(filename)
         joined_filename = ''.join([self.engineer_product_alphabet_name, '_col2', ext])
         return '/'.join(['images', get_e_work_str(), self.engineer_product_alphabet_name, joined_filename])
 
     def get_col3_file_name(self, filename):
+        """
+        Get col3 image file path
+
+        :param filename: Upload filename
+        :return: images/e_work/PRODUCT_NAME/PRODUCT_NAME_col3.*
+        """
+        
         path, ext = os.path.splitext(filename)
         joined_filename = ''.join([self.engineer_product_alphabet_name, '_col3', ext])
         return '/'.join(['images', get_e_work_str(), self.engineer_product_alphabet_name, joined_filename])

@@ -35,6 +35,13 @@
           <option value="product_shooting_date_month" />
           <option value="product_shooting_date_year" />
           <option value="product_location" />
+          <option value="engineer_product_name" />
+          <option value="engineer_product_alphabet_name" />
+          <option value="engineer_product_short_concept" />
+          <option value="col2_image" />
+          <option value="col1_image" />
+          <option value="col3_image" />
+          <option value="link" />
         </list>
       </option>
     </inspection_tool>
