@@ -92,7 +92,7 @@ class EngineerProduct(models.Model):
         :param filename: Upload filename
         :return: images/e_work/PRODUCT_NAME/PRODUCT_NAME_col3.*
         """
-        
+
         path, ext = os.path.splitext(filename)
         joined_filename = ''.join([self.engineer_product_alphabet_name, '_col3', ext])
         return '/'.join(['images', get_e_work_str(), self.engineer_product_alphabet_name, joined_filename])
@@ -118,25 +118,25 @@ class EngineerProduct(models.Model):
 
 class EngineerProductDetail(models.Model):
     """
-    Model of Product Detail
+    Model of engineer product Detail
 
-    :param product_feature_concept: Product feature concept(short one sentence)
-    :param product_feature_detail: Product feature detail sentences
-    :param product_background_concept: Product background concept(short one sentence)
-    :param product_background_detail: Product background detail sentences
-    :param product_development_environment: ex.) used tools, frameworks
-    :param product_development_language: used language
-    :param product_creation_time: creation time
-    :param product: Product ForeignKey
+    :param engineer_product_feature_concept: Product feature concept(short one sentence)
+    :param engineer_product_feature_detail: Product feature detail sentences
+    :param engineer_product_background_concept: Product background concept(short one sentence)
+    :param engineer_product_background_detail: Product background detail sentences
+    :param engineer_product_development_environment: ex.) used tools, frameworks
+    :param engineer_product_development_language: used language
+    :param engineer_product_creation_time: creation time
+    :param engineer_product: Product ForeignKey
 
-    :type product_feature_concept: str
-    :type product_feature_detail: str
-    :type product_background_concept: str
-    :type product_background_detail: str
-    :type product_development_environment: str
-    :type product_development_language: str
-    :type product_creation_time: str
-    :type product: int
+    :type engineer_product_feature_concept: str
+    :type engineer_product_feature_detail: str
+    :type engineer_product_background_concept: str
+    :type engineer_product_background_detail: str
+    :type engineer_product_development_environment: str
+    :type engineer_product_development_language: str
+    :type engineer_product_creation_time: str
+    :type engineer_product: int
     """
     engineer_product_feature_concept = models.TextField(max_length=30, default='', blank=True)
     engineer_product_feature_detail = models.TextField(max_length=300, default='', blank=True)

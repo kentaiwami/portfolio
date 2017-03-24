@@ -42,6 +42,14 @@
           <option value="col1_image" />
           <option value="col3_image" />
           <option value="link" />
+          <option value="engineer_product_feature_concept" />
+          <option value="engineer_product_feature_detail" />
+          <option value="engineer_product_background_concept" />
+          <option value="engineer_product_background_detail" />
+          <option value="engineer_product_development_environment" />
+          <option value="engineer_product_development_language" />
+          <option value="engineer_product_creation_time" />
+          <option value="engineer_product" />
         </list>
       </option>
     </inspection_tool>
