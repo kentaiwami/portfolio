@@ -11,9 +11,9 @@ def index(request):
     return render(request, 'portfolio/index.html', context)
 
 
-def engineer_work_detail(request, product_id):
+def engineer_work_detail(request, e_product_id):
     try:
-        engineer_product = EngineerProduct.objects.get(pk=product_id)
+        engineer_product = EngineerProduct.objects.get(pk=e_product_id)
     except EngineerProduct.DoesNotExist:
         raise Http404("Product does not exist")
 
