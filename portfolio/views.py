@@ -27,7 +27,7 @@ def engineer_work_detail(request, e_product_id):
 
 
 def photographer_all(request):
-    all_photographer_product_list = PhotographerProduct.objects.order_by('sort_id')
+    all_photographer_product_list = PhotographerProduct.objects.order_by('-sort_id')
     context = {'all_photographer_product_list': all_photographer_product_list}
     return render(request, 'portfolio/photographer_all.html', context)
 

@@ -20,58 +20,25 @@
   <script>
   var speed_define = 25;
   jQuery(function($) {
-    $('#title').typist({
-      speed: speed_define - 10,
-      text: 'Kenta Iwami',
+    $('#photographer_title').typist({
+      speed: speed_define,
+      text: 'All photographer works',
     });
-    $('#sub_title').typist({
-      speed: speed_define - 10,
-      text: 'Portfolio'
-    });
-  });
-
-  // 画面内に要素が来た際のアニメーション実施を記述
-  var flag = [];
-  for (var i = 0; i < 3; i++) {
-    flag.push(false);
-  }
-
-  $(window).scroll(function () {
-    if (flag[0] === false) {
-      if (isScrolledIntoView($('#engineer_title')) === true) {
-        flag[0] = true;
-        $('#engineer_title').typist({speed: speed_define,text: 'Engineer Works',});
-      }
-    }
-
-    if (flag[1] === false) {
-      if (isScrolledIntoView($('#photographer_title')) === true) {
-        flag[1] = true;
-        $('#photographer_title').typist({speed: speed_define,text: 'Photographer Works',});
-      }
-    }
-
-    if (flag[2] === false) {
-      if (isScrolledIntoView($('#profile_title')) === true) {
-        flag[2] = true;
-        $('#profile_title').typist({speed: speed_define,text: 'Profile',});
-      }
-    }
   });
   </script>
 </head>
 
 <body>
-  <section class="container">  <!--Photographer Works-->
+  <section class="container">  <!--All Photographer Works-->
     <div class="section_title" id="photographer_title"></div>
 
     <div class="console_area">
-      <div class="console_top">Show {{ photographer_product_list.count|add:"3" }} photographer works process <span class="loading dots2"></span></div>
+      <div class="console_top">Show {{ all_photographer_product_list.count }} photographer works process <span class="loading dots2"></span></div>
 
       <div class="console">
-        {% if photographer_product_list.count != 0 %}
+        {% if all_photographer_product_list.count != 0 %}
         <div class="row">
-          {% for photo in photographer_product_list %}
+          {% for photo in all_photographer_product_list %}
           <div class="col-md-3">
             <a href="/media/{{ photo.photographer_main_image }}" class="swipebox" title="{{ photo.photographer_product_location }} {{ photo.photographer_product_shooting_year }}/{{ photo.photographer_product_shooting_month }}/{{ photo.photographer_product_shooting_day }} {{ photo.photographer_product_shooting_hour }}:{{ photo.photographer_product_shooting_minute }}">
               <img class="img_slow" src="/media/{{ photo.photographer_thumbnail_image }}">
