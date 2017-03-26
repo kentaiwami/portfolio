@@ -211,11 +211,6 @@ class PhotographerProduct(models.Model):
     photographer_thumbnail_image = models.ImageField(upload_to=get_thumbnail_image_file_name, blank=True)
 
     photographer_product_location = models.CharField(max_length=30, default='', blank=True)
-    # photographer_product_shooting_year = models.IntegerField(blank=True, default=2000)
-    # photographer_product_shooting_month = models.IntegerField(blank=True, default=12)
-    # photographer_product_shooting_day = models.IntegerField(blank=True, default=31)
-    # photographer_product_shooting_hour = models.IntegerField(blank=True, default=12)
-    # photographer_product_shooting_minute = models.IntegerField(blank=True, default=59)
     photographer_product_shooting_year = models.CharField(max_length=4, default='', blank=True)
     photographer_product_shooting_month = models.CharField(max_length=2, default='', blank=True)
     photographer_product_shooting_day = models.CharField(max_length=2, default='', blank=True)
