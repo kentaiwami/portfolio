@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'portfolio/reset.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'portfolio/css/bootstrap.min.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'portfolio/css/spinners.min.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'portfolio/css/swipebox.min.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'portfolio/style.css' %}" />
+
+  <title>All photographer works</title>
+
+  <script src="{% static 'portfolio/js/jquery-3.1.1.min.js' %}"></script>
+  <script src="{% static 'portfolio/js/jquery.typist.min.js' %}"></script>
+  <script src="{% static 'portfolio/js/index.js' %}"></script>
+  <script src="{% static 'portfolio/js/jquery.swipebox.min.js' %}"></script>
+
+  <script>
+  var speed_define = 25;
+  jQuery(function($) {
+    $('#title').typist({
+      speed: speed_define - 10,
+      text: 'Kenta Iwami',
+    });
+    $('#sub_title').typist({
+      speed: speed_define - 10,
+      text: 'Portfolio'
+    });
+  });
+
+  // 画面内に要素が来た際のアニメーション実施を記述
+  var flag = [];
+  for (var i = 0; i < 3; i++) {
+    flag.push(false);
+  }
+
+  $(window).scroll(function () {
+    if (flag[0] === false) {
+      if (isScrolledIntoView($('#engineer_title')) === true) {
+        flag[0] = true;
+        $('#engineer_title').typist({speed: speed_define,text: 'Engineer Works',});
+      }
+    }
+
+    if (flag[1] === false) {
+      if (isScrolledIntoView($('#photographer_title')) === true) {
+        flag[1] = true;
+        $('#photographer_title').typist({speed: speed_define,text: 'Photographer Works',});
+      }
+    }
+
+    if (flag[2] === false) {
+      if (isScrolledIntoView($('#profile_title')) === true) {
+        flag[2] = true;
+        $('#profile_title').typist({speed: speed_define,text: 'Profile',});
+      }
+    }
+  });
+  </script>
+</head>
+
+<body>
+  <section class="container">  <!--Photographer Works-->
+    <div class="section_title" id="photographer_title"></div>
+
+    <div class="console_area">
+      <div class="console_top">Show {{ photographer_product_list.count|add:"3" }} photographer works process <span class="loading dots2"></span></div>
+
+      <div class="console">
+        {% if photographer_product_list.count != 0 %}
+        <div class="row">
+          {% for photo in photographer_product_list %}
+          <div class="col-md-3">
+            <a href="/media/{{ photo.photographer_main_image }}" class="swipebox" title="{{ photo.photographer_product_location }} {{ photo.photographer_product_shooting_year }}/{{ photo.photographer_product_shooting_month }}/{{ photo.photographer_product_shooting_day }} {{ photo.photographer_product_shooting_hour }}:{{ photo.photographer_product_shooting_minute }}">
+              <img class="img_slow" src="/media/{{ photo.photographer_thumbnail_image }}">
+            </a>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        <div class="console_text_link">
+          <a class="link" href="{% url 'portfolio:index' %}#2">
+            <div class="box">
+              <div class="link_name">Back</div>
+              <div class="bd10 bd"><div class="bdT"></div><div class="bdB"></div><div class="bdR"></div><div class="bdL"></div></div>
+            </div>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  
+
+  <script type="text/javascript" src="{% static 'portfolio/js/tether.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'portfolio/js/bootstrap.min.js' %}"></script>
+  <script>
+  $(document).swipebox({
+    selector: '.swipebox',
+    removeBarsOnMobile: false,
+    hideBarsDelay: 5000
+  });
+  </script>
+</body>
+</html>
