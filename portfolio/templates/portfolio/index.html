@@ -143,31 +143,14 @@
         {% if photographer_product_list.count != 0 %}
         <div class="row">
           {% for photo in photographer_product_list %}
-          {% if forloop.last %}
           <div class="col-md-3">
             <a href="/media/{{ photo.photographer_main_image }}" class="swipebox" title="{{ photo.photographer_product_location }} {{ photo.photographer_product_shooting_year }}/{{ photo.photographer_product_shooting_month }}/{{ photo.photographer_product_shooting_day }} {{ photo.photographer_product_shooting_hour }}:{{ photo.photographer_product_shooting_minute }}">
               <img class="img_slow" src="/media/{{ photo.photographer_thumbnail_image }}">
             </a>
           </div>
-          {% elif forloop.counter|divisibleby:4 %}
-          <div class="col-md-3">
-            <a href="/media/{{ photo.photographer_main_image }}" class="swipebox" title="{{ photo.photographer_product_location }} {{ photo.photographer_product_shooting_year }}/{{ photo.photographer_product_shooting_month }}/{{ photo.photographer_product_shooting_day }} {{ photo.photographer_product_shooting_hour }}:{{ photo.photographer_product_shooting_minute }}">
-              <img class="img_slow" src="/media/{{ photo.photographer_thumbnail_image }}">
-            </a>
-          </div>
-        </div>
-
-        <div class="row">
-        {% else %}
-        <div class="col-md-3">
-          <a href="/media/{{ photo.photographer_main_image }}" class="swipebox" title="{{ photo.photographer_product_location }} {{ photo.photographer_product_shooting_year }}/{{ photo.photographer_product_shooting_month }}/{{ photo.photographer_product_shooting_day }} {{ photo.photographer_product_shooting_hour }}:{{ photo.photographer_product_shooting_minute }}">
-            <img class="img_slow" src="/media/{{ photo.photographer_thumbnail_image }}">
-          </a>
-          </div>
+          {% endfor %}
         {% endif %}
-        {% endfor %}
         </div>
-        {% endif %}
       </div>
     </div>
   </section>
