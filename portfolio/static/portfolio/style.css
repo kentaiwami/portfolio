@@ -201,6 +201,10 @@ figcaption p {
   margin: 5vmin;
 }
 
+figcaption h3 {
+  font-size: 5vmin;
+}
+
 figure:hover figcaption {
   top: 0;
   left: 0;
@@ -215,6 +219,8 @@ figure:hover figcaption {
 .img_slow:hover {
   opacity: .5;
 }
+
+
 
 
 /************************************************************
@@ -404,7 +410,9 @@ div.console_text_comment:before {
   }
   /* Engineer Worksのグリッド */
   .col-md-6 {
-    margin: .75rem;
+    margin-right: auto;
+    margin-left: auto;
+    width: 90%;
   }
 }
 
