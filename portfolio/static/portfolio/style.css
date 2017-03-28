@@ -358,16 +358,20 @@ figure:hover figcaption {
   content: "$ ";
 }
 
-div.console_text{
+div.console_text, div.console_text_input {
   position: relative;
   padding-left: 1em;
 }
 
-div.console_text:before{
+div.console_text:before, div.console_text_input:before {
   position:absolute;
   top: 0;
   left: 0;
   content: "$ ";
+}
+
+div.console_text_input:before {
+  content: ">";
 }
 
 div.console_text_comment {
@@ -391,6 +395,22 @@ div.console_text_comment:before {
 .console_text_no_before {
   display: inline-block;
   margin: 3vmin 0vmin;
+}
+
+
+/************************************************************
+                          Form
+************************************************************/
+.form-control {
+  border: 1px solid #222;
+  background-color: #111;
+  color: #FFF;
+}
+
+.form-control:focus {
+  border: 1px solid #FFF;
+  background-color: #111;
+  color: #FFF;
 }
 
 
