@@ -24,13 +24,23 @@
   });
 
   // 画面内に要素が来た際のアニメーション実施を記述
-  var flag = false;
+  var flag = [];
+  for (var i = 0; i < 2; i++) {
+    flag.push(false);
+  }
 
   $(window).scroll(function () {
-    if (flag === false) {
+    if (flag[0] === false) {
       if (isScrolledIntoView($('#comment_title')) === true) {
-        flag = true;
+        flag[0] = true;
         $('#comment_title').typist({speed: speed_define,text: 'Comment',});
+      }
+    }
+
+    if (flag[1] === false) {
+      if (isScrolledIntoView($('#comment_view_title')) === true) {
+        flag[1] = true;
+        $('#comment_view_title').typist({speed: speed_define,text: 'Comments View',});
       }
     }
   });
@@ -145,44 +155,30 @@
     </div>
   </section>
 
-  <!--<section class="container">-->
-    <!--<div class="section_title" id="reaction_title"></div>-->
-    <!--<div class="console_area">-->
-      <!--<div class="console_top">Reaction to {{ engineer_product.engineer_product_alphabet_name }} process <span class="loading dots2"></span></div>-->
-        <!--<div class="console">-->
-<!---->
-          <!--{% if comment_list.count == 0 %}-->
-          <!--<div class="console_text">No comment to {{ engineer_product.engineer_product_alphabet_name }}</div>-->
-          <!--{% else %}-->
-          <!--{% for comment in comment_list %}-->
-          <!--<div class="console_text_comment">{{ comment.comment_text }}</div>-->
-          <!--{% endfor %}-->
-          <!--{% endif %}-->
-<!---->
-          <!--<div class="console_text_comment">Now {{ engineer_product.votes }} goods</div>-->
-<!---->
-          <!--<form>-->
-            <!--<div class="form-group">-->
-              <!--<label for="Comment_textarea">Comment here</label>-->
-              <!--<textarea class="form-control" id="Comment_textarea" rows="3"></textarea>-->
-            <!--</div>-->
-          <!--</form>-->
-<!---->
-          <!--<div class="row">-->
-<!---->
-            <!--<div class="col">-->
-              <!--<div class="console_text_link">-->
-              <!--<a class="link" href="{% url 'portfolio:index' %}#1">-->
-                <!--<div class="box">-->
-                  <!--<div class="link_name">Comment</div>-->
-                  <!--<div class="bd1 bd"><div class="bdT"></div><div class="bdB"></div><div class="bdR"></div><div class="bdL"></div></div>-->
-                 <!--</div>-->
-              <!--</a>-->
-              <!--</div>-->
-            <!--</div>-->
-          <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
-  <!--</section>-->
+  <section class="container">  <!--CommentView-->
+    <div class="section_title" id="comment_view_title"></div>
+    <div class="console_area">
+      <div class="console_top">Show comments to {{ engineer_product.engineer_product_alphabet_name }} process <span class="loading dots2"></span></div>
+        <div class="console">
+
+          {% if comment_list.count == 0 %}
+          <div class="console_text">No comment to {{ engineer_product.engineer_product_alphabet_name }}</div>
+          {% else %}
+          {% for comment in comment_list %}
+          <div class="console_text_comment">{{ comment.comment_text }}</div>
+          {% endfor %}
+          {% endif %}
+
+          <div class="console_text_link">
+            <a class="link" href="{% url 'portfolio:index' %}#1">
+              <div class="box">
+                <div class="link_name">Back</div>
+                <div class="bd10 bd"><div class="bdT"></div><div class="bdB"></div><div class="bdR"></div><div class="bdL"></div></div>
+               </div>
+            </a>
+          </div>
+        </div>
+    </div>
+  </section>
 </body>
 </html>
