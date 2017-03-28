@@ -34,7 +34,6 @@ class EngineerProduct(models.Model):
     :param col2_image: Row1 col2 image file of engineer_work_detail.html
     :param col3_image: Row2 col image file of engineer_work_detail.html
     :param link: Product link
-    :param votes: Good counts to a product
     :param sort_id: use sort
 
     :type engineer_product_name: str
@@ -45,7 +44,6 @@ class EngineerProduct(models.Model):
     :type col2_image: file
     :type col3_image: file
     :type link: str
-    :type votes: int
     :type sort_id: int
     """
 
@@ -107,7 +105,6 @@ class EngineerProduct(models.Model):
     col3_image = models.ImageField(upload_to=get_col3_file_name, blank=True)
 
     link = models.URLField(max_length=200, blank=True, default='')
-    votes = models.IntegerField(default=0)
     sort_id = models.IntegerField(default=0, unique=True)
 
     tracker = FieldTracker()
