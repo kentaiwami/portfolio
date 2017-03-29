@@ -1,3 +1,4 @@
+# from django.core.exceptions import ValidationError
 from django.shortcuts import render
 from django.urls import reverse
 
@@ -40,10 +41,17 @@ def photographer_all(request):
 def get_comment(request):
     if request.method == 'POST':
         form = CommentForm(request.POST)
+        print(form)
         if form.is_valid():
             print(form['name'].value())
             print(form['comment_text'].value())
+            print(form['id'].value())
             return HttpResponseRedirect(reverse('portfolio:thanks'))
+
+    # raise ValidationError(
+    #     ('Invalid value: %(value)s'),
+    #     params={'value': '42'},
+    # )
 
 
 def thanks(request):

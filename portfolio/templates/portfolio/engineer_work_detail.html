@@ -136,11 +136,14 @@
             {{ form.name }}
           </div>
 
-        <div class="console_text">Comment</div>
+          <div class="console_text">Comment</div>
           <div class="console_text_input">
             {% csrf_token %}
             {{ form.comment_text }}
           </div>
+
+          {% csrf_token %}
+          <input type="hidden" name="id" value="{{ engineer_product.pk }}">
         </form>
 
         <div class="console_text_link">
