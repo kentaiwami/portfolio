@@ -60,6 +60,11 @@
           <option value="photographer_thumbnail_image" />
           <option value="photographer_main_image" />
           <option value="photographer_product_alphabet_name" />
+          <option value="portfolio.models.EngineerProduct.objects" />
+          <option value="portfolio.models.PhotographerProduct.objects" />
+          <option value="portfolio.models.EngineerProduct.DoesNotExist" />
+          <option value="portfolio.models.EngineerProductDetail.objects" />
+          <option value="portfolio.models.Comment.objects" />
         </list>
       </option>
     </inspection_tool>

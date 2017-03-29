@@ -65,7 +65,7 @@ a, a:focus, a:hover {
 
 .title:before, .title_error:before,
 .sub_title:before, .sub_title_error:before,
-.section_title:before {
+.section_title:before, .thanks_title:before {
   content: "$ ";
 }
 
@@ -76,7 +76,7 @@ a, a:focus, a:hover {
   font-size: 10vmin;
 }
 
-.sub_title_error {
+.sub_title_error, .thanks_title {
   font-size: 6.5vmin;
 }
 
@@ -303,6 +303,24 @@ figure:hover figcaption {
   left: 0;
   color: #0F0;
 }
+
+.link_cover {
+  position: absolute;
+  top: 80%;
+  right: 0;
+  left: 0;
+  color: #F00;
+}
+
+.link_cover_normal {
+  color: #FFF;
+}
+
+.link_cover_normal:hover {
+  color: #FFF;
+  opacity: .5;
+}
+
 
 .default_link, .default_link:hover {
   text-decoration: underline;

@@ -1,6 +1,10 @@
 from django.shortcuts import render
+from django.urls import reverse
+
 from .models import EngineerProduct, EngineerProductDetail, PhotographerProduct, Comment
-from django.http import Http404
+from django.http import Http404, HttpResponseRedirect
+from .forms import CommentForm
+
 # Create your views here.
 
 
@@ -20,9 +24,10 @@ def engineer_work_detail(request, e_product_id):
     engineer_product_detail = EngineerProductDetail.objects.filter(engineer_product=engineer_product.pk).first()
     comment_list = Comment.objects.filter(engineer_product=engineer_product.pk)
 
+    form = CommentForm()
     context = {'engineer_product': engineer_product,
                'engineer_product_detail': engineer_product_detail,
-               'comment_list': comment_list}
+               'comment_list': comment_list, 'form': form}
     return render(request, 'portfolio/engineer_work_detail.html', context)
 
 
@@ -30,6 +35,19 @@ def photographer_all(request):
     all_photographer_product_list = PhotographerProduct.objects.order_by('-sort_id')
     context = {'all_photographer_product_list': all_photographer_product_list}
     return render(request, 'portfolio/photographer_all.html', context)
+
+
+def get_comment(request):
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            print(form['name'].value())
+            print(form['comment_text'].value())
+            return HttpResponseRedirect(reverse('portfolio:thanks'))
+
+
+def thanks(request):
+    return render(request, 'portfolio/thanks.html')
 
 
 def engineer_works_all(request):
