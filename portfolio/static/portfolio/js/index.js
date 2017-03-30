@@ -7,8 +7,3 @@ function isScrolledIntoView(elem) {
 
     return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
 }
-
-function CommentSubmit() {
-	document.comment_form.submit();
-	return false;
-}
