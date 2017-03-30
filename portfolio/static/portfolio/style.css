@@ -431,6 +431,18 @@ div.console_text_comment:before {
   color: #FFF;
 }
 
+.submit {
+  background-color: #111;
+  color: #FFF;
+  border: none;
+  cursor : pointer;
+  font-family: "MyFont";
+  font-size: 5vmin;
+}
+
+.submit:hover {
+  opacity: .5;
+}
 
 /************************************************************
                           @media

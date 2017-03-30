@@ -144,16 +144,14 @@
 
           {% csrf_token %}
           <input type="hidden" name="id" value="{{ engineer_product.pk }}">
-        </form>
 
-        <div class="console_text_link">
-          <a class="link" href="javascript:void(0);" onclick="CommentSubmit()">
+          <div class="console_text_link">
             <div class="box">
-              <div class="link_name">Submit</div>
               <div class="bd10 bd"><div class="bdT"></div><div class="bdB"></div><div class="bdR"></div><div class="bdL"></div></div>
-             </div>
-          </a>
-        </div>
+              <input type="submit" class="submit" value="Submit">
+            </div>
+          </div>
+        </form>
       </div>
     </div>
   </section>
