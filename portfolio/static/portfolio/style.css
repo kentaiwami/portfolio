@@ -408,7 +408,7 @@ div.console_text_comment:before {
 
 .console_text_comment_name {
   padding: 1em 0vmin;
-  color: #999;
+  color: #CCC;
   font-size: 2vmin;
 }
 
