@@ -432,12 +432,12 @@ div.console_text_comment:before {
 }
 
 .submit {
+  border: none;
   background-color: #111;
   color: #FFF;
-  border: none;
-  cursor : pointer;
   font-family: "MyFont";
   font-size: 5vmin;
+  cursor : pointer;
 }
 
 .submit:hover {
