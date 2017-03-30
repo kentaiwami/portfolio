@@ -236,7 +236,7 @@ class Comment(models.Model):
     """
     name = models.CharField(max_length=50, default='', blank=True)
     comment_text = models.TextField(max_length=300, default='', blank=False)
-    pub_date = models.DateTimeField(default=datetime.now(), blank=True)
+    pub_date = models.DateTimeField(auto_now_add=True, blank=True)
     engineer_product = models.ForeignKey(EngineerProduct, on_delete=models.CASCADE)
 
     def __str__(self):
