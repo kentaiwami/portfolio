@@ -166,6 +166,7 @@
           <div class="console_text">No comment to {{ engineer_product.engineer_product_alphabet_name }}</div>
           {% else %}
           {% for comment in comment_list %}
+          <div class="console_text_comment_name">{{ comment.name }}さん</div>
           <div class="console_text_comment">{{ comment.comment_text }}</div>
           {% endfor %}
           {% endif %}
