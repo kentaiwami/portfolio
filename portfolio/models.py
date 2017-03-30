@@ -4,6 +4,7 @@ from django.db.models.signals import pre_delete, post_save
 from django.dispatch.dispatcher import receiver
 from model_utils import FieldTracker
 from django.conf import settings
+from datetime import datetime
 
 
 def get_e_work_str():
@@ -233,8 +234,9 @@ class Comment(models.Model):
     :type pub_date: date
     :type product: int
     """
-    comment_text = models.TextField(max_length=300)
-    pub_date = models.DateTimeField('date published')
+    name = models.CharField(max_length=50, default='', blank=True)
+    comment_text = models.TextField(max_length=300, default='', blank=False)
+    pub_date = models.DateTimeField(default=datetime.now(), blank=True)
     engineer_product = models.ForeignKey(EngineerProduct, on_delete=models.CASCADE)
 
     def __str__(self):

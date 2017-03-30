@@ -67,7 +67,7 @@ class PhotographerProductAdmin(admin.ModelAdmin):
 
 
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ('comment_text', 'pub_date', 'engineer_product')
+    list_display = ('name', 'comment_text', 'pub_date', 'engineer_product')
 
 
 admin.site.register(EngineerProduct, EngineerProductAdmin)

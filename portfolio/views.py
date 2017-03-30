@@ -23,7 +23,7 @@ def engineer_work_detail(request, e_product_id):
         raise Http404("Product does not exist")
 
     engineer_product_detail = EngineerProductDetail.objects.filter(engineer_product=engineer_product.pk).first()
-    comment_list = Comment.objects.filter(engineer_product=engineer_product.pk)
+    comment_list = Comment.objects.filter(engineer_product=engineer_product.pk).order_by('-pub_date')
 
     form = CommentForm()
     context = {'engineer_product': engineer_product,
@@ -41,11 +41,15 @@ def photographer_all(request):
 def get_comment(request):
     if request.method == 'POST':
         form = CommentForm(request.POST)
-        print(form)
         if form.is_valid():
-            print(form['name'].value())
-            print(form['comment_text'].value())
-            print(form['id'].value())
+            product = EngineerProduct.objects.get(pk=form.cleaned_data['id'])
+
+            obj = Comment()
+            obj.name = form.cleaned_data['name']
+            obj.comment_text = form.cleaned_data['comment_text']
+            obj.engineer_product = product
+            obj.save()
+
             return HttpResponseRedirect(reverse('portfolio:thanks'))
 
     # raise ValidationError(
