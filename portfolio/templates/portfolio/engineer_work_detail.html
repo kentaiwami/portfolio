@@ -180,13 +180,24 @@
           {% else %}
           <div class="content">
           {% for comment in comment_list %}
+
+          {% if forloop.counter <= 6 %}
           {% if forloop.counter|divisibleby:"6" %}
           </div>
           <div class="more">more</div>
           <div class="content">
           {% endif %}
-              <div class="console_text_comment_name">{{ comment.name }}さん {{ comment.pub_date }}</div>
-              <div class="console_text_comment">{{ comment.comment_text }}</div>
+
+          {% else %}
+          {% if forloop.counter|add:"-6"|divisibleby:"5" %}
+          </div>
+          <div class="more">more</div>
+          <div class="content">
+          {% endif %}
+          {% endif %}
+
+            <div class="console_text_comment_name">{{ comment.name }}さん {{ comment.pub_date }}</div>
+            <div class="console_text_comment">{{ comment.comment_text }}</div>
           {% endfor %}
           </div>
           {% endif %}
