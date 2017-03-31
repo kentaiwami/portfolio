@@ -36,13 +36,15 @@ def photographer_all(request):
 
 
 def get_comment(request):
-    # global context
     if request.method == 'POST':
         form = CommentForm(request.POST)
         if form.is_valid():
             product = EngineerProduct.objects.get(pk=form.cleaned_data['id'])
             obj = Comment()
-            obj.name = form.cleaned_data['name']
+
+            if form.cleaned_data['name'] != '':
+                obj.name = form.cleaned_data['name']
+
             obj.comment_text = form.cleaned_data['comment_text']
             obj.engineer_product = product
             obj.save()
