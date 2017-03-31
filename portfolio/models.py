@@ -1,10 +1,9 @@
 from django.db import models
-import os.path
 from django.db.models.signals import pre_delete, post_save
 from django.dispatch.dispatcher import receiver
 from model_utils import FieldTracker
 from django.conf import settings
-from datetime import datetime
+import os.path
 
 
 def get_e_work_str():

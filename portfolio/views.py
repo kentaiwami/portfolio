@@ -1,8 +1,7 @@
 from django.shortcuts import render
 from django.urls import reverse
-
-from .models import EngineerProduct, EngineerProductDetail, PhotographerProduct, Comment
 from django.http import Http404, HttpResponseRedirect
+from .models import EngineerProduct, EngineerProductDetail, PhotographerProduct, Comment
 from .forms import CommentForm
 # Create your views here.
 
