@@ -36,6 +36,7 @@ def photographer_all(request):
 
 
 def get_comment(request):
+    # global context
     if request.method == 'POST':
         form = CommentForm(request.POST)
         if form.is_valid():
@@ -47,10 +48,13 @@ def get_comment(request):
             obj.save()
 
             return HttpResponseRedirect(reverse('portfolio:thanks'))
-    # raise ValidationError(
-    #     ('Invalid value: %(value)s'),
-    #     params={'value': '42'},
-    # )
+
+    else:
+        form = CommentForm()
+
+    engineer_product = EngineerProduct.objects.get(pk=form.cleaned_data['id'])
+    context = {'form': form, 'engineer_product': engineer_product}
+    return render(request, 'portfolio/form_error.html', context)
 
 
 def thanks(request):
