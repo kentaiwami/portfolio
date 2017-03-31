@@ -410,7 +410,7 @@ div.console_text_comment {
   position: relative;
   padding-left: 1em;
   border-bottom: 1px solid #333;
-  padding-bottom: 1em;
+  padding-bottom: 1rem;
 }
 
 div.console_text_comment:before {
@@ -421,7 +421,7 @@ div.console_text_comment:before {
 }
 
 .console_text_comment_name {
-  padding: 1em 0vmin;
+  padding-top: 1rem;
   color: #CCC;
   font-size: 2vmin;
 }

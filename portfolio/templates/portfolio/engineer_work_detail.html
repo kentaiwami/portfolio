@@ -44,6 +44,16 @@
       }
     }
   });
+
+  $(function(){
+    $('.content:not(.content:first-of-type)').css('display','none');//一番上の要素以外を非表示
+  	$('.more').nextAll('.more').css('display','none');//ボタンを非表示
+  	$('.more').on('click', function() {
+    	$(this).css('display','none');//押したボタンを非表示
+    	$(this).next('.content').slideDown('fast');
+    	$(this).nextAll('.more:first').css('display','block'); //次のボタンを表示
+  	});
+  });
   </script>
 </head>
 <body>
@@ -168,8 +178,11 @@
           <div class="console_text">No comment to {{ engineer_product.engineer_product_alphabet_name }}</div>
           {% else %}
           {% for comment in comment_list %}
-          <div class="console_text_comment_name">{{ comment.name }}さん</div>
-          <div class="console_text_comment">{{ comment.comment_text }}</div>
+          <div class="content">
+            <div class="console_text_comment_name">{{ comment.name }}さん {{ comment.pub_date }}</div>
+            <div class="console_text_comment">{{ comment.comment_text }}</div>
+          </div>
+          <div class="more">more</div>
           {% endfor %}
           {% endif %}
 
