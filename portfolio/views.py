@@ -47,7 +47,7 @@ def get_comment(request):
             obj.save()
 
             return HttpResponseRedirect(reverse('portfolio:thanks'))
-
+            # return render(request, 'portfolio/thanks.html', {'e_product_id': e_product_id})
     # raise ValidationError(
     #     ('Invalid value: %(value)s'),
     #     params={'value': '42'},
