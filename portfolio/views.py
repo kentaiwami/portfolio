@@ -1,10 +1,10 @@
-# from django.core.exceptions import ValidationError
 from django.shortcuts import render
 from django.urls import reverse
 
 from .models import EngineerProduct, EngineerProductDetail, PhotographerProduct, Comment
 from django.http import Http404, HttpResponseRedirect
 from .forms import CommentForm
+import time
 
 # Create your views here.
 
@@ -43,7 +43,7 @@ def get_comment(request):
         form = CommentForm(request.POST)
         if form.is_valid():
             product = EngineerProduct.objects.get(pk=form.cleaned_data['id'])
-
+            time.sleep(10)
             obj = Comment()
             obj.name = form.cleaned_data['name']
             obj.comment_text = form.cleaned_data['comment_text']
