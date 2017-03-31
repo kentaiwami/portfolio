@@ -34,18 +34,17 @@
       <div class="console">
         <div class="console_text">Name</div>
 
-        {{ form.non_field_errors }}
         <form name="comment_form" method="post" action="{% url 'portfolio:get_comment' %}" onsubmit="click_submit()">
+          <div class="error_message">{{ form.name.errors }}</div>
           <div class="console_text_input">
             {% csrf_token %}
-            {{ form.name.errors }}
             {{ form.name }}
           </div>
 
           <div class="console_text">Comment</div>
+          <div class="error_message">{{ form.comment_text.errors }}</div>
           <div class="console_text_input">
             {% csrf_token %}
-            {{ form.comment_text.errors }}
             {{ form.comment_text }}
           </div>
 
