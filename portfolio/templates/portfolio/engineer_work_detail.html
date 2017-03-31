@@ -176,14 +176,19 @@
 
           {% if comment_list.count == 0 %}
           <div class="console_text">No comment to {{ engineer_product.engineer_product_alphabet_name }}</div>
+
           {% else %}
-          {% for comment in comment_list %}
           <div class="content">
-            <div class="console_text_comment_name">{{ comment.name }}さん {{ comment.pub_date }}</div>
-            <div class="console_text_comment">{{ comment.comment_text }}</div>
+          {% for comment in comment_list %}
+          {% if forloop.counter|divisibleby:"6" %}
           </div>
           <div class="more">more</div>
+          <div class="content">
+          {% endif %}
+              <div class="console_text_comment_name">{{ comment.name }}さん {{ comment.pub_date }}</div>
+              <div class="console_text_comment">{{ comment.comment_text }}</div>
           {% endfor %}
+          </div>
           {% endif %}
 
           <div class="console_text_link">
