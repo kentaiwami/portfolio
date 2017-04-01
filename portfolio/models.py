@@ -272,7 +272,7 @@ def product_clear_image_field_delete_file(sender, instance, **kwargs):
         path_list.append(settings.MEDIA_ROOT + '/' + str(instance.tracker.previous(column_name)))
 
     if os.path.isfile(path_list[0]) and instance.top_image == '':
-            os.remove(path_list[0])
+        os.remove(path_list[0])
 
     if os.path.isfile(path_list[1]) and instance.col1_image == '':
         os.remove(path_list[1])
