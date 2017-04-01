@@ -42,7 +42,7 @@ def get_media_root_path():
     return settings.MEDIA_ROOT + '/'
 
 
-class QuestionMethodTests(TestCase):
+class EngineerProductTests(TestCase):
 
     def test_engineer_product_image_save(self):
         e_product = get_test_model()
