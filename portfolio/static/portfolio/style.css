@@ -208,7 +208,7 @@ figcaption h3 {
 figure:hover figcaption {
   top: 0;
   left: 0;
-}
+}≤
 
 .img_slow {
   width: 100%;
@@ -468,6 +468,28 @@ div.console_text_comment:before {
 .error_message {
   color: #0F0;
   font-size: 2.5vmin;
+}
+
+
+/************************************************************
+                        More Content
+************************************************************/
+.more_content {
+  margin: 1rem 0rem;
+  text-align: center;
+  cursor: pointer;
+}
+
+.more_content:hover {
+  opacity: .5;
+}
+
+.more_content:before {
+  content: "--------- ";
+}
+
+.more_content:after {
+  content: " ---------";
 }
 
 

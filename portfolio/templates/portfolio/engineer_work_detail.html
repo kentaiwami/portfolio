@@ -47,11 +47,11 @@
 
   $(function(){
     $('.content:not(.content:first-of-type)').css('display','none');//一番上の要素以外を非表示
-  	$('.more').nextAll('.more').css('display','none');//ボタンを非表示
-  	$('.more').on('click', function() {
+  	$('.more_content').nextAll('.more_content').css('display','none');//ボタンを非表示
+  	$('.more_content').on('click', function() {
     	$(this).css('display','none');//押したボタンを非表示
     	$(this).next('.content').slideDown('fast');
-    	$(this).nextAll('.more:first').css('display','block'); //次のボタンを表示
+    	$(this).nextAll('.more_content:first').css('display','block'); //次のボタンを表示
   	});
   });
   </script>
@@ -184,14 +184,14 @@
           {% if forloop.counter <= 6 %}
           {% if forloop.counter|divisibleby:"6" %}
           </div>
-          <div class="more">more</div>
+          <div class="more_content">more</div>
           <div class="content">
           {% endif %}
 
           {% else %}
           {% if forloop.counter|add:"-6"|divisibleby:"5" %}
           </div>
-          <div class="more">more</div>
+          <div class="more_content">more</div>
           <div class="content">
           {% endif %}
           {% endif %}
