@@ -2,6 +2,7 @@ from django.test import TestCase
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.conf import settings
 from .models import EngineerProduct, PhotographerProduct
+from .forms import CommentForm
 import os
 import shutil
 import copy
@@ -177,3 +178,26 @@ class PhotographerProductTests(TestCase):
 
         self.assertEquals(os.path.exists(media_root_path + str(main_tmp)), False)
         self.assertEquals(os.path.exists(media_root_path + str(thumbnail_tmp)), False)
+
+
+class FormTests(TestCase):
+
+    def test_form_data_validation(self):
+        form_data1 = {'name': 'test name',
+                      'comment_text': 'test comment',
+                      'id': 1}
+        form_data2 = {'name': '',
+                      'comment_text': 'test comment',
+                      'id': 1}
+        form_data3 = {'name': 'test name',
+                      'comment_text': '',
+                      'id': 1}
+        form_data4 = {'name': '',
+                      'comment_text': '',
+                      'id': 1}
+        form_list = [form_data1, form_data2, form_data3, form_data4]
+        expect_form_validation_list = [True, True, False, False]
+
+        for i, form_data in enumerate(form_list):
+            form = CommentForm(form_data)
+            self.assertEquals(form.is_valid(), expect_form_validation_list[i])
