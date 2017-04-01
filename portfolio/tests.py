@@ -1,7 +1,7 @@
 from django.test import TestCase
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.conf import settings
-from .models import EngineerProduct
+from .models import EngineerProduct, PhotographerProduct
 import os
 import shutil
 import copy
@@ -18,7 +18,7 @@ def get_test_file():
                               content_type='image/jpg')
 
 
-def get_test_model():
+def get_engineerproduct_test_model():
     e_product = EngineerProduct()
     e_product.engineer_product_name = 'test'
     e_product.engineer_product_alphabet_name = 'test'
@@ -33,19 +33,33 @@ def get_test_model():
     return e_product
 
 
-def delete_tmp_files():
-    media_root_path = settings.MEDIA_ROOT + '/'
-    shutil.rmtree(media_root_path + 'images/e_work/test')
+def get_photographer_product_test_model():
+    p_product = PhotographerProduct()
+    p_product.photographer_product_name = 'test'
+    p_product.photographer_product_alphabet_name = 'test'
+    p_product.photographer_main_image = get_test_file()
+    p_product.photographer_thumbnail_image = get_test_file()
+    p_product.sort_id = 1
+
+    return p_product
 
 
-def get_media_root_path():
-    return settings.MEDIA_ROOT + '/'
+def delete_e_work_tmp_files():
+    media_root_path = settings.MEDIA_ROOT
+    path = '/'.join([media_root_path, 'images', 'e_work', 'test'])
+    shutil.rmtree(path)
+
+
+def delete_p_work_tmp_files(image_type, file_name):
+    media_root_path = settings.MEDIA_ROOT
+    path = '/'.join([media_root_path, 'images',  'p_work', image_type, file_name])
+    os.remove(path)
 
 
 class EngineerProductTests(TestCase):
 
     def test_engineer_product_image_save(self):
-        e_product = get_test_model()
+        e_product = get_engineerproduct_test_model()
         e_product.save()
 
         # Equal uploaded file name and field value
@@ -62,13 +76,12 @@ class EngineerProductTests(TestCase):
         self.assertEquals(os.path.exists(media_root_path + str(e_product.col3_image)), True)
         self.assertEquals(os.path.isdir(media_root_path + 'images/e_work/test'), True)
 
-        delete_tmp_files()
+        delete_e_work_tmp_files()
 
     def test_engineer_product_image_change(self):
         # check image field clear and delete image file
-
-        media_root_path = get_media_root_path()
-        e_product = get_test_model()
+        media_root_path = settings.MEDIA_ROOT + '/'
+        e_product = get_engineerproduct_test_model()
         e_product.save()
 
         e_product_tmp = copy.deepcopy(e_product)
@@ -89,12 +102,12 @@ class EngineerProductTests(TestCase):
         self.assertEquals(os.path.exists(media_root_path + str(col2_tmp)), False)
         self.assertEquals(os.path.exists(media_root_path + str(col3_tmp)), False)
 
-        delete_tmp_files()
+        delete_e_work_tmp_files()
 
     def test_engineer_product_delete(self):
         # check delete record when directory and image files
-        media_root_path = get_media_root_path()
-        e_product = get_test_model()
+        media_root_path = settings.MEDIA_ROOT + '/'
+        e_product = get_engineerproduct_test_model()
         e_product.save()
 
         e_product_tmp = copy.deepcopy(e_product)
@@ -111,3 +124,56 @@ class EngineerProductTests(TestCase):
         self.assertEquals(os.path.exists(media_root_path + str(col2_tmp)), False)
         self.assertEquals(os.path.exists(media_root_path + str(col3_tmp)), False)
         self.assertEquals(os.path.isdir(media_root_path + 'images/e_work/test'), False)
+
+
+class PhotographerProductTests(TestCase):
+
+    def test_photographer_product_image_save(self):
+        media_root_path = settings.MEDIA_ROOT + '/'
+        p_product = get_photographer_product_test_model()
+        p_product.save()
+
+        # Equal uploaded file name and field value
+        self.assertEquals(p_product.photographer_main_image, 'images/p_work/main/test_main.jpg')
+        self.assertEquals(p_product.photographer_thumbnail_image, 'images/p_work/thumbnail/test_thumbnail.jpg')
+
+        # Exist uploaded files and directory
+        self.assertEquals(os.path.exists(media_root_path + str(p_product.photographer_main_image)), True)
+        self.assertEquals(os.path.exists(media_root_path + str(p_product.photographer_thumbnail_image)), True)
+
+        delete_p_work_tmp_files('main', 'test_main.jpg')
+        delete_p_work_tmp_files('thumbnail', 'test_thumbnail.jpg')
+
+    def test_photographer_product_image_change(self):
+        # check image field clear and delete image file
+        media_root_path = settings.MEDIA_ROOT + '/'
+        p_product = get_photographer_product_test_model()
+        p_product.save()
+
+        p_product_tmp = copy.deepcopy(p_product)
+
+        main_tmp = p_product_tmp.photographer_main_image
+        thumbnail_tmp = p_product_tmp.photographer_thumbnail_image
+
+        p_product.photographer_main_image = ''
+        p_product.photographer_thumbnail_image = ''
+        p_product.save()
+
+        self.assertEquals(os.path.exists(media_root_path + str(main_tmp)), False)
+        self.assertEquals(os.path.exists(media_root_path + str(thumbnail_tmp)), False)
+
+    def test_photographer_product_delete(self):
+        # check delete record when directory and image files
+        media_root_path = settings.MEDIA_ROOT + '/'
+        p_product = get_photographer_product_test_model()
+        p_product.save()
+
+        p_product_tmp = copy.deepcopy(p_product)
+
+        main_tmp = p_product_tmp.photographer_main_image
+        thumbnail_tmp = p_product_tmp.photographer_thumbnail_image
+
+        p_product.delete()
+
+        self.assertEquals(os.path.exists(media_root_path + str(main_tmp)), False)
+        self.assertEquals(os.path.exists(media_root_path + str(thumbnail_tmp)), False)
