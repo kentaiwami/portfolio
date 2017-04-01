@@ -205,11 +205,16 @@ class CommentFormTests(TestCase):
             self.assertEquals(form.is_valid(), expect_form_validation_list[i])
 
     def test_comment_form_data_submit(self):
+        # OK submit pattern
         e_product = get_engineer_product_test_model()
         e_product.save()
 
         c = Client()
-        response = c.post(reverse('portfolio:get_comment'), {'name': 'test', 'comment_text': 'test', 'id': 1})
-        self.assertEquals(response.status_code, 302)
+        response = c.post(reverse('portfolio:get_comment'), {'name': '*', 'comment_text': 'test', 'id': 1})
+        self.assertRedirects(response, expected_url=reverse('portfolio:thanks'))
+
+        # NG submit pattern
+        response = c.post(reverse('portfolio:get_comment'), {'name': '*', 'comment_text': '', 'id': 1})
+        self.assertTemplateUsed(response, 'portfolio/form_error.html')
 
         delete_e_work_tmp_files()
