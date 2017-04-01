@@ -1,3 +1,4 @@
+import shutil
 from django.db import models
 from django.db.models.signals import pre_delete, post_save
 from django.dispatch.dispatcher import receiver
@@ -251,10 +252,12 @@ def product_top_image_delete(sender, instance, **kwargs):
     :param instance: EngineerProduct record
     :param kwargs:
     """
-    instance.top_image.delete(False)
-    instance.col1_image.delete(False)
-    instance.col2_image.delete(False)
-    instance.col3_image.delete(False)
+
+    media_root = settings.MEDIA_ROOT
+    path = '/'.join([media_root, 'images', get_e_work_str(), str(instance)])
+
+    if os.path.isdir(path):
+        shutil.rmtree(path)
 
 
 @receiver(post_save, sender=EngineerProduct)

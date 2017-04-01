@@ -111,5 +111,3 @@ class EngineerProductTests(TestCase):
         self.assertEquals(os.path.exists(media_root_path + str(col2_tmp)), False)
         self.assertEquals(os.path.exists(media_root_path + str(col3_tmp)), False)
         self.assertEquals(os.path.isdir(media_root_path + 'images/e_work/test'), False)
-
-        delete_tmp_files()
