@@ -1,6 +1,7 @@
-from django.test import TestCase
+from django.test import TestCase, Client
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.conf import settings
+from django.urls import reverse
 from .models import EngineerProduct, PhotographerProduct
 from .forms import CommentForm
 import os
@@ -19,7 +20,7 @@ def get_test_file():
                               content_type='image/jpg')
 
 
-def get_engineerproduct_test_model():
+def get_engineer_product_test_model():
     e_product = EngineerProduct()
     e_product.engineer_product_name = 'test'
     e_product.engineer_product_alphabet_name = 'test'
@@ -60,7 +61,7 @@ def delete_p_work_tmp_files(image_type, file_name):
 class EngineerProductTests(TestCase):
 
     def test_engineer_product_image_save(self):
-        e_product = get_engineerproduct_test_model()
+        e_product = get_engineer_product_test_model()
         e_product.save()
 
         # Equal uploaded file name and field value
@@ -82,7 +83,7 @@ class EngineerProductTests(TestCase):
     def test_engineer_product_image_change(self):
         # check image field clear and delete image file
         media_root_path = settings.MEDIA_ROOT + '/'
-        e_product = get_engineerproduct_test_model()
+        e_product = get_engineer_product_test_model()
         e_product.save()
 
         e_product_tmp = copy.deepcopy(e_product)
@@ -108,7 +109,7 @@ class EngineerProductTests(TestCase):
     def test_engineer_product_delete(self):
         # check delete record when directory and image files
         media_root_path = settings.MEDIA_ROOT + '/'
-        e_product = get_engineerproduct_test_model()
+        e_product = get_engineer_product_test_model()
         e_product.save()
 
         e_product_tmp = copy.deepcopy(e_product)
@@ -180,9 +181,10 @@ class PhotographerProductTests(TestCase):
         self.assertEquals(os.path.exists(media_root_path + str(thumbnail_tmp)), False)
 
 
-class FormTests(TestCase):
+class CommentFormTests(TestCase):
 
-    def test_form_data_validation(self):
+    def test_comment_form_data_validation(self):
+        # check form data
         form_data1 = {'name': 'test name',
                       'comment_text': 'test comment',
                       'id': 1}
@@ -201,3 +203,13 @@ class FormTests(TestCase):
         for i, form_data in enumerate(form_list):
             form = CommentForm(form_data)
             self.assertEquals(form.is_valid(), expect_form_validation_list[i])
+
+    def test_comment_form_data_submit(self):
+        e_product = get_engineer_product_test_model()
+        e_product.save()
+
+        c = Client()
+        response = c.post(reverse('portfolio:get_comment'), {'name': 'test', 'comment_text': 'test', 'id': 1})
+        self.assertEquals(response.status_code, 302)
+
+        delete_e_work_tmp_files()
