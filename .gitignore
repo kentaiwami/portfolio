@@ -1,7 +1,4 @@
 __pycache__/
 *.py[cod]
 db.sqlite3
-*png
-*jpg
-*jpeg
 settings.py
