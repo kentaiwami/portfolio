@@ -3,19 +3,19 @@
 {% block title %}Error 403 Forbidden{% endblock title %}
 
 {% block script %}
-    <script>
-    var speed_define = 25;
-    jQuery(function($) {
-      $('#title').typist({
-        speed: speed_define,
-        text: 'Error Code 403',
-        cursor: false
-      });
-      $('#sub_title_error1').typist({
-        speed: speed_define,
-        text: 'アクセスが拒否されました',
-        cursor: false
-      });
+  <script>
+  var speed_define = 25;
+  jQuery(function($) {
+    $('#title').typist({
+      speed: speed_define,
+      text: 'Error Code 403',
+      cursor: false
     });
-    </script>
+    $('#sub_title_error1').typist({
+      speed: speed_define,
+      text: 'アクセスが拒否されました',
+      cursor: false
+    });
+  });
+  </script>
 {% endblock script %}

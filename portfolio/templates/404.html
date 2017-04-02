@@ -3,19 +3,19 @@
 {% block title %}Error 404 not found{% endblock title %}
 
 {% block script %}
-    <script>
-    var speed_define = 25;
-    jQuery(function($) {
-      $('#title').typist({
-        speed: speed_define,
-        text: 'Error Code 404',
-        cursor: false
-      });
-      $('#sub_title_error1').typist({
-        speed: speed_define,
-        text: 'ページが見つかりませんでした',
-        cursor: false
-      });
+  <script>
+  var speed_define = 25;
+  jQuery(function($) {
+    $('#title').typist({
+      speed: speed_define,
+      text: 'Error Code 404',
+      cursor: false
     });
-    </script>
+    $('#sub_title_error1').typist({
+      speed: speed_define,
+      text: 'ページが見つかりませんでした',
+      cursor: false
+    });
+  });
+  </script>
 {% endblock script %}
