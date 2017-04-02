@@ -29,10 +29,10 @@ def engineer_work_detail(request, e_product_id):
     return render(request, 'portfolio/engineer_work_detail.html', context)
 
 
-def photographer_all(request):
+def all_photographer_works(request):
     all_photographer_product_list = PhotographerProduct.objects.order_by('-sort_id')
     context = {'all_photographer_product_list': all_photographer_product_list}
-    return render(request, 'portfolio/photographer_all.html', context)
+    return render(request, 'portfolio/all_photographer_works.html', context)
 
 
 def get_comment(request):

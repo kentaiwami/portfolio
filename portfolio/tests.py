@@ -260,8 +260,8 @@ class URLconfTests(TestCase):
         delete_e_work_tmp_files()
 
         # view photographer_all
-        url = reverse('portfolio:photographer_all')
-        self.assertEquals(url, '/portfolio/photographer_all/')
+        url = reverse('portfolio:all_photographer_works')
+        self.assertEquals(url, '/portfolio/all_photographer_works/')
 
         # view get_comment
         url = reverse('portfolio:get_comment')
