@@ -1,3 +1,4 @@
+from django.http import Http404
 from django.test import TestCase, Client
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.conf import settings
@@ -216,5 +217,22 @@ class CommentFormTests(TestCase):
         # NG submit pattern
         response = c.post(reverse('portfolio:get_comment'), {'name': '*', 'comment_text': '', 'id': 1})
         self.assertTemplateUsed(response, 'portfolio/form_error.html')
+
+        delete_e_work_tmp_files()
+
+
+class ErrorTests(TestCase):
+
+    def test_engineer_work_detail_error(self):
+        c = Client()
+        response = c.get(reverse('portfolio:engineer_work_detail', args=[1]))
+        self.assertEquals(response.status_code, 404)
+        self.assertTemplateUsed(response, '404.html', 'error_base.html')
+
+        e_product = get_engineer_product_test_model()
+        e_product.save()
+        response = c.get(reverse('portfolio:engineer_work_detail', args=[1]))
+        self.assertEquals(response.status_code, 200)
+        self.assertTemplateUsed(response, 'portfolio/engineer_work_detail.html')
 
         delete_e_work_tmp_files()
