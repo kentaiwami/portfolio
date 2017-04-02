@@ -224,11 +224,13 @@ class CommentFormTests(TestCase):
 class ErrorTests(TestCase):
 
     def test_engineer_work_detail_error(self):
+        # product not found
         c = Client()
         response = c.get(reverse('portfolio:engineer_work_detail', args=[1]))
         self.assertEquals(response.status_code, 404)
         self.assertTemplateUsed(response, '404.html', 'error_base.html')
 
+        # product found
         e_product = get_engineer_product_test_model()
         e_product.save()
         response = c.get(reverse('portfolio:engineer_work_detail', args=[1]))
