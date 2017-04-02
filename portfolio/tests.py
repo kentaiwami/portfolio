@@ -1,4 +1,3 @@
-from django.http import Http404
 from django.test import TestCase, Client
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.conf import settings
