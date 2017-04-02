@@ -238,6 +238,12 @@ class ErrorTests(TestCase):
 
         delete_e_work_tmp_files()
 
+    def test_engineer_works_all_error(self):
+        c = Client()
+        response = c.get('/portfolio/engineer_works_all')
+        self.assertEquals(response.status_code, 404)
+        self.assertTemplateUsed(response, '404.html', 'error_base.html')
+
 
 class URLconfTests(TestCase):
 
