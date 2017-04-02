@@ -76,8 +76,12 @@ a, a:focus, a:hover {
   font-size: 10vmin;
 }
 
+.title_error {
+  font-size: 4.5vmin;
+}
+
 .sub_title_error, .thanks_title {
-  font-size: 6.5vmin;
+  font-size: 5vmin;
 }
 
 
