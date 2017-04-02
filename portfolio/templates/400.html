@@ -1,0 +1,21 @@
+{% extends "error_base.html" %}
+
+{% block title %}Error 400 Bad Request{% endblock title %}
+
+{% block script %}
+    <script>
+    var speed_define = 25;
+    jQuery(function($) {
+      $('#title').typist({
+        speed: speed_define,
+        text: 'Error Code 400',
+        cursor: false
+      });
+      $('#sub_title_error1').typist({
+        speed: speed_define,
+        text: '要求の形式が正しくありません',
+        cursor: false
+      });
+    });
+    </script>
+{% endblock script %}

@@ -1,0 +1,21 @@
+{% extends "error_base.html" %}
+
+{% block title %}Error 500 Internal Server Error{% endblock title %}
+
+{% block script %}
+    <script>
+    var speed_define = 25;
+    jQuery(function($) {
+      $('#title').typist({
+        speed: speed_define,
+        text: 'Error Code 500',
+        cursor: false
+      });
+      $('#sub_title_error1').typist({
+        speed: speed_define,
+        text: 'サーバ内エラーが発生しました',
+        cursor: false
+      });
+    });
+    </script>
+{% endblock script %}

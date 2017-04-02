@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang=ja>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'portfolio/reset.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'portfolio/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'portfolio/style.css' %}" />
+
+    <script type="text/javascript" src="{% static 'portfolio/js/jquery-3.1.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'portfolio/js/jquery.typist.min.js' %}"></script>
+    <title>Thanks!!</title>
+
+    <script>
+    var speed_define = 25;
+    jQuery(function($) {
+    $('#thanks_title').typist({
+      speed: speed_define,
+      text: 'Thanks for your comment.',
+    });
+    });
+    </script>
+
+</head>
+<body>
+  <section class="cover">
+    <div class="title_area">
+      <div class="thanks_title" id="thanks_title"></div>
+    </div>
+
+    <div class="link_cover">
+      <a class="link_cover_normal" href="{% url 'portfolio:index' %}#1">
+        <div class="box">
+          Back
+          <div class="bd10 bd">
+            <div class="bdT"></div>
+            <div class="bdB"></div>
+            <div class="bdR"></div>
+            <div class="bdL"></div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+</body>
+</html>

@@ -1,0 +1,532 @@
+/************************************************************
+                        Globals
+************************************************************/
+html,
+body {
+  height: 100%;
+  background-color: #000;
+}
+
+body {
+  color: #FFF;
+  text-align: center;
+  text-shadow: 0 .05rem .1rem rgba(0,0,0,.5);
+}
+
+/* Links */
+a, a:focus, a:hover {
+  color: #FFF;
+  text-decoration: none;
+}
+
+@font-face {
+  font-family: "MyFont";
+  src: url(font/SourceHanSans-Light.otf)
+}
+
+
+/************************************************************
+                      	Cover Page
+************************************************************/
+.cover {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  margin: auto;
+  background-color: #000;
+}
+
+.cover_error {
+  width: 100vw;
+  height: 100vh;
+  margin: auto;
+  color: #0F0;
+}
+
+
+/************************************************************
+                        Title
+************************************************************/
+.title_area {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 85%;
+  height: auto;
+  padding: 5vmin;
+  border-width: .5vmin;
+  border-style: solid;
+  font-family: "MyFont";
+  font-size: 10vmin;
+  text-align: left;
+  transform: translate(-50%, -50%);
+}
+
+.title:before, .title_error:before,
+.sub_title:before, .sub_title_error:before,
+.section_title:before, .thanks_title:before {
+  content: "$ ";
+}
+
+.section_title {
+  width: 100%;
+  margin: 2.5rem 0rem;
+  font-family: "MyFont";
+  font-size: 10vmin;
+}
+
+.title_error {
+  font-size: 4.5vmin;
+}
+
+.sub_title_error, .thanks_title {
+  font-size: 5vmin;
+}
+
+
+/************************************************************
+                         Scroll
+************************************************************/
+.arrow {
+  display: inline-block;
+  position: absolute;
+  top: 90%;
+  right: 0;
+  left: 0;
+  margin: 0 auto;
+  padding-top: 80px;
+  font-family: "MyFont";
+  font-size: 8vmin;
+  transform: translate(0, -50%); 
+}
+
+.arrow span {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 24px;
+  height: 24px;
+  margin-left: -12px;
+  border-bottom: 2px dotted #FFF;
+  border-left: 2px dotted #FFF;
+  box-sizing: border-box;
+  opacity: 0;
+  transform: rotate(-45deg);
+  animation: sdb 2s infinite;
+}
+
+a span:nth-of-type(1) {
+  animation-delay: 0s;
+}
+
+a span:nth-of-type(2) {
+  top: 16px;
+  animation-delay: .15s;
+}
+
+a span:nth-of-type(3) {
+  top: 32px;
+  animation-delay: .3s;
+}
+
+@keyframes sdb {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+
+/************************************************************
+                            grid
+************************************************************/
+.col-md-6 {
+  margin: .75rem 0;
+}
+
+.col-md-3 {
+  margin: .75rem 0rem;
+}
+
+
+/************************************************************
+                            image
+************************************************************/
+.img-fluid {
+  width: 100%;
+  height: 100%;
+  padding: .5rem;
+  border: 2px solid;
+  object-fit: contain;
+}
+
+.img-fluid-no-border {
+  width: 100%;
+  height: 100%;
+  padding: .5rem;
+  object-fit: contain;
+}
+
+/* 画像のhover */
+figure {
+  display: block;
+  position: relative;
+  max-width: 80.9vmin;
+  height: 35vmin;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  background: #000;
+}
+
+figcaption {
+  position: absolute;
+  z-index: 2;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  padding-top: 10vmin;
+  background: rgba(0,0,0,.6);
+  font-family: "MyFont";
+  font-size: 3vmin;
+  opacity: 1;
+  transition: .3s;
+}
+
+figcaption p {
+  margin: 5vmin;
+}
+
+figcaption h3 {
+  font-size: 5vmin;
+}
+
+figure:hover figcaption {
+  top: 0;
+  left: 0;
+}
+
+.img_slow {
+  width: 100%;
+  padding: .5rem;
+  transition: .5s;
+}
+
+.img_slow:hover {
+  opacity: .5;
+}
+
+
+
+
+/************************************************************
+                            link
+************************************************************/
+.link:hover {
+  opacity: .5;
+}
+.box {
+  display: inline-block;
+  position: relative;
+  margin-top: 2.5rem;
+  padding: 0rem 1rem;
+  font-family: "MyFont";
+  font-size: 5vmin;
+  text-align: center; 
+}
+.bd div {
+  position: absolute;
+  border: solid 1px;
+  transition: all .3s;
+}
+.bd div.bdT {
+  width: 100%;
+  height: 1px;
+  top: 0;
+  left: 0;
+}
+.bd div.bdB{
+  width: 100%;
+  height: 1px;
+  right: 0;
+  bottom: 0;
+}
+.bd div.bdR {
+  width: 1px;
+  height: 100%;
+  top: 0;
+  right: 0;
+}
+.bd div.bdL {
+  width: 1px;
+  height: 100%;
+  bottom: 0;
+  left: 0;
+}
+.bd10 div {
+  transition: all .2s;
+}
+.box:hover .bd10 div.bdT {
+  width: 1px;
+  height: 1px;
+}
+.box:hover .bd10 div.bdB {
+  width: 1px;
+  height: 1px;
+}
+.box:hover .bd10 div.bdR {
+  width: 1px;
+  height: 1px;
+}
+.box:hover .bd10 div.bdL {
+  width: 1px;
+  height: 1px;
+}
+
+.link_cover_error:hover {
+  color: #0F0;
+  opacity: .5;
+}
+
+.link_cover_error {
+  color: #0F0;
+}
+
+.link_error {
+  position: absolute;
+  top: 80%;
+  right: 0;
+  left: 0;
+  color: #0F0;
+}
+
+.link_cover {
+  position: absolute;
+  top: 80%;
+  right: 0;
+  left: 0;
+  color: #F00;
+}
+
+.link_cover_normal {
+  color: #FFF;
+}
+
+.link_cover_normal:hover {
+  color: #FFF;
+  opacity: .5;
+}
+
+
+.default_link, .default_link:hover {
+  text-decoration: underline;
+}
+.default_link:hover {
+  opacity: .5;
+}
+
+
+/************************************************************
+                          Console
+************************************************************/
+.console_area {
+  display: inline-block;
+  width: 100%;
+  border: 1px solid #FFF;
+  background-color: #111;
+  font-family: "MyFont";
+  font-size: 3vmin;
+  text-align: left;
+}
+
+.console_top {
+  display: inline-block;
+  width: 100%;
+  height: auto;
+  padding-left: 10px;
+  border-bottom: 1px solid #FFF;
+  text-align: center;
+}
+
+.console_top:before {
+  content: "$ ";
+}
+
+.console_center_message {
+  display: inline-block;
+  width: 100%;
+  height: auto;
+  margin: 3rem 0rem;
+  padding-left: 10px;
+  text-align: center;
+  font-size: 5vmin;
+}
+
+.console_center_message:before {
+  content: "$ ";
+}
+
+.console {
+  padding: 10px;
+}
+
+.console_image {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 5vmin 0vmin;
+}
+
+.console_name {
+  padding-top: 5vmin;
+  font-size: 5vmin;
+}
+
+.console_name:before {
+  content: "$ ";
+}
+
+div.console_text, div.console_text_input {
+  position: relative;
+  padding-left: 1em;
+}
+
+div.console_text:before, div.console_text_input:before {
+  position:absolute;
+  top: 0;
+  left: 0;
+  content: "$ ";
+}
+
+div.console_text_input:before {
+  content: ">";
+}
+
+div.console_text_comment {
+  position: relative;
+  padding-left: 1em;
+  border-bottom: 1px solid #333;
+  padding-bottom: 1rem;
+}
+
+div.console_text_comment:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "$ ";
+}
+
+.console_text_comment_name {
+  padding-top: 1rem;
+  color: #CCC;
+  font-size: 2vmin;
+}
+
+.console_text_link {
+  text-align: center;
+  margin-bottom: 3vmin;
+}
+
+.console_text_no_before {
+  display: inline-block;
+  margin: 3vmin 0vmin;
+}
+
+
+/************************************************************
+                          Form
+************************************************************/
+.form-control {
+  border: 1px solid #222;
+  background-color: #111;
+  color: #FFF;
+}
+
+.form-control:focus {
+  border: 1px solid #FFF;
+  background-color: #111;
+  color: #FFF;
+}
+
+.submit {
+  border: none;
+  background-color: #111;
+  color: #FFF;
+  font-family: "MyFont";
+  font-size: 5vmin;
+  cursor : pointer;
+}
+
+.submit:hover {
+  opacity: .5;
+}
+
+.error_message {
+  color: #0F0;
+  font-size: 2.5vmin;
+}
+
+
+/************************************************************
+                        More Content
+************************************************************/
+.more_content {
+  margin: 1rem 0rem;
+  text-align: center;
+  cursor: pointer;
+}
+
+.more_content:hover {
+  opacity: .5;
+}
+
+.more_content:before {
+  content: "--------- ";
+}
+
+.more_content:after {
+  content: " ---------";
+}
+
+
+/************************************************************
+                          @media
+************************************************************/
+@media screen and (max-width: 1200px) {
+  /* coverのスクロール促し */
+  .arrow {
+    font-size: 5vmin;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  /* coverのスクロール促し */
+  .arrow {
+    font-size: 7vmin;
+  }
+  /* Engineer Worksのグリッド */
+  .col-md-6 {
+    margin-right: auto;
+    margin-left: auto;
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 330px) {
+  /* coverのスクロール促し */
+  .arrow {
+    font-size: 9vmin;
+  }
+  /* Engineer Worksのグリッド */
+  .col-md-6 {
+    margin: .75rem;
+  }
+}

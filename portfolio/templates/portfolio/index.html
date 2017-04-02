@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'portfolio/reset.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'portfolio/css/bootstrap.min.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'portfolio/css/spinners.min.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'portfolio/css/swipebox.min.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'portfolio/style.css' %}" />
+
+  <title>Kenta Portfolio</title>
+
+  <script src="{% static 'portfolio/js/jquery-3.1.1.min.js' %}"></script>
+  <script src="{% static 'portfolio/js/jquery.typist.min.js' %}"></script>
+  <script src="{% static 'portfolio/js/index.js' %}"></script>
+  <script src="{% static 'portfolio/js/jquery.swipebox.min.js' %}"></script>
+
+  <script>
+  // スムーズスクロール部分の記述
+  $(function(){
+    // #で始まるアンカーをクリックした場合に処理
+    $('a[href^="#"]').click(function() {
+      // スクロールの速度
+      var speed = 400; // ミリ秒
+      // アンカーの値取得
+      var href= $(this).attr("href");
+      // 移動先を取得
+      var target = $(href == "#" || href == "" ? 'html' : href);
+      // 移動先を数値で取得
+      var position = target.offset().top;
+      // スムーススクロール
+      $('body,html').animate({scrollTop:position}, speed, 'swing');
+      return false;
+    });
+  });
+
+  var speed_define = 25;
+  jQuery(function($) {
+    $('#title').typist({
+      speed: speed_define - 10,
+      text: 'Kenta Iwami',
+    });
+    $('#sub_title').typist({
+      speed: speed_define - 10,
+      text: 'Portfolio'
+    });
+  });
+
+  // 画面内に要素が来た際のアニメーション実施を記述
+  var flag = [];
+  for (var i = 0; i < 3; i++) {
+    flag.push(false);
+  }
+
+  $(window).scroll(function () {
+    if (flag[0] === false) {
+      if (isScrolledIntoView($('#engineer_title')) === true) {
+        flag[0] = true;
+        $('#engineer_title').typist({speed: speed_define,text: 'Engineer Works',});
+      }
+    }
+
+    if (flag[1] === false) {
+      if (isScrolledIntoView($('#photographer_title')) === true) {
+        flag[1] = true;
+        $('#photographer_title').typist({speed: speed_define,text: 'Photographer Works',});
+      }
+    }
+
+    if (flag[2] === false) {
+      if (isScrolledIntoView($('#profile_title')) === true) {
+        flag[2] = true;
+        $('#profile_title').typist({speed: speed_define,text: 'Profile',});
+      }
+    }
+  });
+  </script>
+</head>
+
+<body>
+  <section class="cover">  <!--カバーページ-->
+    <div class="title_area">
+      <div class="title" id="title"></div>
+      <div class="sub_title" id="sub_title"></div>
+    </div>
+
+    <div class="arrow">
+      <a href="#1"><span></span><span></span><span></span>Scroll</a>
+    </div>
+  </section>
+
+  <section class="container" id="1">  <!--Engineer Works-->
+    <div class="section_title" id="engineer_title"></div>
+
+    <div class="row">
+      {% for e_product in engineer_product_list %}
+      <div class="col-md-6">
+        <a href="{% url 'portfolio:engineer_work_detail' e_product.pk %}">
+        <figure>
+          <img src="/media/{{ e_product.top_image }}" class="img-fluid" alt="">
+          <figcaption>
+            <h3>{{ e_product.engineer_product_name }}</h3>
+            <p>{{ e_product.engineer_product_short_concept }}</p>
+          </figcaption>
+        </figure>
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!--More link of engineer_works_all-->
+    <!--<a class="link" href="{# {% url 'portfolio:engineer_works_all' %} #}">-->
+      <!--<div class="box">-->
+        <!--<div>more</div>-->
+        <!--<div class="bd10 bd">-->
+          <!--<div class="bdT"></div>-->
+          <!--<div class="bdB"></div>-->
+          <!--<div class="bdR"></div>-->
+          <!--<div class="bdL"></div>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</a>-->
+  </section>
+
+  <section class="container" id="2">  <!--Photographer Works-->
+    <div class="section_title" id="photographer_title"></div>
+
+    <div class="console_area">
+      <div class="console_top">Show {{ photographer_product_list.count }} photographer works process <span class="loading dots2"></span></div>
+
+      <div class="console">
+        <div class="console_text">使用カメラはNikon5300。</div>
+        <div class="console_text">風景を撮るのが好きです。</div>
+        <div class="console_text">基本的には趣味ですが、イベントのカメラマンをすることもあります。</div>
+        <div class="console_text">PBL Summit 2017は実行委員会として企画、運営、カメラマンをしました。</div>
+        <div class="console_text">撮影をしたイベントは全部で3つです。</div>
+        <div class="console_text">1. <a class="default_link" href="http://hakodate-marathon.jp">函館マラソン</a></div>
+        <div class="console_text">2. <a class="default_link" href="https://careerselect.jp/funhacks/">FUNHACKS 2016</a></div>
+        <div class="console_text">3. <a class="default_link" href="https://2017.pblsummit.jp">PBL Summit 2017</a></div>
+
+        {% if photographer_product_list.count != 0 %}
+        <div class="row">
+          {% for photo in photographer_product_list %}
+          <div class="col-md-3">
+            <a href="/media/{{ photo.photographer_main_image }}" class="swipebox" title="{{ photo.photographer_product_location }} {{ photo.photographer_product_shooting_year }}/{{ photo.photographer_product_shooting_month }}/{{ photo.photographer_product_shooting_day }} {{ photo.photographer_product_shooting_hour }}:{{ photo.photographer_product_shooting_minute }}">
+              <img class="img_slow" src="/media/{{ photo.photographer_thumbnail_image }}">
+            </a>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+
+        <div class="console_text_link">
+          <a class="link" href="{% url 'portfolio:photographer_all' %}">
+            <div class="box">
+              <div class="link_name">more</div>
+              <div class="bd10 bd"><div class="bdT"></div><div class="bdB"></div><div class="bdR"></div><div class="bdL"></div></div>
+            </div>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="container">  <!--Profile-->
+    <div class="section_title" id="profile_title"></div>
+
+    <div class="console_area">
+      <div class="console_top">Show profile process <span class="loading dots2"></span></div>
+
+      <div class="console">
+        <div class="console_name">岩見建汰</div>
+
+        <div class="container">
+          <div class="console_image"><img class="img-fluid-no-border" src="{% static 'portfolio/img/profile.jpg' %}"></div>
+        </div>
+
+        <div class="console_text">青森県八戸市出身。函館で大学院生をしています。</div>
+        <div class="console_text">アプリやサービス等を創ることが大好きです。</div>
+        <div class="console_text">PBL(Project Based Learning)の振り返りに関して研究をしています。</div>
+        <div class="console_text_no_before"></div>
+        <div class="console_text">言語：C, Swift, Java, JavaScript, HTML, CSS, python</div>
+        <div class="console_text">資格：応用情報技術者試験</div>
+        <div class="console_text">趣味：コーディング, 写真撮影, ゲーム, 映画鑑賞</div>
+        <div class="console_text"></div>
+        <div class="console_text">連絡先：b1013068@fun.ac.jp または iwami@pblsummit.jp</div>
+
+        <div class="row">
+          <div class="col">
+            <div class="console_text_link">
+              <a class="link" href="https://www.facebook.com/kenta.iwami.5">
+                <div class="box">
+                  <div class="link_name">Facebook</div>
+                  <div class="bd10 bd"><div class="bdT"></div><div class="bdB"></div><div class="bdR"></div><div class="bdL"></div></div>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="console_text_link">
+              <a class="link" href="https://github.com/kentaiwami">
+                <div class="box">
+                  <div class="link_name">GitHub</div>
+                  <div class="bd10 bd"><div class="bdT"></div><div class="bdB"></div><div class="bdR"></div><div class="bdL"></div></div>
+                </div>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script type="text/javascript" src="{% static 'portfolio/js/tether.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'portfolio/js/bootstrap.min.js' %}"></script>
+  <script>
+  $(document).swipebox({
+    selector: '.swipebox',
+    removeBarsOnMobile: false,
+    hideBarsDelay: 5000
+  });
+  </script>
+</body>
+</html>

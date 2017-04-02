@@ -1,0 +1,82 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="HtmlUnknownAttribute" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="myValues">
+        <value>
+          <list size="1">
+            <item index="0" class="java.lang.String" itemvalue="engineer_product.pk" />
+          </list>
+        </value>
+      </option>
+      <option name="myCustomValuesEnabled" value="true" />
+    </inspection_tool>
+    <inspection_tool class="PyPep8NamingInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="N806" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="a" />
+          <option value="product_name" />
+          <option value="identifier" />
+          <option value="votes" />
+          <option value="comment_text" />
+          <option value="pub_date" />
+          <option value="product" />
+          <option value="name" />
+          <option value="product_short_concept" />
+          <option value="product_alphabet_name" />
+          <option value="top_image" />
+          <option value="product_feature_concept" />
+          <option value="product_feature_detail" />
+          <option value="product_background_concept" />
+          <option value="product_background_detail" />
+          <option value="title" />
+          <option value="image" />
+          <option value="product_development_language" />
+          <option value="product_development_environment" />
+          <option value="product_creation_time" />
+          <option value="sort_id" />
+          <option value="product_shooting_date_month" />
+          <option value="product_shooting_date_year" />
+          <option value="product_location" />
+          <option value="engineer_product_name" />
+          <option value="engineer_product_alphabet_name" />
+          <option value="engineer_product_short_concept" />
+          <option value="col2_image" />
+          <option value="col1_image" />
+          <option value="col3_image" />
+          <option value="link" />
+          <option value="engineer_product_feature_concept" />
+          <option value="engineer_product_feature_detail" />
+          <option value="engineer_product_background_concept" />
+          <option value="engineer_product_background_detail" />
+          <option value="engineer_product_development_environment" />
+          <option value="engineer_product_development_language" />
+          <option value="engineer_product_creation_time" />
+          <option value="engineer_product" />
+          <option value="photographer_product_name" />
+          <option value="photographer_product_shooting_minute" />
+          <option value="photographer_product_shooting_hour" />
+          <option value="photographer_product_shooting_day" />
+          <option value="photographer_product_shooting_month" />
+          <option value="photographer_product_shooting_year" />
+          <option value="photographer_product_location" />
+          <option value="photographer_thumbnail_image" />
+          <option value="photographer_main_image" />
+          <option value="photographer_product_alphabet_name" />
+          <option value="portfolio.models.EngineerProduct.objects" />
+          <option value="portfolio.models.PhotographerProduct.objects" />
+          <option value="portfolio.models.EngineerProduct.DoesNotExist" />
+          <option value="portfolio.models.EngineerProductDetail.objects" />
+          <option value="portfolio.models.Comment.objects" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
