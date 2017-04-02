@@ -237,3 +237,30 @@ class ErrorTests(TestCase):
         self.assertTemplateUsed(response, 'portfolio/engineer_work_detail.html')
 
         delete_e_work_tmp_files()
+
+
+class URLconfTests(TestCase):
+
+    def test_urlconfs(self):
+        # view index
+        url = reverse('portfolio:index')
+        self.assertEqual(url, '/portfolio/')
+
+        # view engineer_work_detail
+        e_product = get_engineer_product_test_model()
+        e_product.save()
+        url = reverse('portfolio:engineer_work_detail', args=[1])
+        self.assertEqual(url, '/portfolio/1/')
+        delete_e_work_tmp_files()
+
+        # view photographer_all
+        url = reverse('portfolio:photographer_all')
+        self.assertEquals(url, '/portfolio/photographer_all/')
+
+        # view get_comment
+        url = reverse('portfolio:get_comment')
+        self.assertEquals(url, '/portfolio/get_comment/')
+
+        # view thanks
+        url = reverse('portfolio:thanks')
+        self.assertEquals(url, '/portfolio/thanks/')
