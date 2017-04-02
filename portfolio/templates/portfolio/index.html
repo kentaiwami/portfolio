@@ -98,13 +98,13 @@
       {% for e_product in engineer_product_list %}
       <div class="col-md-6">
         <a href="{% url 'portfolio:engineer_work_detail' e_product.pk %}">
-        <figure>
-          <img src="/media/{{ e_product.top_image }}" class="img-fluid" alt="">
-          <figcaption>
-            <h3>{{ e_product.engineer_product_name }}</h3>
-            <p>{{ e_product.engineer_product_short_concept }}</p>
-          </figcaption>
-        </figure>
+          <figure>
+            <img src="/media/{{ e_product.top_image }}" class="img-fluid" alt="">
+            <figcaption>
+              <h3>{{ e_product.engineer_product_name }}</h3>
+              <p>{{ e_product.engineer_product_short_concept }}</p>
+            </figcaption>
+          </figure>
         </a>
       </div>
       {% endfor %}
@@ -151,7 +151,6 @@
           {% endfor %}
         </div>
         {% endif %}
-
 
         <div class="console_text_link">
           <a class="link" href="{% url 'portfolio:all_photographer_works' %}">

@@ -1,28 +1,27 @@
 <!DOCTYPE html>
 <html lang=ja>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'portfolio/reset.css' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static 'portfolio/css/bootstrap.min.css' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static 'portfolio/style.css' %}" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'portfolio/reset.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'portfolio/css/bootstrap.min.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'portfolio/style.css' %}" />
+  <script type="text/javascript" src="{% static 'portfolio/js/jquery-3.1.1.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'portfolio/js/jquery.typist.min.js' %}"></script>
+  <title>Thanks!!</title>
 
-    <script type="text/javascript" src="{% static 'portfolio/js/jquery-3.1.1.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'portfolio/js/jquery.typist.min.js' %}"></script>
-    <title>Thanks!!</title>
-
-    <script>
-    var speed_define = 25;
-    jQuery(function($) {
+  <script>
+  var speed_define = 25;
+  jQuery(function($) {
     $('#thanks_title').typist({
       speed: speed_define,
       text: 'Thanks for your comment.',
     });
-    });
-    </script>
-
+  });
+  </script>
 </head>
+
 <body>
   <section class="cover">
     <div class="title_area">
@@ -43,6 +42,5 @@
       </a>
     </div>
   </section>
-
 </body>
 </html>
