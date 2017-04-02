@@ -9,9 +9,6 @@ import shutil
 import copy
 
 
-# Create your tests here.
-
-
 def get_test_file():
     module_dir = os.path.dirname(__file__)
     test_file_path = os.path.join(module_dir, 'static', 'portfolio', 'img', 'profile.jpg')

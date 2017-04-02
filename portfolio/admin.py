@@ -1,6 +1,5 @@
 from django.contrib import admin
 from .models import EngineerProduct, EngineerProductDetail, PhotographerProduct, Comment
-# Register your models here.
 
 
 class EngineerProductAdmin(admin.ModelAdmin):

@@ -3,7 +3,6 @@ from django.urls import reverse
 from django.http import Http404, HttpResponseRedirect
 from .models import EngineerProduct, EngineerProductDetail, PhotographerProduct, Comment
 from .forms import CommentForm
-# Create your views here.
 
 
 def index(request):

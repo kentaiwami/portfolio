@@ -1,10 +1,10 @@
-import shutil
 from django.db import models
 from django.db.models.signals import pre_delete, post_save
 from django.dispatch.dispatcher import receiver
 from model_utils import FieldTracker
 from django.conf import settings
 import os.path
+import shutil
 
 
 def get_e_work_str():
