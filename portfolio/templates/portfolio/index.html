@@ -37,7 +37,7 @@
   });
 
   var speed_define = 25;
-  jQuery(function($) {
+  var show_cover_tile = function(){
     $('#title').typist({
       speed: speed_define - 10,
       text: 'Kenta Iwami',
@@ -46,6 +46,10 @@
       speed: speed_define - 10,
       text: 'Portfolio'
     });
+  };
+
+  jQuery(function($){
+	setTimeout(show_cover_tile, 1000);
   });
 
   // 画面内に要素が来た際のアニメーション実施を記述
