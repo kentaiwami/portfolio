@@ -99,7 +99,7 @@
       <div class="col-md-6">
         <a href="{% url 'portfolio:engineer_work_detail' e_product.pk %}">
           <figure>
-            <img src="/media/{{ e_product.top_image }}" class="img-fluid" alt="">
+            <img src="/portfolio/media/{{ e_product.top_image }}" class="img-fluid" alt="">
             <figcaption>
               <h3>{{ e_product.engineer_product_name }}</h3>
               <p>{{ e_product.engineer_product_short_concept }}</p>
@@ -144,8 +144,8 @@
         <div class="row">
           {% for photo in photographer_product_list %}
           <div class="col-md-3">
-            <a href="/media/{{ photo.photographer_main_image }}" class="swipebox" title="{{ photo.photographer_product_location }} {{ photo.photographer_product_shooting_year }}/{{ photo.photographer_product_shooting_month }}/{{ photo.photographer_product_shooting_day }} {{ photo.photographer_product_shooting_hour }}:{{ photo.photographer_product_shooting_minute }}">
-              <img class="img_slow" src="/media/{{ photo.photographer_thumbnail_image }}">
+            <a href="/portfolio/media/{{ photo.photographer_main_image }}" class="swipebox" title="{{ photo.photographer_product_location }} {{ photo.photographer_product_shooting_year }}/{{ photo.photographer_product_shooting_month }}/{{ photo.photographer_product_shooting_day }} {{ photo.photographer_product_shooting_hour }}:{{ photo.photographer_product_shooting_minute }}">
+              <img class="img_slow" src="/portfolio/media/{{ photo.photographer_thumbnail_image }}">
             </a>
           </div>
           {% endfor %}
