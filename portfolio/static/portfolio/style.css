@@ -147,7 +147,7 @@ a span:nth-of-type(3) {
                             grid
 ************************************************************/
 .col-md-6 {
-  margin: .75rem 0;
+  margin: .75rem 0rem;
 }
 
 .col-md-3 {
@@ -180,7 +180,7 @@ figure {
   max-width: 80.9vmin;
   height: 35vmin;
   overflow: hidden;
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   background: #000;
 }
@@ -512,21 +512,11 @@ div.console_text_comment:before {
   .arrow {
     font-size: 7vmin;
   }
-  /* Engineer Worksのグリッド */
-  .col-md-6 {
-    margin-right: auto;
-    margin-left: auto;
-    width: 90%;
-  }
 }
 
 @media screen and (max-width: 330px) {
   /* coverのスクロール促し */
   .arrow {
     font-size: 9vmin;
-  }
-  /* Engineer Worksのグリッド */
-  .col-md-6 {
-    margin: .75rem;
   }
 }
