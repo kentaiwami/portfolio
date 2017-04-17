@@ -16,11 +16,15 @@
   <script src="{% static 'portfolio/js/index.js' %}"></script>
   <script>
   var speed_define = 25;
-  jQuery(function($) {
+  var show_title = function() {
     $('#e_work_title').typist({
       speed: speed_define,
       text: 'Engineer Works'
     });
+  };
+  
+  jQuery(function($) {
+    setTimeout(show_title, 1000);
   });
 
   // 画面内に要素が来た際のアニメーション実施を記述
