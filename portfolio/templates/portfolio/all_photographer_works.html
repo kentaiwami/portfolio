@@ -1,9 +1,20 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
   {% load static %}
+  <!--OGP-->
+  <meta property="og:title" content="All photographer works" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="http://kentaiwami.jp/portfolio/all_photographer_works/" />
+  <meta property="og:image" content="http://kentaiwami.jp/portfolio/media/images/p_work/thumbnail/photo1_thumbnail.JPG" />
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="All photographer works">
+  <meta name="twitter:description" content="All photographer works">
+  <meta name="twitter:image:src" content="http://kentaiwami.jp/portfolio/media/images/p_work/thumbnail/photo1_thumbnail.JPG">
+
   <link rel="stylesheet" type="text/css" href="{% static 'portfolio/reset.css' %}" />
   <link rel="stylesheet" type="text/css" href="{% static 'portfolio/css/bootstrap.min.css' %}" />
   <link rel="stylesheet" type="text/css" href="{% static 'portfolio/css/spinners.min.css' %}" />
