@@ -20,10 +20,13 @@ class Command(BaseCommand):
             count = len(products)
 
             for product in products:
-                if insert_sort_id < count:
+                if insert_sort_id == 0:
                     new_number = product.sort_id + insert_count
-
                     functions.renames(product, new_number)
+                else:
+                    if insert_sort_id < count:
+                        new_number = product.sort_id + insert_count
+                        functions.renames(product, new_number)
 
                 count -= 1
         else:
