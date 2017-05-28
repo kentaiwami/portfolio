@@ -290,7 +290,7 @@ def product_clear_image_field_delete_file(sender, instance, **kwargs):
 @receiver(pre_delete, sender=PhotographerProduct)
 def photographer_image_delete(sender, instance, **kwargs):
     """
-    When delete EngineerProduct record, delete four images that relation self instance
+    When delete EngineerProduct record, delete two images(main, thumbnail) that relation self instance
 
     :param sender:
     :param instance: EngineerProduct record
