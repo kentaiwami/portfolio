@@ -6,7 +6,7 @@ from .forms import CommentForm
 
 
 def index(request):
-    engineer_product_list = EngineerProduct.objects.order_by('sort_id')[:4]
+    engineer_product_list = EngineerProduct.objects.order_by('sort_id')
     photographer_product_list = PhotographerProduct.objects.order_by('sort_id')[:12]
     context = {'engineer_product_list': engineer_product_list, 'photographer_product_list': photographer_product_list}
     return render(request, 'portfolio/index.html', context)
