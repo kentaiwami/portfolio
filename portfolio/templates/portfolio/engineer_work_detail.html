@@ -134,17 +134,35 @@
         <div class="console_text">製作期間：{{ engineer_product_detail.engineer_product_creation_time }}</div>
         {% endif %}
 
-        {% if engineer_product.link != '' %}
-        <div class="console_text">URL：<a class="default_link" href="{{ engineer_product.link }}">{{ engineer_product.link }}</a></div>
-        {% endif %}
 
-        <div class="console_text_link">
-          <a class="link" href="{% url 'portfolio:index' %}#1">
-            <div class="box">
-              <div class="link_name">Back</div>
-              <div class="bd10 bd"><div class="bdT"></div><div class="bdB"></div><div class="bdR"></div><div class="bdL"></div></div>
-             </div>
-          </a>
+        <div class="row">
+
+          {% if engineer_product.link != '' %}
+          <div class="col">
+            <div class="console_text_link">
+              <a class="link" href="{{ engineer_product.link }}">
+                <div class="box">
+                  <div class="link_name">GitHub</div>
+                  <div class="bd10 bd"><div class="bdT"></div><div class="bdB"></div><div class="bdR"></div><div class="bdL"></div></div>
+                </div>
+              </a>
+            </div>
+          </div>
+          {% endif %}
+
+          {% if engineer_product.link != '' %}
+          <div class="col">
+            <div class="console_text_link">
+              <a class="link" href="{{ engineer_product.link }}">
+                <div class="box">
+                  <div class="link_name">App Store</div>
+                  <div class="bd10 bd"><div class="bdT"></div><div class="bdB"></div><div class="bdR"></div><div class="bdL"></div></div>
+                </div>
+              </a>
+            </div>
+          </div>
+          {% endif %}
+
         </div>
 
       </div>
