@@ -5,7 +5,7 @@ from .models import EngineerProduct, EngineerProductDetail, PhotographerProduct,
 class EngineerProductAdmin(admin.ModelAdmin):
     list_display = ('sort_id', 'engineer_product_name', 'engineer_product_alphabet_name',
                     'engineer_product_short_concept', 'top_image', 'col1_image',
-                    'col2_image', 'col3_image', 'link')
+                    'col2_image', 'col3_image', 'github', 'store')
 
     fieldsets = (
         ('Product_main', {
@@ -15,7 +15,7 @@ class EngineerProductAdmin(admin.ModelAdmin):
             'fields': ('top_image', 'col1_image', 'col2_image', 'col3_image')
         }),
         ('Another', {
-            'fields': ('link', 'sort_id')
+            'fields': ('github', 'store', 'sort_id')
         })
     )
 

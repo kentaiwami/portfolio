@@ -34,7 +34,8 @@ class EngineerProduct(models.Model):
     :param col1_image: Row1 col1 image file of engineer_work_detail.html
     :param col2_image: Row1 col2 image file of engineer_work_detail.html
     :param col3_image: Row2 col image file of engineer_work_detail.html
-    :param link: Product link
+    :param github: Product GitHub link
+    :param store: Product store link
     :param sort_id: use sort
 
     :type engineer_product_name: str
@@ -44,7 +45,8 @@ class EngineerProduct(models.Model):
     :type col1_image: file
     :type col2_image: file
     :type col3_image: file
-    :type link: str
+    :type github: str
+    :type store: str
     :type sort_id: int
     """
 
@@ -105,7 +107,8 @@ class EngineerProduct(models.Model):
     col2_image = models.ImageField(upload_to=get_col2_file_name, blank=True)
     col3_image = models.ImageField(upload_to=get_col3_file_name, blank=True)
 
-    link = models.URLField(max_length=200, blank=True, default='')
+    github = models.URLField(max_length=200, blank=True, default='')
+    store = models.URLField(max_length=200, blank=True, default='')
     sort_id = models.IntegerField(default=0, unique=True)
 
     tracker = FieldTracker()
