@@ -83,6 +83,8 @@
           <option value="portfolio.models.EngineerProductDetail.objects" />
           <option value="portfolio.models.Comment.objects" />
           <option value="str.path" />
+          <option value="github" />
+          <option value="store" />
         </list>
       </option>
     </inspection_tool>
