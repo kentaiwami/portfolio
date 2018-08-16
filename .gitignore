@@ -6,3 +6,5 @@ favicon/
 
 #backup
 /backup
+media/
+.idea/
