@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.urls import reverse
 from django.http import Http404, HttpResponseRedirect
-from .models import EngineerProduct, EngineerProductDetail, PhotographerProduct, Comment
+from .models import EngineerProduct, PhotographerProduct, Comment
 from .forms import CommentForm
 
 
@@ -18,12 +18,10 @@ def engineer_work_detail(request, e_product_id):
     except EngineerProduct.DoesNotExist:
         raise Http404("Product does not exist")
 
-    engineer_product_detail = EngineerProductDetail.objects.filter(engineer_product=engineer_product.pk).first()
     comment_list = Comment.objects.filter(engineer_product=engineer_product.pk).order_by('-pub_date')
 
     form = CommentForm()
     context = {'engineer_product': engineer_product,
-               'engineer_product_detail': engineer_product_detail,
                'comment_list': comment_list, 'form': form}
     return render(request, 'portfolio/engineer_work_detail.html', context)
 

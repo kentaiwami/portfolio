@@ -19,9 +19,9 @@ def get_test_file():
 
 def get_engineer_product_test_model():
     e_product = EngineerProduct()
-    e_product.engineer_product_name = 'test'
-    e_product.engineer_product_alphabet_name = 'test'
-    e_product.engineer_product_short_concept = 'test concept'
+    e_product.name = 'test'
+    e_product.alphabet_name = 'test'
+    e_product.short_concept = 'test concept'
     e_product.link = 'test link'
     e_product.sort_id = 1
     e_product.top_image = get_test_file()

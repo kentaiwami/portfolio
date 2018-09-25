@@ -1,43 +1,47 @@
 from django.contrib import admin
-from .models import EngineerProduct, EngineerProductDetail, PhotographerProduct, Comment
+from .models import EngineerProduct, PhotographerProduct, Comment
 
 
 class EngineerProductAdmin(admin.ModelAdmin):
-    list_display = ('sort_id', 'engineer_product_name', 'engineer_product_alphabet_name',
-                    'engineer_product_short_concept', 'top_image', 'col1_image',
-                    'col2_image', 'col3_image', 'github', 'store')
+    list_display = (
+        'sort_id',
+        'name',
+        'alphabet_name',
+        'short_concept',
+        'feature_concept',
+        'feature_detail',
+        'background_concept',
+        'background_detail',
+        'development_environment',
+        'development_language',
+        'creation_time',
+        'top_image',
+        'col1_image',
+        'col2_image',
+        'col3_image',
+        'github',
+        'store'
+    )
 
     fieldsets = (
         ('Product_main', {
-            'fields': ('engineer_product_name', 'engineer_product_alphabet_name', 'engineer_product_short_concept')
+            'fields': ('name',
+                       'alphabet_name',
+                       'short_concept',
+                       'feature_concept',
+                       'feature_detail',
+                       'background_concept',
+                       'background_detail',
+                       'development_environment',
+                       'development_language',
+                       'creation_time',
+                       )
         }),
         ('Image', {
             'fields': ('top_image', 'col1_image', 'col2_image', 'col3_image')
         }),
         ('Another', {
             'fields': ('github', 'store', 'sort_id')
-        })
-    )
-
-
-class EngineerProductDetailAdmin(admin.ModelAdmin):
-    list_display = ('engineer_product', 'engineer_product_feature_concept',
-                    'engineer_product_feature_detail', 'engineer_product_background_concept',
-                    'engineer_product_background_detail', 'engineer_product_development_environment',
-                    'engineer_product_development_language', 'engineer_product_creation_time')
-    fieldsets = (
-        ('Feature', {
-            'fields': ('engineer_product_feature_concept', 'engineer_product_feature_detail')
-        }),
-        ('Background', {
-            'fields': ('engineer_product_background_concept', 'engineer_product_background_detail')
-        }),
-        ('Another', {
-            'fields': ('engineer_product_development_environment', 'engineer_product_development_language',
-                       'engineer_product_creation_time')
-        }),
-        ('Relation', {
-            'fields': ('engineer_product',)
         })
     )
 
@@ -70,6 +74,5 @@ class CommentAdmin(admin.ModelAdmin):
 
 
 admin.site.register(EngineerProduct, EngineerProductAdmin)
-admin.site.register(EngineerProductDetail, EngineerProductDetailAdmin)
 admin.site.register(PhotographerProduct, PhotographerProductAdmin)
 admin.site.register(Comment, CommentAdmin)

@@ -30,6 +30,13 @@ class EngineerProduct(models.Model):
     :param engineer_product_name: Product name
     :param engineer_product_alphabet_name: Product name(alphabet version)
     :param engineer_product_short_concept: One sentence concept
+    :param engineer_product_feature_concept: Product feature concept(short one sentence)
+    :param engineer_product_feature_detail: Product feature detail sentences
+    :param engineer_product_background_concept: Product background concept(short one sentence)
+    :param engineer_product_background_detail: Product background detail sentences
+    :param engineer_product_development_environment: ex.) used tools, frameworks
+    :param engineer_product_development_language: used language
+    :param engineer_product_creation_time: creation time
     :param top_image: Top image file of index.html
     :param col1_image: Row1 col1 image file of engineer_work_detail.html
     :param col2_image: Row1 col2 image file of engineer_work_detail.html
@@ -38,9 +45,16 @@ class EngineerProduct(models.Model):
     :param store: Product store link
     :param sort_id: use sort
 
-    :type engineer_product_name: str
-    :type engineer_product_alphabet_name: str
-    :type engineer_product_short_concept: str
+    :type name: str
+    :type alphabet_name: str
+    :type short_concept: str
+    :type feature_concept: str
+    :type feature_detail: str
+    :type background_concept: str
+    :type background_detail: str
+    :type development_environment: str
+    :type development_language: str
+    :type creation_time: str
     :type top_image: file
     :type col1_image: file
     :type col2_image: file
@@ -59,8 +73,8 @@ class EngineerProduct(models.Model):
         """
 
         path, ext = os.path.splitext(filename)
-        joined_filename = ''.join([self.engineer_product_alphabet_name, '_top', ext])
-        return '/'.join(['images', get_e_work_str(), self.engineer_product_alphabet_name, joined_filename])
+        joined_filename = ''.join([self.alphabet_name, '_top', ext])
+        return '/'.join(['images', get_e_work_str(), self.alphabet_name, joined_filename])
 
     def get_col1_file_name(self, filename):
         """
@@ -71,8 +85,8 @@ class EngineerProduct(models.Model):
         """
 
         path, ext = os.path.splitext(filename)
-        joined_filename = ''.join([self.engineer_product_alphabet_name, '_col1', ext])
-        return '/'.join(['images', get_e_work_str(), self.engineer_product_alphabet_name, joined_filename])
+        joined_filename = ''.join([self.alphabet_name, '_col1', ext])
+        return '/'.join(['images', get_e_work_str(), self.alphabet_name, joined_filename])
 
     def get_col2_file_name(self, filename):
         """
@@ -83,8 +97,8 @@ class EngineerProduct(models.Model):
         """
 
         path, ext = os.path.splitext(filename)
-        joined_filename = ''.join([self.engineer_product_alphabet_name, '_col2', ext])
-        return '/'.join(['images', get_e_work_str(), self.engineer_product_alphabet_name, joined_filename])
+        joined_filename = ''.join([self.alphabet_name, '_col2', ext])
+        return '/'.join(['images', get_e_work_str(), self.alphabet_name, joined_filename])
 
     def get_col3_file_name(self, filename):
         """
@@ -95,12 +109,19 @@ class EngineerProduct(models.Model):
         """
 
         path, ext = os.path.splitext(filename)
-        joined_filename = ''.join([self.engineer_product_alphabet_name, '_col3', ext])
-        return '/'.join(['images', get_e_work_str(), self.engineer_product_alphabet_name, joined_filename])
+        joined_filename = ''.join([self.alphabet_name, '_col3', ext])
+        return '/'.join(['images', get_e_work_str(), self.alphabet_name, joined_filename])
 
-    engineer_product_name = models.CharField(max_length=20, default='', unique=True)
-    engineer_product_alphabet_name = models.CharField(max_length=40, default='', unique=True)
-    engineer_product_short_concept = models.CharField(max_length=30, default='')
+    name = models.CharField(max_length=20, default='', unique=True)
+    alphabet_name = models.CharField(max_length=40, default='', unique=True)
+    short_concept = models.CharField(max_length=30, default='')
+    feature_concept = models.TextField(max_length=30, default='', blank=True)
+    feature_detail = models.TextField(max_length=300, default='', blank=True)
+    background_concept = models.TextField(max_length=30, default='', blank=True)
+    background_detail = models.TextField(max_length=300, default='', blank=True)
+    development_environment = models.TextField(max_length=300, default='', blank=True)
+    development_language = models.TextField(max_length=300, default='', blank=True)
+    creation_time = models.TextField(max_length=50, default='', blank=True)
 
     top_image = models.ImageField(upload_to=get_top_file_name, blank=True)
     col1_image = models.ImageField(upload_to=get_col1_file_name, blank=True)
@@ -114,44 +135,7 @@ class EngineerProduct(models.Model):
     tracker = FieldTracker()
 
     def __str__(self):
-        return self.engineer_product_alphabet_name
-
-
-class EngineerProductDetail(models.Model):
-    """
-    Model of engineer product Detail
-
-    :param engineer_product_feature_concept: Product feature concept(short one sentence)
-    :param engineer_product_feature_detail: Product feature detail sentences
-    :param engineer_product_background_concept: Product background concept(short one sentence)
-    :param engineer_product_background_detail: Product background detail sentences
-    :param engineer_product_development_environment: ex.) used tools, frameworks
-    :param engineer_product_development_language: used language
-    :param engineer_product_creation_time: creation time
-    :param engineer_product: Product ForeignKey
-
-    :type engineer_product_feature_concept: str
-    :type engineer_product_feature_detail: str
-    :type engineer_product_background_concept: str
-    :type engineer_product_background_detail: str
-    :type engineer_product_development_environment: str
-    :type engineer_product_development_language: str
-    :type engineer_product_creation_time: str
-    :type engineer_product: int
-    """
-    engineer_product_feature_concept = models.TextField(max_length=30, default='', blank=True)
-    engineer_product_feature_detail = models.TextField(max_length=300, default='', blank=True)
-
-    engineer_product_background_concept = models.TextField(max_length=30, default='', blank=True)
-    engineer_product_background_detail = models.TextField(max_length=300, default='', blank=True)
-
-    engineer_product_development_environment = models.TextField(max_length=300, default='', blank=True)
-    engineer_product_development_language = models.TextField(max_length=300, default='', blank=True)
-    engineer_product_creation_time = models.TextField(max_length=50, default='', blank=True)
-    engineer_product = models.ForeignKey(EngineerProduct, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.engineer_product.__str__() + ' Detail'
+        return self.alphabet_name
 
 
 class PhotographerProduct(models.Model):
