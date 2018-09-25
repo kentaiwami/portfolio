@@ -27,16 +27,16 @@ class EngineerProduct(models.Model):
     """
     Model of engineer works
 
-    :param engineer_product_name: Product name
-    :param engineer_product_alphabet_name: Product name(alphabet version)
-    :param engineer_product_short_concept: One sentence concept
-    :param engineer_product_feature_concept: Product feature concept(short one sentence)
-    :param engineer_product_feature_detail: Product feature detail sentences
-    :param engineer_product_background_concept: Product background concept(short one sentence)
-    :param engineer_product_background_detail: Product background detail sentences
-    :param engineer_product_development_environment: ex.) used tools, frameworks
-    :param engineer_product_development_language: used language
-    :param engineer_product_creation_time: creation time
+    :param name: Product name
+    :param alphabet_name: Product name(alphabet version)
+    :param short_concept: One sentence concept
+    :param feature_concept: Product feature concept(short one sentence)
+    :param feature_detail: Product feature detail sentences
+    :param background_concept: Product background concept(short one sentence)
+    :param background_detail: Product background detail sentences
+    :param development_environment: ex.) used tools, frameworks
+    :param development_language: used language
+    :param creation_time: creation time
     :param top_image: Top image file of index.html
     :param col1_image: Row1 col1 image file of engineer_work_detail.html
     :param col2_image: Row1 col2 image file of engineer_work_detail.html
@@ -142,28 +142,28 @@ class PhotographerProduct(models.Model):
     """
     Model of photographer product
 
-    :param photographer_product_name: Product name
-    :param photographer_product_alphabet_name: Product alphabet name
-    :param photographer_main_image: Product origin image
-    :param photographer_thumbnail_image: Product thumbnail image
-    :param photographer_product_location: Product location
-    :param photographer_product_shooting_year: Product shooting year
-    :param photographer_product_shooting_month: Product shooting month
-    :param photographer_product_shooting_day: Product shooting day
-    :param photographer_product_shooting_hour: Product shooting hour
-    :param photographer_product_shooting_minute: Product shooting minute
+    :param name: Product name
+    :param alphabet_name: Product alphabet name
+    :param main_image: Product origin image
+    :param thumbnail_image: Product thumbnail image
+    :param location: Product location
+    :param shooting_year: Product shooting year
+    :param shooting_month: Product shooting month
+    :param shooting_day: Product shooting day
+    :param shooting_hour: Product shooting hour
+    :param shooting_minute: Product shooting minute
     :param sort_id: Use sort
 
-    :type photographer_product_name: str
-    :type photographer_product_alphabet_name: str
-    :type photographer_main_image: file
-    :type photographer_thumbnail_image: file
-    :type photographer_product_location: str
-    :type photographer_product_shooting_year: str
-    :type photographer_product_shooting_month: str
-    :type photographer_product_shooting_day: str
-    :type photographer_product_shooting_hour: str
-    :type photographer_product_shooting_minute: str
+    :type name: str
+    :type alphabet_name: str
+    :type main_image: file
+    :type thumbnail_image: file
+    :type location: str
+    :type shooting_year: str
+    :type shooting_month: str
+    :type shooting_day: str
+    :type shooting_hour: str
+    :type shooting_minute: str
     :type sort_id: int
     """
 
@@ -176,7 +176,7 @@ class PhotographerProduct(models.Model):
         """
 
         path, ext = os.path.splitext(filename)
-        joined_filename = ''.join([self.photographer_product_alphabet_name, '_main', ext])
+        joined_filename = ''.join([self.alphabet_name, '_main', ext])
         return '/'.join(['images', get_p_work_str(), get_p_work_main_str(), joined_filename])
 
     def get_thumbnail_image_file_name(self, filename):
@@ -187,26 +187,26 @@ class PhotographerProduct(models.Model):
         :return: media/images/p_work/thumbnail/PRODUCT_NAME_thumbnail.*
         """
         path, ext = os.path.splitext(filename)
-        joined_filename = ''.join([self.photographer_product_alphabet_name, '_thumbnail', ext])
+        joined_filename = ''.join([self.alphabet_name, '_thumbnail', ext])
         return '/'.join(['images', get_p_work_str(), get_p_work_thumbnail_str(), joined_filename])
 
-    photographer_product_name = models.CharField(max_length=100, default='', unique=True)
-    photographer_product_alphabet_name = models.CharField(max_length=200, default='', unique=True)
-    photographer_main_image = models.ImageField(upload_to=get_main_image_file_name, blank=True)
-    photographer_thumbnail_image = models.ImageField(upload_to=get_thumbnail_image_file_name, blank=True)
+    name = models.CharField(max_length=100, default='', unique=True)
+    alphabet_name = models.CharField(max_length=200, default='', unique=True)
+    main_image = models.ImageField(upload_to=get_main_image_file_name, blank=True)
+    thumbnail_image = models.ImageField(upload_to=get_thumbnail_image_file_name, blank=True)
 
-    photographer_product_location = models.CharField(max_length=30, default='', blank=True)
-    photographer_product_shooting_year = models.CharField(max_length=4, default='', blank=True)
-    photographer_product_shooting_month = models.CharField(max_length=2, default='', blank=True)
-    photographer_product_shooting_day = models.CharField(max_length=2, default='', blank=True)
-    photographer_product_shooting_hour = models.CharField(max_length=2, default='', blank=True)
-    photographer_product_shooting_minute = models.CharField(max_length=2, default='', blank=True)
+    location = models.CharField(max_length=30, default='', blank=True)
+    shooting_year = models.CharField(max_length=4, default='', blank=True)
+    shooting_month = models.CharField(max_length=2, default='', blank=True)
+    shooting_day = models.CharField(max_length=2, default='', blank=True)
+    shooting_hour = models.CharField(max_length=2, default='', blank=True)
+    shooting_minute = models.CharField(max_length=2, default='', blank=True)
     sort_id = models.IntegerField(default=0, unique=True)
 
     tracker = FieldTracker()
 
     def __str__(self):
-        return self.photographer_product_name
+        return self.name
 
 
 class Comment(models.Model):
@@ -283,8 +283,8 @@ def photographer_image_delete(sender, instance, **kwargs):
     :param instance: EngineerProduct record
     :param kwargs:
     """
-    instance.photographer_main_image.delete(False)
-    instance.photographer_thumbnail_image.delete(False)
+    instance.main_image.delete(False)
+    instance.thumbnail_image.delete(False)
 
 
 @receiver(post_save, sender=PhotographerProduct)
@@ -296,13 +296,13 @@ def photographerProduct_clear_image_field_delete_file(sender, instance, **kwargs
     :param kwargs:
     """
 
-    column_list = ['photographer_main_image', 'photographer_thumbnail_image']
+    column_list = ['main_image', 'thumbnail_image']
     path_list = []
     for column_name in column_list:
         path_list.append(settings.MEDIA_ROOT + '/' + str(instance.tracker.previous(column_name)))
 
-    if os.path.isfile(path_list[0]) and instance.photographer_main_image == '':
+    if os.path.isfile(path_list[0]) and instance.main_image == '':
         os.remove(path_list[0])
 
-    if os.path.isfile(path_list[1]) and instance.photographer_thumbnail_image == '':
+    if os.path.isfile(path_list[1]) and instance.thumbnail_image == '':
         os.remove(path_list[1])

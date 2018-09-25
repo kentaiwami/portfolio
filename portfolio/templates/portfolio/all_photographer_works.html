@@ -58,8 +58,8 @@
         <div class="row">
           {% for photo in all_photographer_product_list %}
           <div class="col-md-3">
-            <a href="/portfolio/media/{{ photo.photographer_main_image }}" class="swipebox" title="{{ photo.photographer_product_location }} {{ photo.photographer_product_shooting_year }}/{{ photo.photographer_product_shooting_month }}/{{ photo.photographer_product_shooting_day }} {{ photo.photographer_product_shooting_hour }}:{{ photo.photographer_product_shooting_minute }}">
-              <img class="img_slow" src="/portfolio/media/{{ photo.photographer_thumbnail_image }}">
+            <a href="/portfolio/media/{{ photo.main_image }}" class="swipebox" title="{{ photo.location }} {{ photo.shooting_year }}/{{ photo.shooting_month }}/{{ photo.shooting_day }} {{ photo.shooting_hour }}:{{ photo.shooting_minute }}">
+              <img class="img_slow" src="/portfolio/media/{{ photo.thumbnail_image }}">
             </a>
           </div>
           {% endfor %}
