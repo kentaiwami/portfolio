@@ -58,7 +58,7 @@
         <div class="row">
           {% for photo in all_photographer_product_list %}
           <div class="col-md-3">
-            <a href="/portfolio/media/{{ photo.main_image }}" class="swipebox" title="{{ photo.location }} {{ photo.shooting_year }}/{{ photo.shooting_month }}/{{ photo.shooting_day }} {{ photo.shooting_hour }}:{{ photo.shooting_minute }}">
+            <a href="/portfolio/media/{{ photo.main_image }}" class="swipebox" title="{{ photo.location }} {{ photo.shooting_date|date:'Y/m/d G:i'}}">
               <img class="img_slow" src="/portfolio/media/{{ photo.thumbnail_image }}">
             </a>
           </div>

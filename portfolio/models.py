@@ -147,11 +147,7 @@ class PhotographerProduct(models.Model):
     :param main_image: Product origin image
     :param thumbnail_image: Product thumbnail image
     :param location: Product location
-    :param shooting_year: Product shooting year
-    :param shooting_month: Product shooting month
-    :param shooting_day: Product shooting day
-    :param shooting_hour: Product shooting hour
-    :param shooting_minute: Product shooting minute
+    :param shooting_date: Product shooting date
     :param sort_id: Use sort
 
     :type name: str
@@ -159,11 +155,7 @@ class PhotographerProduct(models.Model):
     :type main_image: file
     :type thumbnail_image: file
     :type location: str
-    :type shooting_year: str
-    :type shooting_month: str
-    :type shooting_day: str
-    :type shooting_hour: str
-    :type shooting_minute: str
+    :type shooting_date: datetime
     :type sort_id: int
     """
 
@@ -196,11 +188,7 @@ class PhotographerProduct(models.Model):
     thumbnail_image = models.ImageField(upload_to=get_thumbnail_image_file_name, blank=True)
 
     location = models.CharField(max_length=30, default='', blank=True)
-    shooting_year = models.CharField(max_length=4, default='', blank=True)
-    shooting_month = models.CharField(max_length=2, default='', blank=True)
-    shooting_day = models.CharField(max_length=2, default='', blank=True)
-    shooting_hour = models.CharField(max_length=2, default='', blank=True)
-    shooting_minute = models.CharField(max_length=2, default='', blank=True)
+    shooting_date = models.DateTimeField(null=True, default=None)
     sort_id = models.IntegerField(default=0, unique=True)
 
     tracker = FieldTracker()

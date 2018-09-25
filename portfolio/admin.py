@@ -47,11 +47,13 @@ class EngineerProductAdmin(admin.ModelAdmin):
 
 
 class PhotographerProductAdmin(admin.ModelAdmin):
-    list_display = ('sort_id', 'location', 'shooting_year',
-                    'shooting_month', 'shooting_day',
-                    'shooting_hour', 'shooting_minute',
-                    'main_image', 'thumbnail_image'
-                    )
+    list_display = (
+        'sort_id',
+        'location',
+        'shooting_date',
+        'main_image',
+        'thumbnail_image'
+    )
 
     fieldsets = (
         ('Product_main', {
@@ -62,9 +64,7 @@ class PhotographerProductAdmin(admin.ModelAdmin):
             'fields': ('main_image', 'thumbnail_image')
         }),
         ('Daytime', {
-            'fields': ('shooting_year', 'shooting_month',
-                       'shooting_day', 'shooting_hour',
-                       'shooting_minute')
+            'fields': ('shooting_date',)
         })
     )
 
