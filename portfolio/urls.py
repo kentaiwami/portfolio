@@ -8,6 +8,7 @@ urlpatterns = [
     url(r'^all_photographer_works/', views.all_photographer_works, name='all_photographer_works'),
     url(r'^get_comment/', views.get_comment, name='get_comment'),
     url(r'^thanks/', views.thanks, name='thanks'),
+    url(r'^(?P<e_product_id>[0-9]+)/pp$', views.privacy_policy, name='privacy_policy')
     # url(r'^engineer_works_all', views.engineer_works_all, name='engineer_works_all'),
 ]
 handler404 = 'views.handler404'

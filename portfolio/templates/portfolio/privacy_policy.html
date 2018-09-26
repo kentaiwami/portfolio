@@ -6,14 +6,12 @@
 
   {% load static %}
   <!--OGP-->
-  <meta property="og:title" content="All photographer works" />
+  <meta property="og:title" content="{{ engineer_product.alphabet_name}} Privacy Policy" />
   <meta property="og:type" content="article" />
-  <meta property="og:url" content="http://kentaiwami.jp/portfolio/all_photographer_works/" />
-  <meta property="og:image" content="http://kentaiwami.jp/portfolio/media/images/p_work/thumbnail/photo1_thumbnail.JPG" />
+  <meta property="og:url" content="http://kentaiwami.jp/portfolio/{{ engineer_product.pk}}/pp" />
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="All photographer works">
-  <meta name="twitter:description" content="All photographer works">
-  <meta name="twitter:image:src" content="http://kentaiwami.jp/portfolio/media/images/p_work/thumbnail/photo1_thumbnail.JPG">
+  <meta name="twitter:title" content="{{ engineer_product.alphabet_name}} Privacy Policy">
+  <meta name="twitter:description" content="{{ engineer_product.alphabet_name}} Privacy Policy">
 
   <link rel="stylesheet" type="text/css" href="{% static 'portfolio/reset.css' %}" />
   <link rel="stylesheet" type="text/css" href="{% static 'portfolio/css/bootstrap.min.css' %}" />
@@ -24,48 +22,48 @@
   <!--favicon-->
   <link rel="shortcut icon" type="image/png" href="{% static 'portfolio/img/favicon.ico' %}"/>
 
-  <title>All photographer works</title>
+  <title>{{ engineer_product.alphabet_name}} Privacy Policy</title>
 
   <script src="{% static 'portfolio/js/jquery-3.1.1.min.js' %}"></script>
   <script src="{% static 'portfolio/js/jquery.typist.min.js' %}"></script>
   <script src="{% static 'portfolio/js/index.js' %}"></script>
-  <script src="{% static 'portfolio/js/jquery.swipebox.min.js' %}"></script>
 
   <script>
   var speed_define = 25;
   var show_title = function() {
-    $('#photographer_title').typist({
+    $('#privacy_policy_title').typist({
       speed: speed_define,
-      text: 'All photographer works'
+      text: '{{ engineer_product.alphabet_name }} Privacy Policy'
     });
   };
   
-  jQuery(function() {
+  jQuery(function($) {
     setTimeout(show_title, 1000);
   });
   </script>
 </head>
 
 <body>
-  <section class="container">  <!--All Photographer Works-->
-    <div class="section_title" id="photographer_title"></div>
+  <section class="container">
+    <div class="section_title" id="privacy_policy_title"></div>
 
     <div class="console_area">
-      <div class="console_top">Show {{ all_photographer_product_list.count }} photographer works<span class="loading dots2"></span></div>
+      <div class="console_top">Show {{ engineer_product.alphabet_name }} Privacy Policy<span class="loading dots2"></span></div>
 
       <div class="console">
-        {% if all_photographer_product_list.count != 0 %}
-        <div class="row">
-          {% for photo in all_photographer_product_list %}
-          <div class="col-md-3">
-            <a href="/portfolio/media/{{ photo.main_image }}" class="swipebox" title="{{ photo.location }} {{ photo.shooting_date|date:'Y/m/d G:i'}}">
-              <img class="img_slow" src="/portfolio/media/{{ photo.thumbnail_image }}">
-            </a>
-          </div>
+        <div class="console_name">収集する情報</div>
+        <ol>
+          {% for policy in policy_list %}
+          <li>{{ forloop.counter }}. {{ policy.information }}</li>
           {% endfor %}
-        </div>
-        {% endif %}
+        </ol>
 
+        <div class="console_name">情報の使用目的</div>
+        <ol>
+          {% for policy in policy_list %}
+          <li>{{ forloop.counter }}. {{ policy.usage }}</li>
+          {% endfor %}
+        </ol>
       </div>
     </div>
   </section>
@@ -73,12 +71,5 @@
 
   <script type="text/javascript" src="{% static 'portfolio/js/tether.min.js' %}"></script>
   <script type="text/javascript" src="{% static 'portfolio/js/bootstrap.min.js' %}"></script>
-  <script>
-  $(document).swipebox({
-    selector: '.swipebox',
-    removeBarsOnMobile: false,
-    hideBarsDelay: 5000
-  });
-  </script>
 </body>
 </html>

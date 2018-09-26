@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import EngineerProduct, PhotographerProduct, Comment
+from .models import EngineerProduct, PhotographerProduct, Comment, PrivacyPolicy
 
 
 class EngineerProductAdmin(admin.ModelAdmin):
@@ -73,6 +73,11 @@ class CommentAdmin(admin.ModelAdmin):
     list_display = ('name', 'comment_text', 'pub_date', 'engineer_product')
 
 
+class PrivacyPolicyAdmin(admin.ModelAdmin):
+    list_display = ('sort_id', 'information', 'usage', 'engineer_product')
+
+
 admin.site.register(EngineerProduct, EngineerProductAdmin)
 admin.site.register(PhotographerProduct, PhotographerProductAdmin)
 admin.site.register(Comment, CommentAdmin)
+admin.site.register(PrivacyPolicy, PrivacyPolicyAdmin)

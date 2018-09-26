@@ -218,6 +218,16 @@ class Comment(models.Model):
         return 'Comment' + str(self.pk)
 
 
+class PrivacyPolicy(models.Model):
+    sort_id = models.IntegerField(default=0, unique=True)
+    information = models.TextField(max_length=1000, default='', blank=True)
+    usage = models.TextField(max_length=1000, default='', blank=True)
+    engineer_product = models.ForeignKey(EngineerProduct, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.engineer_product.name + str(self.sort_id)
+
+
 @receiver(pre_delete, sender=EngineerProduct)
 def product_top_image_delete(sender, instance, **kwargs):
     """
