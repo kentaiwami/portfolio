@@ -47,10 +47,6 @@ def get_comment(request):
             comment.engineer_product = product
             comment.save()
 
-            print(comment.name, type(comment.name))
-            print(comment.text, type(comment.text))
-            print(comment.engineer_product.name, type(comment.engineer_product.name))
-
             try:
                 EmailMessage(
                     u'{}さんが{}にコメントを追加しました'.format(comment.name, comment.engineer_product.name),
