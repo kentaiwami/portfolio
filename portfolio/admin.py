@@ -70,7 +70,7 @@ class PhotographerProductAdmin(admin.ModelAdmin):
 
 
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ('name', 'comment_text', 'pub_date', 'engineer_product')
+    list_display = ('name', 'text', 'pub_date', 'engineer_product')
 
 
 class PrivacyPolicyAdmin(admin.ModelAdmin):

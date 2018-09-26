@@ -187,7 +187,7 @@
           <div class="console_text">Comment</div>
           <div class="console_text_input">
             {% csrf_token %}
-            {{ form.comment_text }}
+            {{ form.text }}
           </div>
 
           {% csrf_token %}
@@ -235,7 +235,7 @@
           {% endif %}
 
             <div class="console_text_comment_name">{{ comment.name }}さん {{ comment.pub_date }}</div>
-            <div class="console_text_comment">{{ comment.comment_text }}</div>
+            <div class="console_text_comment">{{ comment.text }}</div>
           {% endfor %}
           </div>
           {% endif %}

@@ -3,7 +3,8 @@ from django.urls import reverse
 from django.http import Http404, HttpResponseRedirect
 from .models import EngineerProduct, PhotographerProduct, Comment, PrivacyPolicy
 from .forms import CommentForm
-
+from django.core.mail import EmailMessage
+from mysite.settings import EMAIL_HOST_USER
 
 def index(request):
     engineer_product_list = EngineerProduct.objects.order_by('sort_id')
@@ -37,14 +38,27 @@ def get_comment(request):
         form = CommentForm(request.POST)
         if form.is_valid():
             product = EngineerProduct.objects.get(pk=form.cleaned_data['id'])
-            obj = Comment()
+            comment = Comment()
 
             if form.cleaned_data['name'] != '':
-                obj.name = form.cleaned_data['name']
+                comment.name = form.cleaned_data['name']
 
-            obj.comment_text = form.cleaned_data['comment_text']
-            obj.engineer_product = product
-            obj.save()
+            comment.text = form.cleaned_data['text']
+            comment.engineer_product = product
+            comment.save()
+
+            print(comment.name, type(comment.name))
+            print(comment.text, type(comment.text))
+            print(comment.engineer_product.name, type(comment.engineer_product.name))
+
+            try:
+                EmailMessage(
+                    u'{}さんが{}にコメントを追加しました'.format(comment.name, comment.engineer_product.name),
+                    u'{}'.format(comment.text),
+                    to=[EMAIL_HOST_USER]
+                ).send()
+            except Exception as e:
+                print(e)
 
             return HttpResponseRedirect(reverse('portfolio:thanks'))
 

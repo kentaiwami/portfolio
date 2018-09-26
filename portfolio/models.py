@@ -205,12 +205,12 @@ class Comment(models.Model):
     :param pub_date: publish date of comment
     :param product: Product ForeignKey
 
-    :type comment_text: str
+    :type text: str
     :type pub_date: date
     :type product: int
     """
     name = models.CharField(max_length=50, default='名無し', blank=True)
-    comment_text = models.TextField(max_length=300, default='', blank=False)
+    text = models.TextField(max_length=300, default='', blank=False)
     pub_date = models.DateTimeField(auto_now_add=True, blank=True)
     engineer_product = models.ForeignKey(EngineerProduct, on_delete=models.CASCADE)
 
