@@ -6,13 +6,13 @@
 
   {% load static %}
   <!--OGP-->
-  <meta property="og:title" content="{{ engineer_product.engineer_product_name }}" />
+  <meta property="og:title" content="{{ engineer_product.name }}" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="http://kentaiwami.jp/portfolio/{{ engineer_product.pk }}/" />
   <meta property="og:image" content="http://kentaiwami.jp/portfolio/media/{{ engineer_product.top_image }}" />
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{{ engineer_product.engineer_product_name }}">
-  <meta name="twitter:description" content="{{ engineer_product.engineer_product_name }}の詳細">
+  <meta name="twitter:title" content="{{ engineer_product.name }}">
+  <meta name="twitter:description" content="{{ engineer_product.name }}の詳細">
   <meta name="twitter:image:src" content="http://kentaiwami.jp/portfolio/media/{{ engineer_product.top_image }}">
 
   <link rel="stylesheet" type="text/css" href="{% static 'portfolio/reset.css' %}" />
@@ -23,7 +23,7 @@
   <!--favicon-->
   <link rel="shortcut icon" type="image/png" href="{% static 'portfolio/img/favicon.ico' %}"/>
 
-  <title>{{ engineer_product.engineer_product_name }}</title>
+  <title>{{ engineer_product.name }}</title>
 
   <script type="text/javascript" src="{% static 'portfolio/js/jquery-3.1.1.min.js' %}"></script>
   <script type="text/javascript" src="{% static 'portfolio/js/jquery.typist.min.js' %}"></script>
@@ -37,7 +37,7 @@
     });
   };
   
-  jQuery(function($) {
+  jQuery(function() {
     setTimeout(show_title, 1000);
   });
 
@@ -51,14 +51,14 @@
     if (flag[0] === false) {
       if (isScrolledIntoView($('#comment_title')) === true) {
         flag[0] = true;
-        $('#comment_title').typist({speed: speed_define,text: 'Comment',});
+        $('#comment_title').typist({speed: speed_define,text: 'Comment'});
       }
     }
 
     if (flag[1] === false) {
       if (isScrolledIntoView($('#comment_view_title')) === true) {
         flag[1] = true;
-        $('#comment_view_title').typist({speed: speed_define,text: 'Comments View',});
+        $('#comment_view_title').typist({speed: speed_define,text: 'Comments View'});
       }
     }
   });
@@ -80,11 +80,11 @@
     <div class="section_title" id="e_work_title"></div>
 
     <div class="console_area">
-      <div class="console_top">Show {{ engineer_product.engineer_product_alphabet_name }}<span class="loading dots2"></span></div>
+      <div class="console_top">Show {{ engineer_product.alphabet_name }}<span class="loading dots2"></span></div>
 
       <div class="console">
-        <div class="console_name">{{ engineer_product.engineer_product_name }}</div>
-        <div class="console_name">{{ engineer_product.engineer_product_short_concept }}</div>
+        <div class="console_name">{{ engineer_product.name }}</div>
+        <div class="console_name">{{ engineer_product.short_concept }}</div>
 
         {% if engineer_product.col1_image != '' and engineer_product.col2_image != '' %}
         <div class="row">
@@ -104,34 +104,34 @@
         </div>
         {% endif %}
 
-        {% if engineer_product_detail.engineer_product_feature_concept != '' %}
-        <div class="console_name">{{ engineer_product_detail.engineer_product_feature_concept }}</div>
+        {% if engineer_product.feature_concept != '' %}
+        <div class="console_name">{{ engineer_product.feature_concept }}</div>
         {% endif %}
 
-        {% if engineer_product_detail.engineer_product_feature_detail != '' %}
-        <div class="console_text">{{ engineer_product_detail.engineer_product_feature_detail }}</div>
+        {% if engineer_product.feature_detail != '' %}
+        <div class="console_text">{{ engineer_product.feature_detail }}</div>
         {% endif %}
 
-        {% if engineer_product_detail.engineer_product_background_concept != '' %}
-        <div class="console_name">{{ engineer_product_detail.engineer_product_background_concept }}</div>
+        {% if engineer_product.background_concept != '' %}
+        <div class="console_name">{{ engineer_product.background_concept }}</div>
         {% endif %}
 
-        {% if engineer_product_detail.engineer_product_background_detail != '' %}
-        <div class="console_text">{{ engineer_product_detail.engineer_product_background_detail }}</div>
+        {% if engineer_product.background_detail != '' %}
+        <div class="console_text">{{ engineer_product.background_detail }}</div>
         {% endif %}
 
         <div class="console_text_no_before"></div>
 
-        {% if engineer_product_detail.engineer_product_development_environment != '' %}
-        <div class="console_text">開発環境：{{ engineer_product_detail.engineer_product_development_environment }}</div>
+        {% if engineer_product.development_environment != '' %}
+        <div class="console_text">開発環境：{{ engineer_product.development_environment }}</div>
         {% endif %}
 
-        {% if engineer_product_detail.engineer_product_development_language != '' %}
-        <div class="console_text">使用言語：{{ engineer_product_detail.engineer_product_development_language }}</div>
+        {% if engineer_product.development_language != '' %}
+        <div class="console_text">使用言語：{{ engineer_product.development_language }}</div>
         {% endif %}
 
-        {% if engineer_product_detail.engineer_product_creation_time != '' %}
-        <div class="console_text">製作期間：{{ engineer_product_detail.engineer_product_creation_time }}</div>
+        {% if engineer_product.creation_time != '' %}
+        <div class="console_text">製作期間：{{ engineer_product.creation_time }}</div>
         {% endif %}
 
 
@@ -173,7 +173,7 @@
     <div class="section_title" id="comment_title"></div>
     <div class="console_area">
       <div class="console_top">
-        Comment to {{ engineer_product.engineer_product_alphabet_name }}<span class="loading dots2"></span>
+        Comment to {{ engineer_product.alphabet_name }}<span class="loading dots2"></span>
       </div>
 
       <div class="console">
@@ -209,11 +209,11 @@
   <section class="container" id="3">  <!--CommentView-->
     <div class="section_title" id="comment_view_title"></div>
     <div class="console_area">
-      <div class="console_top">Show comments to {{ engineer_product.engineer_product_alphabet_name }}<span class="loading dots2"></span></div>
+      <div class="console_top">Show comments to {{ engineer_product.alphabet_name }}<span class="loading dots2"></span></div>
         <div class="console">
 
           {% if comment_list.count == 0 %}
-          <div class="console_text">No comments to {{ engineer_product.engineer_product_alphabet_name }}</div>
+          <div class="console_text">No comments to {{ engineer_product.alphabet_name }}</div>
 
           {% else %}
           <div class="content">

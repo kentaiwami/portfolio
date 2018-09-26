@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.urls import reverse
 from django.http import Http404, HttpResponseRedirect
-from .models import EngineerProduct, EngineerProductDetail, PhotographerProduct, Comment
+from .models import EngineerProduct, PhotographerProduct, Comment, PrivacyPolicy
 from .forms import CommentForm
 
 
@@ -16,14 +16,12 @@ def engineer_work_detail(request, e_product_id):
     try:
         engineer_product = EngineerProduct.objects.get(pk=e_product_id)
     except EngineerProduct.DoesNotExist:
-        raise Http404("Product does not exist")
+        raise Http404('Product does not exist')
 
-    engineer_product_detail = EngineerProductDetail.objects.filter(engineer_product=engineer_product.pk).first()
     comment_list = Comment.objects.filter(engineer_product=engineer_product.pk).order_by('-pub_date')
 
     form = CommentForm()
     context = {'engineer_product': engineer_product,
-               'engineer_product_detail': engineer_product_detail,
                'comment_list': comment_list, 'form': form}
     return render(request, 'portfolio/engineer_work_detail.html', context)
 
@@ -60,6 +58,21 @@ def get_comment(request):
 
 def thanks(request):
     return render(request, 'portfolio/thanks.html')
+
+
+def privacy_policy(request, e_product_id):
+    try:
+        engineer_product = EngineerProduct.objects.get(pk=e_product_id)
+    except EngineerProduct.DoesNotExist:
+        raise Http404('Product does not exist')
+
+    policies = PrivacyPolicy.objects.filter(engineer_product=engineer_product.pk).order_by('sort_id')
+
+    if len(policies) == 0:
+        raise Http404('Privacy Policy does not exist')
+
+    context = {'engineer_product': engineer_product, 'policy_list': policies}
+    return render(request, 'portfolio/privacy_policy.html', context)
 
 
 def engineer_works_all(request):
