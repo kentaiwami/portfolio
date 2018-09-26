@@ -37,7 +37,7 @@
     });
   };
   
-  jQuery(function($) {
+  jQuery(function() {
     setTimeout(show_title, 1000);
   });
 
@@ -51,14 +51,14 @@
     if (flag[0] === false) {
       if (isScrolledIntoView($('#comment_title')) === true) {
         flag[0] = true;
-        $('#comment_title').typist({speed: speed_define,text: 'Comment',});
+        $('#comment_title').typist({speed: speed_define,text: 'Comment'});
       }
     }
 
     if (flag[1] === false) {
       if (isScrolledIntoView($('#comment_view_title')) === true) {
         flag[1] = true;
-        $('#comment_view_title').typist({speed: speed_define,text: 'Comments View',});
+        $('#comment_view_title').typist({speed: speed_define,text: 'Comments View'});
       }
     }
   });
