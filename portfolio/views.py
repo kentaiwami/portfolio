@@ -1,10 +1,12 @@
-from django.shortcuts import render
-from django.urls import reverse
-from django.http import Http404, HttpResponseRedirect
+from django.shortcuts import render, redirect
+from django.http import Http404
 from .models import EngineerProduct, PhotographerProduct, Comment, PrivacyPolicy
 from .forms import CommentForm
 from django.core.mail import EmailMessage
 from mysite.settings import EMAIL_HOST_USER
+from django.contrib import messages
+from django.contrib.messages import get_messages
+
 
 def index(request):
     engineer_product_list = EngineerProduct.objects.order_by('sort_id')
@@ -56,8 +58,8 @@ def get_comment(request):
             except Exception as e:
                 print(e)
 
-            return HttpResponseRedirect(reverse('portfolio:thanks'))
-
+            messages.add_message(request, messages.SUCCESS, 'Thanks for your comment.')
+            return redirect('portfolio:thanks')
     else:
         form = CommentForm()
 
@@ -67,7 +69,10 @@ def get_comment(request):
 
 
 def thanks(request):
-    return render(request, 'portfolio/thanks.html')
+    storage = get_messages(request)
+    for message in storage:
+        messages.add_message(request, messages.SUCCESS, message)
+        return render(request, 'portfolio/thanks.html', {'message': message})
 
 
 def privacy_policy(request, e_product_id):
