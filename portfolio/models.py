@@ -220,11 +220,14 @@ class Comment(models.Model):
 
 
 class PrivacyPolicy(models.Model):
-    sort_id = models.IntegerField(default=0, unique=True)
+    sort_id = models.IntegerField(default=0)
     information = models.TextField(max_length=1000, default='', blank=True)
     usage = models.TextField(max_length=1000, default='', blank=True)
     engineer_product = models.ForeignKey(EngineerProduct, on_delete=models.CASCADE)
     updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        unique_together = ('sort_id', 'engineer_product')
 
     def __str__(self):
         return self.engineer_product.name + str(self.sort_id)

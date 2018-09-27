@@ -29,8 +29,8 @@
   <script src="{% static 'portfolio/js/index.js' %}"></script>
 
   <script>
-  var speed_define = 25;
-  var show_title = function() {
+  let speed_define = 25;
+  let show_title = function() {
     $('#privacy_policy_title').typist({
       speed: speed_define,
       text: '{{ engineer_product.alphabet_name }} Privacy Policy'
@@ -52,18 +52,14 @@
 
       <div class="console">
         <div class="console_name">収集する情報</div>
-        <ol>
           {% for policy in policy_list %}
-          <li>{{ forloop.counter }}. {{ policy.information }}</li>
+              <div class="console_text">{{ forloop.counter }}. {{ policy.information }}</div>
           {% endfor %}
-        </ol>
 
         <div class="console_name">情報の使用目的</div>
-        <ol>
           {% for policy in policy_list %}
-          <li>{{ forloop.counter }}. {{ policy.usage }}</li>
+              <div class="console_text">{{ forloop.counter }}. {{ policy.usage }}</div>
           {% endfor %}
-        </ol>
       </div>
 
       <div class="console_text">更新日：{{latest|date:'Y-m-d'}}</div>
