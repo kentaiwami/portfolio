@@ -22,10 +22,12 @@ def engineer_work_detail(request, e_product_id):
         raise Http404('Product does not exist')
 
     comment_list = Comment.objects.filter(engineer_product=engineer_product.pk).order_by('-pub_date')
-
-    form = CommentForm()
+    policies = PrivacyPolicy.objects.filter(engineer_product=engineer_product.pk).order_by('sort_id')
     context = {'engineer_product': engineer_product,
-               'comment_list': comment_list, 'form': form}
+               'comment_list': comment_list,
+               'form': CommentForm(),
+               'policies': len(policies)
+               }
     return render(request, 'portfolio/engineer_work_detail.html', context)
 
 
@@ -72,16 +74,16 @@ def post_contact(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
-            contact = Contact()
-            contact.name = form.cleaned_data['name']
-            contact.email = form.cleaned_data['email']
-            contact.content = form.cleaned_data['content']
-            contact.save()
+            new_contact = Contact()
+            new_contact.name = form.cleaned_data['name']
+            new_contact.email = form.cleaned_data['email']
+            new_contact.content = form.cleaned_data['content']
+            new_contact.save()
 
             try:
                 EmailMessage(
-                    u'{}さんからお問い合わせがありました'.format(contact.name),
-                    u'{}'.format(contact.content),
+                    u'{}さんからお問い合わせがありました'.format(new_contact.name),
+                    u'{}'.format(new_contact.content),
                     to=[EMAIL_HOST_USER]
                 ).send()
             except Exception as e:
