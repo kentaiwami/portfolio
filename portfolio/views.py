@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import Http404
 from .models import EngineerProduct, PhotographerProduct, Comment, PrivacyPolicy
-from .forms import CommentForm
+from .forms import CommentForm, ContactForm
 from django.core.mail import EmailMessage
 from mysite.settings import EMAIL_HOST_USER
 from django.contrib import messages
@@ -35,7 +35,7 @@ def all_photographer_works(request):
     return render(request, 'portfolio/all_photographer_works.html', context)
 
 
-def get_comment(request):
+def post_comment(request):
     if request.method == 'POST':
         form = CommentForm(request.POST)
         if form.is_valid():
@@ -65,14 +65,56 @@ def get_comment(request):
 
     engineer_product = EngineerProduct.objects.get(pk=form.cleaned_data['id'])
     context = {'form': form, 'engineer_product': engineer_product}
-    return render(request, 'portfolio/form_error.html', context)
+    return render(request, 'portfolio/comment_form_error.html', context)
+
+
+def post_contact(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            print('*******************************')
+            print(form.cleaned_data)
+            print('*******************************')
+            # product = EngineerProduct.objects.get(pk=form.cleaned_data['id'])
+            # comment = Comment()
+
+            # if form.cleaned_data['name'] != '':
+            #     comment.name = form.cleaned_data['name']
+            #
+            # comment.text = form.cleaned_data['text']
+            # comment.engineer_product = product
+            # comment.save()
+            #
+            # try:
+            #     EmailMessage(
+            #         u'{}さんが{}にコメントを追加しました'.format(comment.name, comment.engineer_product.name),
+            #         u'{}'.format(comment.text),
+            #         to=[EMAIL_HOST_USER]
+            #     ).send()
+            # except Exception as e:
+            #     print(e)
+
+            messages.add_message(request, messages.SUCCESS, 'Thanks for your contact.')
+            return redirect('portfolio:thanks')
+    else:
+        form = ContactForm()
+
+    return render(request, 'portfolio/contact_form_error.html', {'form': form})
+
+
+def contact(request):
+    form = ContactForm()
+    return render(request, 'portfolio/contact.html', {'form': form})
 
 
 def thanks(request):
     storage = get_messages(request)
+    msg = ''
     for message in storage:
-        messages.add_message(request, messages.SUCCESS, message)
-        return render(request, 'portfolio/thanks.html', {'message': message})
+        msg = message
+
+    messages.add_message(request, messages.SUCCESS, msg)
+    return render(request, 'portfolio/thanks.html', {'message': msg})
 
 
 def privacy_policy(request, e_product_id):
@@ -95,16 +137,16 @@ def engineer_works_all(request):
 
 
 def handler404(request):
-    return render(request, 'portfolio/404.html')
+    return render(request, '404.html')
 
 
 def handler500(request):
-    return render(request, 'portfolio/500.html')
+    return render(request, '500.html')
 
 
 def handler403(request):
-    return render(request, 'portfolio/403.html')
+    return render(request, '403.html')
 
 
 def handler400(request):
-    return render(request, 'portfolio/400.html')
+    return render(request, '400.html')

@@ -178,7 +178,7 @@
 
       <div class="console">
         <div class="console_text">Name</div>
-        <form name="comment_form" method="post" action="{% url 'portfolio:get_comment' %}" onsubmit="click_submit()">
+        <form name="comment_form" method="post" action="{% url 'portfolio:post_comment' %}" onsubmit="click_submit()">
           <div class="console_text_input">
             {% csrf_token %}
             {{ form.name }}
