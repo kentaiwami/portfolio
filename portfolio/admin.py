@@ -74,7 +74,7 @@ class CommentAdmin(admin.ModelAdmin):
 
 
 class PrivacyPolicyAdmin(admin.ModelAdmin):
-    list_display = ('sort_id', 'information', 'usage', 'engineer_product')
+    list_display = ('sort_id', 'information', 'usage', 'updated_at', 'engineer_product')
 
 
 class ContactAdmin(admin.ModelAdmin):

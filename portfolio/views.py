@@ -123,7 +123,7 @@ def privacy_policy(request, e_product_id):
     if len(policies) == 0:
         raise Http404('Privacy Policy does not exist')
 
-    context = {'engineer_product': engineer_product, 'policy_list': policies}
+    context = {'engineer_product': engineer_product, 'policy_list': policies, 'latest': max(policies.values_list('updated_at'))[0]}
     return render(request, 'portfolio/privacy_policy.html', context)
 
 

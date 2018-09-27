@@ -224,6 +224,7 @@ class PrivacyPolicy(models.Model):
     information = models.TextField(max_length=1000, default='', blank=True)
     usage = models.TextField(max_length=1000, default='', blank=True)
     engineer_product = models.ForeignKey(EngineerProduct, on_delete=models.CASCADE)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.engineer_product.name + str(self.sort_id)
