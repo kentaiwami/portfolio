@@ -20,40 +20,45 @@
   <script>
   var speed_define = 25;
   jQuery(function($) {
-    $('#comment_title').typist({
+    $('#contact_title').typist({
       speed: speed_define,
-      text: 'Comment'
+      text: 'Contact'
     });
   });
   </script>
 </head>
 
 <body>
-  <section class="container">  <!--Comment-->
-    <div class="section_title" id="comment_title"></div>
+  <section class="container">  <!--Contact-->
+    <div class="section_title" id="contact_title"></div>
     <div class="console_area">
       <div class="console_top">
-        Comment to {{ engineer_product.engineer_product_alphabet_name }}<span class="loading dots2"></span>
+        Contact to Kenta Iwami<span class="loading dots2"></span>
       </div>
       <div class="console">
         <div class="console_text">Name</div>
 
-        <form name="comment_form" method="post" action="{% url 'portfolio:get_comment' %}" onsubmit="click_submit()">
-          <div class="error_message">{{ form.name.errors }}</div>
-          <div class="console_text_input">
-            {% csrf_token %}
-            {{ form.name }}
-          </div>
+        <form name="comment_form" method="post" action="{% url 'portfolio:post_contact' %}" onsubmit="click_submit()">
+            <div class="error_message">{{ form.name.errors }}</div>
+            <div class="console_text_input">
+                {% csrf_token %}
+                {{ form.name }}
+            </div>
 
-          <div class="console_text">Comment</div>
-          <div class="error_message">{{ form.comment_text.errors }}</div>
-          <div class="console_text_input">
-            {% csrf_token %}
-            {{ form.comment_text }}
-          </div>
+            <div class="console_text">Email</div>
+            <div class="error_message">{{ form.email.errors }}</div>
+            <div class="console_text_input">
+                {% csrf_token %}
+                {{ form.email }}
+            </div>
 
-          {% csrf_token %}
-          <input type="hidden" name="id" value="{{ engineer_product.pk }}">
+            <div class="console_text">Content</div>
+            <div class="error_message">{{ form.content.errors }}</div>
+            <div class="console_text_input">
+                {% csrf_token %}
+                {{ form.content }}
+            </div>
+
 
           <div class="console_text_link" id="submit_btn">
             <div class="box">

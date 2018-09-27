@@ -5,6 +5,7 @@ from model_utils import FieldTracker
 from django.conf import settings
 import os.path
 import shutil
+from datetime import datetime
 
 
 def get_e_work_str():
@@ -205,12 +206,12 @@ class Comment(models.Model):
     :param pub_date: publish date of comment
     :param product: Product ForeignKey
 
-    :type comment_text: str
+    :type text: str
     :type pub_date: date
     :type product: int
     """
     name = models.CharField(max_length=50, default='名無し', blank=True)
-    comment_text = models.TextField(max_length=300, default='', blank=False)
+    text = models.TextField(max_length=300, default='', blank=False)
     pub_date = models.DateTimeField(auto_now_add=True, blank=True)
     engineer_product = models.ForeignKey(EngineerProduct, on_delete=models.CASCADE)
 
@@ -219,13 +220,27 @@ class Comment(models.Model):
 
 
 class PrivacyPolicy(models.Model):
-    sort_id = models.IntegerField(default=0, unique=True)
+    sort_id = models.IntegerField(default=0)
     information = models.TextField(max_length=1000, default='', blank=True)
     usage = models.TextField(max_length=1000, default='', blank=True)
     engineer_product = models.ForeignKey(EngineerProduct, on_delete=models.CASCADE)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        unique_together = ('sort_id', 'engineer_product')
 
     def __str__(self):
         return self.engineer_product.name + str(self.sort_id)
+
+
+class Contact(models.Model):
+    name = models.CharField(max_length=50, blank=False)
+    email = models.EmailField(max_length=100, blank=False)
+    content = models.TextField(max_length=3000, blank=False)
+    created_at = models.DateTimeField(default=datetime.now)
+
+    def __str__(self):
+        return self.name
 
 
 @receiver(pre_delete, sender=EngineerProduct)

@@ -1,8 +1,11 @@
-from django.shortcuts import render
-from django.urls import reverse
-from django.http import Http404, HttpResponseRedirect
-from .models import EngineerProduct, PhotographerProduct, Comment, PrivacyPolicy
-from .forms import CommentForm
+from django.shortcuts import render, redirect
+from django.http import Http404
+from .models import EngineerProduct, PhotographerProduct, Comment, PrivacyPolicy, Contact
+from .forms import CommentForm, ContactForm
+from django.core.mail import EmailMessage
+from mysite.settings import EMAIL_HOST_USER
+from django.contrib import messages
+from django.contrib.messages import get_messages
 
 
 def index(request):
@@ -19,10 +22,12 @@ def engineer_work_detail(request, e_product_id):
         raise Http404('Product does not exist')
 
     comment_list = Comment.objects.filter(engineer_product=engineer_product.pk).order_by('-pub_date')
-
-    form = CommentForm()
+    policies = PrivacyPolicy.objects.filter(engineer_product=engineer_product.pk).order_by('sort_id')
     context = {'engineer_product': engineer_product,
-               'comment_list': comment_list, 'form': form}
+               'comment_list': comment_list,
+               'form': CommentForm(),
+               'policies': len(policies)
+               }
     return render(request, 'portfolio/engineer_work_detail.html', context)
 
 
@@ -32,32 +37,79 @@ def all_photographer_works(request):
     return render(request, 'portfolio/all_photographer_works.html', context)
 
 
-def get_comment(request):
+def post_comment(request):
     if request.method == 'POST':
         form = CommentForm(request.POST)
         if form.is_valid():
             product = EngineerProduct.objects.get(pk=form.cleaned_data['id'])
-            obj = Comment()
+            comment = Comment()
 
             if form.cleaned_data['name'] != '':
-                obj.name = form.cleaned_data['name']
+                comment.name = form.cleaned_data['name']
 
-            obj.comment_text = form.cleaned_data['comment_text']
-            obj.engineer_product = product
-            obj.save()
+            comment.text = form.cleaned_data['text']
+            comment.engineer_product = product
+            comment.save()
 
-            return HttpResponseRedirect(reverse('portfolio:thanks'))
+            try:
+                EmailMessage(
+                    u'{}さんが{}にコメントを追加しました'.format(comment.name, comment.engineer_product.name),
+                    u'{}'.format(comment.text),
+                    to=[EMAIL_HOST_USER]
+                ).send()
+            except Exception as e:
+                print(e)
 
+            messages.add_message(request, messages.SUCCESS, 'Thanks for your comment.')
+            return redirect('portfolio:thanks')
     else:
         form = CommentForm()
 
     engineer_product = EngineerProduct.objects.get(pk=form.cleaned_data['id'])
     context = {'form': form, 'engineer_product': engineer_product}
-    return render(request, 'portfolio/form_error.html', context)
+    return render(request, 'portfolio/comment_form_error.html', context)
+
+
+def post_contact(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            new_contact = Contact()
+            new_contact.name = form.cleaned_data['name']
+            new_contact.email = form.cleaned_data['email']
+            new_contact.content = form.cleaned_data['content']
+            new_contact.save()
+
+            try:
+                EmailMessage(
+                    u'{}さんからお問い合わせがありました'.format(new_contact.name),
+                    u'{}'.format(new_contact.content),
+                    to=[EMAIL_HOST_USER]
+                ).send()
+            except Exception as e:
+                print(e)
+
+            messages.add_message(request, messages.SUCCESS, 'Thanks for your contact.')
+            return redirect('portfolio:thanks')
+    else:
+        form = ContactForm()
+
+    return render(request, 'portfolio/contact_form_error.html', {'form': form})
+
+
+def contact(request):
+    form = ContactForm()
+    return render(request, 'portfolio/contact.html', {'form': form})
 
 
 def thanks(request):
-    return render(request, 'portfolio/thanks.html')
+    storage = get_messages(request)
+    msg = ''
+    for message in storage:
+        msg = message
+
+    messages.add_message(request, messages.SUCCESS, msg)
+    return render(request, 'portfolio/thanks.html', {'message': msg})
 
 
 def privacy_policy(request, e_product_id):
@@ -71,7 +123,7 @@ def privacy_policy(request, e_product_id):
     if len(policies) == 0:
         raise Http404('Privacy Policy does not exist')
 
-    context = {'engineer_product': engineer_product, 'policy_list': policies}
+    context = {'engineer_product': engineer_product, 'policy_list': policies, 'latest': max(policies.values_list('updated_at'))[0]}
     return render(request, 'portfolio/privacy_policy.html', context)
 
 
@@ -80,16 +132,16 @@ def engineer_works_all(request):
 
 
 def handler404(request):
-    return render(request, 'portfolio/404.html')
+    return render(request, '404.html')
 
 
 def handler500(request):
-    return render(request, 'portfolio/500.html')
+    return render(request, '500.html')
 
 
 def handler403(request):
-    return render(request, 'portfolio/403.html')
+    return render(request, '403.html')
 
 
 def handler400(request):
-    return render(request, 'portfolio/400.html')
+    return render(request, '400.html')
