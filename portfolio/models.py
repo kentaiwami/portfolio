@@ -5,6 +5,7 @@ from model_utils import FieldTracker
 from django.conf import settings
 import os.path
 import shutil
+from datetime import datetime
 
 
 def get_e_work_str():
@@ -226,6 +227,16 @@ class PrivacyPolicy(models.Model):
 
     def __str__(self):
         return self.engineer_product.name + str(self.sort_id)
+
+
+class Contact(models.Model):
+    name = models.CharField(max_length=50, blank=False)
+    email = models.EmailField(max_length=100, blank=False)
+    content = models.TextField(max_length=3000, blank=False)
+    created_at = models.DateTimeField(default=datetime.now)
+
+    def __str__(self):
+        return self.name
 
 
 @receiver(pre_delete, sender=EngineerProduct)

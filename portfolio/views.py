@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import Http404
-from .models import EngineerProduct, PhotographerProduct, Comment, PrivacyPolicy
+from .models import EngineerProduct, PhotographerProduct, Comment, PrivacyPolicy, Contact
 from .forms import CommentForm, ContactForm
 from django.core.mail import EmailMessage
 from mysite.settings import EMAIL_HOST_USER
@@ -72,27 +72,20 @@ def post_contact(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
-            print('*******************************')
-            print(form.cleaned_data)
-            print('*******************************')
-            # product = EngineerProduct.objects.get(pk=form.cleaned_data['id'])
-            # comment = Comment()
+            contact = Contact()
+            contact.name = form.cleaned_data['name']
+            contact.email = form.cleaned_data['email']
+            contact.content = form.cleaned_data['content']
+            contact.save()
 
-            # if form.cleaned_data['name'] != '':
-            #     comment.name = form.cleaned_data['name']
-            #
-            # comment.text = form.cleaned_data['text']
-            # comment.engineer_product = product
-            # comment.save()
-            #
-            # try:
-            #     EmailMessage(
-            #         u'{}さんが{}にコメントを追加しました'.format(comment.name, comment.engineer_product.name),
-            #         u'{}'.format(comment.text),
-            #         to=[EMAIL_HOST_USER]
-            #     ).send()
-            # except Exception as e:
-            #     print(e)
+            try:
+                EmailMessage(
+                    u'{}さんからお問い合わせがありました'.format(contact.name),
+                    u'{}'.format(contact.content),
+                    to=[EMAIL_HOST_USER]
+                ).send()
+            except Exception as e:
+                print(e)
 
             messages.add_message(request, messages.SUCCESS, 'Thanks for your contact.')
             return redirect('portfolio:thanks')
