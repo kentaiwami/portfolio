@@ -1,10 +1,10 @@
 __pycache__/
 *.py[cod]
 db.sqlite3
-settings.py
+mysite/settings.py
 favicon/
 
 #backup
-/backup
+backup/
 media/
 .idea/
