@@ -5,6 +5,6 @@
 作成済み or 作成予定のプロダクト一覧を載せたポートフォリオサイトです。
 
 ## リンク
-https://kentaiwami.jp/portfolio/
+https://portfolio.kentaiwami.jp/
 
 <img src="portfolio/static/portfolio/img/share.png" align="center" />
