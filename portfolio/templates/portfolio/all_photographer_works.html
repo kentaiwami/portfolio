@@ -8,12 +8,12 @@
   <!--OGP-->
   <meta property="og:title" content="All photographer works" />
   <meta property="og:type" content="article" />
-  <meta property="og:url" content="http://kentaiwami.jp/portfolio/all_photographer_works/" />
-  <meta property="og:image" content="http://kentaiwami.jp/portfolio/media/images/p_work/thumbnail/photo1_thumbnail.JPG" />
+  <meta property="og:url" content="http://portfolio.kentaiwami.jp/portfolio/all_photographer_works/" />
+  <meta property="og:image" content="http://portfolio.kentaiwami.jp/media/images/p_work/thumbnail/photo1_thumbnail.jpg" />
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="All photographer works">
   <meta name="twitter:description" content="All photographer works">
-  <meta name="twitter:image:src" content="http://kentaiwami.jp/portfolio/media/images/p_work/thumbnail/photo1_thumbnail.JPG">
+  <meta name="twitter:image:src" content="http://portfolio.kentaiwami.jp/media/images/p_work/thumbnail/photo1_thumbnail.jpg">
 
   <link rel="stylesheet" type="text/css" href="{% static 'portfolio/reset.css' %}" />
   <link rel="stylesheet" type="text/css" href="{% static 'portfolio/css/bootstrap.min.css' %}" />
@@ -58,8 +58,8 @@
         <div class="row">
           {% for photo in all_photographer_product_list %}
           <div class="col-md-3">
-            <a href="/portfolio/media/{{ photo.main_image }}" class="swipebox" title="{{ photo.location }} {{ photo.shooting_date|date:'Y/m/d G:i'}}">
-              <img class="img_slow" src="/portfolio/media/{{ photo.thumbnail_image }}">
+            <a href="/media/{{ photo.main_image }}" class="swipebox" title="{{ photo.location }} {{ photo.shooting_date|date:'Y/m/d G:i'}}">
+              <img class="img_slow" src="/media/{{ photo.thumbnail_image }}">
             </a>
           </div>
           {% endfor %}

@@ -8,12 +8,12 @@
   <!--OGP-->
   <meta property="og:title" content="{{ engineer_product.name }}" />
   <meta property="og:type" content="article" />
-  <meta property="og:url" content="http://kentaiwami.jp/portfolio/{{ engineer_product.pk }}/" />
-  <meta property="og:image" content="http://kentaiwami.jp/portfolio/media/{{ engineer_product.top_image }}" />
+  <meta property="og:url" content="http://portfolio.kentaiwami.jp/{{ engineer_product.pk }}/" />
+  <meta property="og:image" content="http://portfolio.kentaiwami.jp/media/{{ engineer_product.top_image }}" />
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{{ engineer_product.name }}">
   <meta name="twitter:description" content="{{ engineer_product.name }}の詳細">
-  <meta name="twitter:image:src" content="http://kentaiwami.jp/portfolio/media/{{ engineer_product.top_image }}">
+  <meta name="twitter:image:src" content="http://portfolio.kentaiwami.jp/media/{{ engineer_product.top_image }}">
 
   <link rel="stylesheet" type="text/css" href="{% static 'portfolio/reset.css' %}" />
   <link rel="stylesheet" type="text/css" href="{% static 'portfolio/css/bootstrap.min.css' %}" />
@@ -89,18 +89,18 @@
         {% if engineer_product.col1_image != '' and engineer_product.col2_image != '' %}
         <div class="row">
           <div class="col">
-            <div class="console_image"><img class="img-fluid-no-border" src="/portfolio/media/{{ engineer_product.col1_image }}"></div>
+            <div class="console_image"><img class="img-fluid-no-border" src="/media/{{ engineer_product.col1_image }}"></div>
           </div>
 
           <div class="col">
-            <div class="console_image"><img class="img-fluid-no-border" src="/portfolio/media/{{ engineer_product.col2_image }}"></div>
+            <div class="console_image"><img class="img-fluid-no-border" src="/media/{{ engineer_product.col2_image }}"></div>
           </div>
         </div>
         {% endif %}
 
         {% if engineer_product.col3_image != '' %}
         <div class="container">
-          <div class="console_image"><img class="img-fluid-no-border" src="/portfolio/media/{{ engineer_product.col3_image }}"></div>
+          <div class="console_image"><img class="img-fluid-no-border" src="/media/{{ engineer_product.col3_image }}"></div>
         </div>
         {% endif %}
 

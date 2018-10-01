@@ -8,12 +8,12 @@
   <!--OGP-->
   <meta property="og:title" content="KentaIwami Portfolio" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="http://kentaiwami.jp/portfolio/" />
-  <meta property="og:image" content="http://kentaiwami.jp{% static 'portfolio/img/share.png' %}" />
+  <meta property="og:url" content="http://portfolio.kentaiwami.jp" />
+  <meta property="og:image" content="http://portfolio.kentaiwami.jp{% static 'portfolio/img/share.png' %}" />
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="KentaIwami Portfolio">
   <meta name="twitter:description" content="Kenta Iwamiのポートフォリオサイト">
-  <meta name="twitter:image:src" content="http://kentaiwami.jp{% static 'portfolio/img/share.png' %}">
+  <meta name="twitter:image:src" content="http://portfolio.kentaiwami.jp{% static 'portfolio/img/share.png' %}">
 
   <link rel="stylesheet" type="text/css" href="{% static 'portfolio/reset.css' %}" />
   <link rel="stylesheet" type="text/css" href="{% static 'portfolio/css/bootstrap.min.css' %}" />
@@ -111,7 +111,7 @@
       <div class="col-md-6">
         <a href="{% url 'portfolio:engineer_work_detail' e_product.pk %}">
           <figure>
-            <img src="/portfolio/media/{{ e_product.top_image }}" class="img-fluid" alt="">
+            <img src="/media/{{ e_product.top_image }}" class="img-fluid" alt="">
             <figcaption>
               <h3>{{ e_product.name }}</h3>
               <p>{{ e_product.short_concept }}</p>
@@ -156,8 +156,8 @@
         <div class="row">
           {% for photo in photographer_product_list %}
           <div class="col-md-3">
-            <a href="/portfolio/media/{{ photo.main_image }}" class="swipebox" title="{{ photo.location }} {{ photo.shooting_date|date:'Y/m/d G:i'}}">
-              <img class="img_slow" src="/portfolio/media/{{ photo.thumbnail_image }}">
+            <a href="/media/{{ photo.main_image }}" class="swipebox" title="{{ photo.location }} {{ photo.shooting_date|date:'Y/m/d G:i'}}">
+              <img class="img_slow" src="/media/{{ photo.thumbnail_image }}">
             </a>
           </div>
           {% endfor %}
