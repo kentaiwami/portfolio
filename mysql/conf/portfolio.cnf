@@ -2,7 +2,7 @@
 character-set-server=utf8
 collation-server=utf8_general_ci
 
-replicate-do-db=myapp2
+replicate-do-db=portfolio
 
 log-bin=/var/log/mysql/bin-log
 server-id=2
