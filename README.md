@@ -7,4 +7,4 @@
 ## リンク
 https://portfolio.kentaiwami.com/
 
-<img src="portfolio/static/portfolio/img/share.png" align="center" />
+<img src="src/portfolio/static/portfolio/img/share.png" align="center" />
