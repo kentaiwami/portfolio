@@ -1,0 +1,63 @@
+version: '3'
+services:
+  portfolio-web:
+      container_name: portfolio-web
+      image: nginx:1.13
+      environment:
+        VIRTUAL_HOST: ${VIRTUAL_HOST}
+        LETSENCRYPT_HOST: ${LETSENCRYPT_HOST}
+        LETSENCRYPT_EMAIL: ${LETSENCRYPT_EMAIL}
+      volumes:
+        - ./nginx/conf:/etc/nginx/conf.d
+        - ./nginx/uwsgi_params:/etc/nginx/uwsgi_params
+        - ./src/static:/static
+        - ./src/media:/media
+      depends_on:
+        - portfolio-app
+      networks:
+        - proxy-network
+        - portfolio-app-network
+
+  portfolio-db:
+      container_name: portfolio-db
+      image: mysql:5.7
+      command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+      expose:
+        - "3306"
+      environment:
+        MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+        MYSQL_DATABASE: ${MYSQL_DATABASE}
+        MYSQL_USER: ${MYSQL_USER}
+        MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+        TZ: 'Asia/Tokyo'
+      volumes:
+        - portfolio-db:/var/lib/mysql
+        - ./sql:/docker-entrypoint-initdb.d
+        - ./mysql/conf:/etc/mysql/conf.d/
+      networks:
+        - portfolio-db-network
+
+  portfolio-app:
+      container_name: portfolio-app
+      build: ./django
+      command: uwsgi --socket :8001 --module mysite.wsgi --py-autoreload 1 --logto /tmp/mylog.log
+      volumes:
+        - ./src:/code
+        - ./src/static:/static
+      expose:
+        - "8001"
+      depends_on:
+        - portfolio-db
+      networks:
+        - portfolio-app-network
+        - portfolio-db-network
+networks:
+  portfolio-app-network:
+    external: true
+  proxy-network:
+    external: true
+  portfolio-db-network:
+    external: true
+volumes:
+  portfolio-db:
+    driver: local

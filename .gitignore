@@ -1,10 +1,11 @@
 __pycache__/
+__init__.py
 *.py[cod]
-db.sqlite3
-mysite/settings.py
-favicon/
+.sqlite3
+migrations/
 
-#backup
 backup/
-media/
+src/media/
+src/static/
 .vscode
+.env
