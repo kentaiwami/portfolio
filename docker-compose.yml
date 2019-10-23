@@ -47,7 +47,19 @@ services:
       container_name: portfolio-app
       build: ./django
       restart: always
-      command: bash -c "python manage.py makemigrations && python manage.py migrate && uwsgi --ini /code/uwsgi.ini"
+      environment:
+        ADMIN_USER: ${ADMIN_USER}
+        ADMIN_EMAIL: ${ADMIN_EMAIL}
+        ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+      command: >
+        bash -c
+        "python manage.py makemigrations
+        && python manage.py migrate
+        && python manage.py custom_createsuperuser
+        --username ${ADMIN_USER}
+        --email ${ADMIN_EMAIL}
+        --password ${ADMIN_PASSWORD}
+        && uwsgi --ini /code/uwsgi.ini"
       volumes:
         - ./src:/code
         - ./src/static:/static
