@@ -47,10 +47,6 @@ services:
       container_name: portfolio-app
       build: ./django
       restart: always
-      environment:
-        ADMIN_USER: ${ADMIN_USER}
-        ADMIN_EMAIL: ${ADMIN_EMAIL}
-        ADMIN_PASSWORD: ${ADMIN_PASSWORD}
       command: >
         bash -c
         "python manage.py makemigrations
