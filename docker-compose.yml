@@ -38,7 +38,7 @@ services:
         TZ: 'Asia/Tokyo'
       volumes:
         - portfolio-db:/var/lib/mysql
-        - ./sql:/docker-entrypoint-initdb.d
+        - ./mysql/sql:/docker-entrypoint-initdb.d
         - ./mysql/conf:/etc/mysql/conf.d/
       networks:
         - portfolio-db-network
