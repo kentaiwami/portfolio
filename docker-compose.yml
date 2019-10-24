@@ -63,6 +63,7 @@ services:
       volumes:
         - ./src:/code
         - ./src/static:/static
+        - ./.env:/code/mysite/.env
       expose:
         - "8001"
       depends_on:

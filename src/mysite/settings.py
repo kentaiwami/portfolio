@@ -17,7 +17,18 @@ import environ
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 env = environ.Env()
+
+# print('*****************************')
+# print(env.read_env(BASE_DIR + '/mysite/.env'))
+dirpath = os.path.dirname(__file__)
+hoge = os.path.join(dirpath, '.env')
+# print(hoge)
+env.read_env(hoge)
+# print('*****************************')
+
 environ.Env.read_env()
+
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
@@ -80,12 +91,12 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': env('DB_ENGINE'),
-        'NAME': env('DB_NAME'),
-        'USER': env('DB_USER'),
-        'PASSWORD': env('DB_PASSWORD'),
-        'HOST': env('DB_HOST'),
-        'PORT': env('DB_PORT'),
+        'ENGINE': 'mysql.connector.django',
+        'NAME': env('MYSQL_DATABASE'),
+        'USER': env('MYSQL_USER'),
+        'PASSWORD': env('MYSQL_PASSWORD'),
+        'HOST': 'portfolio-db',
+        'PORT': 3306,
         'OPTIONS': {'use_pure': True}
     }
 }
