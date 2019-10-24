@@ -17,18 +17,9 @@ import environ
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 env = environ.Env()
-
-# print('*****************************')
-# print(env.read_env(BASE_DIR + '/mysite/.env'))
-dirpath = os.path.dirname(__file__)
-hoge = os.path.join(dirpath, '.env')
-# print(hoge)
-env.read_env(hoge)
-# print('*****************************')
-
-environ.Env.read_env()
-
-
+dir_path = os.path.dirname(__file__)
+env_path = os.path.join(dir_path, '.env')
+env.read_env(env_path)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
