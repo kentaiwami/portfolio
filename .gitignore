@@ -1,14 +1,3 @@
-__pycache__/
-__init__.py
-*.py[cod]
-.sqlite3
-migrations/
-fixtures/
-
 backup/
-src/media/
-src/static/
 .vscode
 .env
-
-nginx/conf/*.conf
