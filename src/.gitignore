@@ -1,0 +1,7 @@
+__pycache__/
+__init__.py
+*.py[cod]
+migrations/
+fixtures/
+media/
+static/
