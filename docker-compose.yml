@@ -58,7 +58,8 @@ services:
         --username ${ADMIN_USER}
         --email ${ADMIN_EMAIL}
         --password ${ADMIN_PASSWORD}
-        && uwsgi --ini /code/uwsgi.ini"
+        && python manage.py collectstatic
+        ; uwsgi --ini /code/uwsgi.ini"
       volumes:
         - ./src:/code
         - ./src/static:/static
