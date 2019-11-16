@@ -2,6 +2,6 @@ __pycache__/
 __init__.py
 *.py[cod]
 migrations/
-fixtures/
+portfolio/fixtures/*.json
 media/
 static/

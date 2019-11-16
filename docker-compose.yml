@@ -51,7 +51,8 @@ services:
       restart: always
       command: >
         bash -c
-        "python manage.py makemigrations
+        "./portfolio/fixtures/init/wait-for-it.sh portfolio-db:3306
+        && python manage.py makemigrations
         && python manage.py migrate
         && python manage.py custom_createsuperuser
         --username ${ADMIN_USER}
