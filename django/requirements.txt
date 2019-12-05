@@ -1,4 +1,4 @@
-Django==2.2.5
+Django==2.2.8
 django-admin-ip-restrictor==1.0.0
 django-bootstrap-form==3.4
 django-environ==0.4.5
