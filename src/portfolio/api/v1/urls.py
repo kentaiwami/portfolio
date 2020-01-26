@@ -3,4 +3,4 @@ from .views import ContactViewSet
 
 
 router = routers.DefaultRouter()
-router.register(r'contact', ContactViewSet, base_name='add-contact')
+router.register(r'contact', ContactViewSet, basename='add-contact')
