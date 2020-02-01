@@ -23,7 +23,7 @@ services:
 
   portfolio-db:
       container_name: portfolio-db
-      image: mysql:5.7
+      image: mysql:5.7.29
       restart: always
       expose:
         - "3306"
