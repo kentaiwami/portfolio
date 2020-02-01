@@ -1,11 +1,13 @@
 from django.shortcuts import render, redirect
-from django.http import Http404
+from django.http import Http404, HttpResponse
 from .models import EngineerProduct, PhotographerProduct, Comment, PrivacyPolicy, Contact
 from .forms import CommentForm, ContactForm
 from django.core.mail import EmailMessage
 from mysite.settings import EMAIL_HOST_USER
 from django.contrib import messages
 from django.contrib.messages import get_messages
+from django.db import connections
+from django.db.utils import OperationalError
 
 
 def index(request):
@@ -131,17 +133,10 @@ def engineer_works_all(request):
     return render(request, 'portfolio/engineer_works_all.html')
 
 
-# def handler404(request):
-#     return render(request, '404.html')
+def health_check(request):
+    try:
+        connections['default'].cursor()
+    except OperationalError:
+        return HttpResponse(status=500)
 
-
-# def handler500(request):
-#     return render(request, '500.html')
-
-
-# def handler403(request):
-#     return render(request, '403.html')
-
-
-# def handler400(request):
-#     return render(request, '400.html')
+    return HttpResponse(status=200)
