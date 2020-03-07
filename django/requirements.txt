@@ -13,6 +13,6 @@ Pillow==7.0.0
 protobuf==3.11.3
 pytz==2019.3
 six==1.14.0
-sqlparse==0.3.0
+sqlparse==0.3.1
 stevedore==1.32.0
 uWSGI==2.0.18
