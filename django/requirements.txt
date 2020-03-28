@@ -1,4 +1,4 @@
-asgiref==3.2.5
+asgiref==3.2.7
 Django==2.2.9
 django-admin-ip-restrictor==2.1.1
 django-bootstrap-form==3.4
