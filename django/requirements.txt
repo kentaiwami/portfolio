@@ -1,5 +1,5 @@
 asgiref==3.2.10
-Django==2.2.9
+Django==2.2.24
 django-admin-ip-restrictor==2.1.1
 django-bootstrap-form==3.4
 django-environ==0.4.5
